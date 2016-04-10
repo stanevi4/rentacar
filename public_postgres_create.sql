@@ -30,11 +30,11 @@ CREATE TABLE "car" (
 	"id" serial NOT NULL,
 	"reg_number" character varying(20) NOT NULL,
 	"model_id" serial NOT NULL,
-	"year_prodaction" int NOT NULL,
-	"transmission_type" int NOT NULL,
-	"power" int NOT NULL,
+	"year_prodaction" int,
+	"transmission_type" int,
+	"power" int,
 	"actual_car" BOOLEAN NOT NULL,
-	"image" bytea NOT NULL,
+	"image" bytea,
 	CONSTRAINT car_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -81,7 +81,7 @@ CREATE TABLE "price" (
 	"created" TIMESTAMP NOT NULL,
 	"car_id" serial NOT NULL,
 	"date_from" TIMESTAMP NOT NULL,
-	"value" double NOT NULL,
+	"value" DECIMAL NOT NULL,
 	CONSTRAINT price_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -96,9 +96,9 @@ CREATE TABLE "order" (
 	"car_id" serial NOT NULL,
 	"date_from" TIMESTAMP NOT NULL,
 	"date_to" TIMESTAMP NOT NULL,
-	"contract" character varying(100) NOT NULL,
-	"summ" double NOT NULL,
-	"note" character varying(100) NOT NULL,
+	"contract" character varying(100),
+	"summ" DECIMAL NOT NULL,
+	"note" character varying(100),
 	CONSTRAINT order_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -122,9 +122,9 @@ CREATE TABLE "invoice" (
 	"id" serial NOT NULL,
 	"created" TIMESTAMP NOT NULL,
 	"order_id" serial NOT NULL,
-	"check_number" character varying(20) NOT NULL,
-	"summ" double NOT NULL,
-	"reason" character varying(100) NOT NULL,
+	"check_number" character varying(20),
+	"summ" DECIMAL NOT NULL,
+	"reason" character varying(100),
 	CONSTRAINT invoice_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -155,8 +155,8 @@ CREATE TABLE "damage" (
 CREATE TABLE "order_details" (
 	"id" serial NOT NULL,
 	"order_id" serial NOT NULL,
-	"reason_id" serial NOT NULL,
-	"damage_id" serial NOT NULL,
+	"reason_id" serial,
+	"damage_id" serial,
 	CONSTRAINT order_details_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
