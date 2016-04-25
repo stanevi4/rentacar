@@ -1,6 +1,8 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class Order extends AbstractModel {
 
@@ -10,8 +12,13 @@ public class Order extends AbstractModel {
 	private Date dateFrom;
 	private Date dateTo;
 	private String contract;
-	private Double summ;
+	private BigDecimal summ;
 	private String note;
+	private List<Damage> damage;
+	private List<OrderHistory> orderHistory;
+	private List<Invoice> invoice;
+	private OrderStatus orderStatus;
+	private Reason reason;
 
 	public UserCredentials getClient() {
 		return client;
@@ -61,11 +68,11 @@ public class Order extends AbstractModel {
 		this.contract = contract;
 	}
 
-	public Double getSumm() {
+	public BigDecimal getSumm() {
 		return summ;
 	}
 
-	public void setSumm(Double summ) {
+	public void setSumm(BigDecimal summ) {
 		this.summ = summ;
 	}
 
@@ -75,6 +82,46 @@ public class Order extends AbstractModel {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public List<Damage> getDamage() {
+		return damage;
+	}
+
+	public void setDamage(List<Damage> damage) {
+		this.damage = damage;
+	}
+
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public Reason getReason() {
+		return reason;
+	}
+
+	public void setReason(Reason reason) {
+		this.reason = reason;
+	}
+
+	public List<OrderHistory> getOrderHistory() {
+		return orderHistory;
+	}
+
+	public void setOrderHistory(List<OrderHistory> orderHistory) {
+		this.orderHistory = orderHistory;
+	}
+
+	public List<Invoice> getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(List<Invoice> invoice) {
+		this.invoice = invoice;
 	}
 
 }

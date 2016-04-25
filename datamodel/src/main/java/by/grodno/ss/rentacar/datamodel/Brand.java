@@ -1,15 +1,26 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.util.List;
+
 public class Brand extends AbstractModel {
 
 	private String brandName;
+	private List<Model> model;
 
-	public String getBrand_name() {
+	public String getBrandName() {
 		return brandName;
 	}
 
-	public void setBrand_name(String brand_name) {
-		this.brandName = brand_name;
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public List<Model> getModels() {
+		return model;
+	}
+
+	public void setModels(List<Model> models) {
+		this.model = models;
 	}
 
 }

@@ -2,18 +2,9 @@ package by.grodno.ss.rentacar.datamodel;
 
 public class UserCredentials extends AbstractModel {
 
-	private UserProfile userProfile;
 	private String email;
 	private String password;
 	private UserRole role;
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
-	}
 
 	public String getEmail() {
 		return email;

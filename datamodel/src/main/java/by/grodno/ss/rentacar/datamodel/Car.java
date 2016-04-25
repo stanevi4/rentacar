@@ -1,5 +1,7 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.util.List;
+
 public class Car extends AbstractModel {
 
 	private Model model;
@@ -7,8 +9,10 @@ public class Car extends AbstractModel {
 	private Integer yearProdaction;
 	private TransmissionType transmissionType;
 	private Integer power;
-	private Boolean actualCar;
-	private Byte image;
+	private String description;
+	private String image;
+	private CarStatus carStatus;
+	private List<Price> price;
 
 	public Model getModel() {
 		return model;
@@ -50,20 +54,36 @@ public class Car extends AbstractModel {
 		this.power = power;
 	}
 
-	public Boolean getActualCar() {
-		return actualCar;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setActualCar(Boolean actualCar) {
-		this.actualCar = actualCar;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Byte getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Byte image) {
+	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public CarStatus getCarStatus() {
+		return carStatus;
+	}
+
+	public void setCarStatus(CarStatus carStatus) {
+		this.carStatus = carStatus;
+	}
+
+	public List<Price> getPrice() {
+		return price;
+	}
+
+	public void setPrice(List<Price> price) {
+		this.price = price;
 	}
 
 }

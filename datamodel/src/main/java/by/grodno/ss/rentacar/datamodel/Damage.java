@@ -2,14 +2,14 @@ package by.grodno.ss.rentacar.datamodel;
 
 public class Damage extends AbstractModel {
 
-	private String name;
+	private String damage;
 
-	public String getName() {
-		return name;
+	public String getDamage() {
+		return damage;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDamage(String damage) {
+		this.damage = damage;
 	}
 
 }

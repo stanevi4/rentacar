@@ -1,22 +1,14 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Invoice extends AbstractModel {
 
-	private Order order;
 	private Date created;
 	private String checkNumber;
-	private Double summ;
+	private BigDecimal summ;
 	private String reason;
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	public Date getCreated() {
 		return created;
@@ -34,11 +26,11 @@ public class Invoice extends AbstractModel {
 		this.checkNumber = checkNumber;
 	}
 
-	public Double getSumm() {
+	public BigDecimal getSumm() {
 		return summ;
 	}
 
-	public void setSumm(Double summ) {
+	public void setSumm(BigDecimal summ) {
 		this.summ = summ;
 	}
 
