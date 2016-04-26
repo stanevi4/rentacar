@@ -102,5 +102,4 @@ public class UserProfile extends AbstractModel {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
 }
