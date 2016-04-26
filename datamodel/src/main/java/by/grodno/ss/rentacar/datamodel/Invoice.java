@@ -3,11 +3,22 @@ package by.grodno.ss.rentacar.datamodel;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Invoice extends AbstractModel {
 
+	@Column
 	private Date created;
+	
+	@Column
 	private String checkNumber;
+	
+	@Column
 	private BigDecimal summ;
+	
+	@Column
 	private String reason;
 
 	public Date getCreated() {

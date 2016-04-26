@@ -2,9 +2,18 @@ package by.grodno.ss.rentacar.datamodel;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Brand extends AbstractModel {
 
+	@Column
 	private String brandName;
+	
+	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
 	private List<Model> model;
 
 	public String getBrandName() {

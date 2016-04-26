@@ -2,15 +2,41 @@ package by.grodno.ss.rentacar.datamodel;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
+@Entity
 public class UserProfile extends AbstractModel {
 
+	@MapsId
+    @OneToOne(fetch = FetchType.LAZY, optional = false, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(nullable = false, updatable = false, name = "id")
 	private UserCredentials userCredentials;
+	
+	@Column
 	private String firstName;
+	
+	@Column
 	private String lastName;
+	
+	@Column
 	private Date created;
+	
+	@Column
 	private String passportNumber;
+	
+	@Column
 	private Date birthDay;
+	
+	@Column
 	private String address;
+	
+	@Column
 	private String phoneNumber;
 
 	public UserCredentials getUserCredentials() {

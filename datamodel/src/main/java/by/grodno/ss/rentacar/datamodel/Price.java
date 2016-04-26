@@ -1,12 +1,23 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Price extends AbstractModel {
 	
+	@Column
 	private Date created;
+	
+	@Column
 	private Date dateFrom;
-	private Double value;
+	
+	@Column
+	private BigDecimal value;
+	
 	public Date getCreated() {
 		return created;
 	}
@@ -19,10 +30,10 @@ public class Price extends AbstractModel {
 	public void setDateFrom(Date dateFrom) {
 		this.dateFrom = dateFrom;
 	}
-	public Double getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
-	public void setValue(Double value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 

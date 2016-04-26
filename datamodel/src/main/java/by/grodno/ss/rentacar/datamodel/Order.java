@@ -4,27 +4,62 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Order extends AbstractModel {
 
-	private UserCredentials client;
+	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
+    private UserProfile client;
+	
+	@ManyToOne(targetEntity = Car.class, fetch = FetchType.LAZY)
 	private Car car;
+	
+	@Column
 	private Date created;
+	
+	@Column
 	private Date dateFrom;
+	
+	@Column
 	private Date dateTo;
+	
+	@Column
 	private String contract;
+	
+	@Column
 	private BigDecimal summ;
+	
+	@Column
 	private String note;
+	
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<Damage> damage;
+	
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<OrderHistory> orderHistory;
+	
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<Invoice> invoice;
+	
+	@Column
+	@Enumerated(value = EnumType.STRING)
 	private OrderStatus orderStatus;
+	
+	@ManyToOne(targetEntity = Reason.class, fetch = FetchType.LAZY)
 	private Reason reason;
 
-	public UserCredentials getClient() {
+	public UserProfile getClient() {
 		return client;
 	}
 
-	public void setClient(UserCredentials client) {
+	public void setClient(UserProfile client) {
 		this.client = client;
 	}
 

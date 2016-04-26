@@ -1,7 +1,12 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Reason extends AbstractModel {
 
+	@Column
 	private String name;
 
 	public String getName() {

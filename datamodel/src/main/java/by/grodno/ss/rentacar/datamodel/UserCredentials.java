@@ -1,10 +1,22 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+@Entity
 public class UserCredentials extends AbstractModel {
 
+	@Column(updatable = false)
 	private String email;
+	
+	@Column
 	private String password;
-	private UserRole role;
+	
+	@Column
+    @Enumerated(value = EnumType.ORDINAL)
+    private UserRole role;
 
 	public String getEmail() {
 		return email;
