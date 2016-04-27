@@ -20,7 +20,7 @@ public class Invoice extends AbstractModel {
 	
 	@Column
 	private String reason;
-
+	
 	public Date getCreated() {
 		return created;
 	}

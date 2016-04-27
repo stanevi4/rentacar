@@ -89,6 +89,7 @@ CREATE TABLE "order" (
 	"note" character varying(100),
 	"order_status" int NOT NULL,
 	"reason_id" serial,
+	"invoice_id" serial,
 	CONSTRAINT order_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -111,7 +112,6 @@ CREATE TABLE "order_history" (
 CREATE TABLE "invoice" (
 	"id" serial NOT NULL,
 	"created" TIMESTAMP NOT NULL,
-	"order_id" serial NOT NULL,
 	"check_number" character varying(20),
 	"summ" DECIMAL NOT NULL,
 	"reason" character varying(100),
@@ -132,11 +132,11 @@ CREATE TABLE "reason" (
 
 
 
-CREATE TABLE "damage_list" (
+CREATE TABLE "damage" (
 	"id" serial NOT NULL,
 	"order_id" serial NOT NULL,
 	"damage" character varying(100) NOT NULL,
-	CONSTRAINT damage_list_pk PRIMARY KEY ("id")
+	CONSTRAINT damage_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
@@ -154,14 +154,13 @@ ALTER TABLE "model" ADD CONSTRAINT "model_fk0" FOREIGN KEY ("brand_id") REFERENC
 
 ALTER TABLE "price" ADD CONSTRAINT "price_fk0" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 
-ALTER TABLE "order" ADD CONSTRAINT "order_fk0" FOREIGN KEY ("client_id") REFERENCES "user_credentials"("id");
+ALTER TABLE "order" ADD CONSTRAINT "order_fk0" FOREIGN KEY ("client_id") REFERENCES "user_profile"("id");
 ALTER TABLE "order" ADD CONSTRAINT "order_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 ALTER TABLE "order" ADD CONSTRAINT "order_fk2" FOREIGN KEY ("reason_id") REFERENCES "reason"("id");
+ALTER TABLE "order" ADD CONSTRAINT "order_fk3" FOREIGN KEY ("invoice_id") REFERENCES "invoice"("id");
 
 ALTER TABLE "order_history" ADD CONSTRAINT "order_history_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");
 
-ALTER TABLE "invoice" ADD CONSTRAINT "invoice_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");
 
 
-ALTER TABLE "damage_list" ADD CONSTRAINT "damage_list_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");
-
+ALTER TABLE "damage" ADD CONSTRAINT "damage_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");

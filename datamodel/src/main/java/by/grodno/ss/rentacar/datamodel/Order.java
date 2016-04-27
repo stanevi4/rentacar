@@ -16,44 +16,44 @@ import javax.persistence.OneToMany;
 public class Order extends AbstractModel {
 
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
-    private UserProfile client;
-	
+	private UserProfile client;
+
 	@ManyToOne(targetEntity = Car.class, fetch = FetchType.LAZY)
 	private Car car;
-	
+
 	@Column
 	private Date created;
-	
+
 	@Column
 	private Date dateFrom;
-	
+
 	@Column
 	private Date dateTo;
-	
+
 	@Column
 	private String contract;
-	
+
 	@Column
 	private BigDecimal summ;
-	
+
 	@Column
 	private String note;
-	
+
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<Damage> damage;
-	
+
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<OrderHistory> orderHistory;
-	
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<Invoice> invoice;
-	
+
 	@Column
 	@Enumerated(value = EnumType.STRING)
 	private OrderStatus orderStatus;
-	
+
 	@ManyToOne(targetEntity = Reason.class, fetch = FetchType.LAZY)
 	private Reason reason;
+
+	@ManyToOne(targetEntity = Invoice.class, fetch = FetchType.LAZY)
+	private Invoice invoice;
 
 	public UserProfile getClient() {
 		return client;
@@ -151,11 +151,11 @@ public class Order extends AbstractModel {
 		this.orderHistory = orderHistory;
 	}
 
-	public List<Invoice> getInvoice() {
+	public Invoice getInvoice() {
 		return invoice;
 	}
 
-	public void setInvoice(List<Invoice> invoice) {
+	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
 	}
 
