@@ -6,12 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderHistory extends AbstractModel {
 
 	@Column
 	private Date created;
+	
+	@ManyToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
+	private Order order;
 	
 	@Column
 	@Enumerated(value = EnumType.STRING)
@@ -31,6 +36,14 @@ public class OrderHistory extends AbstractModel {
 
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }

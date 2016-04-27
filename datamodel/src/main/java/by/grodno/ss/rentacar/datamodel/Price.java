@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Price extends AbstractModel {
@@ -17,6 +19,9 @@ public class Price extends AbstractModel {
 	
 	@Column
 	private BigDecimal value;
+	
+	@ManyToOne(targetEntity = Car.class, fetch = FetchType.LAZY)
+	private Car car;
 	
 	public Date getCreated() {
 		return created;
@@ -35,6 +40,12 @@ public class Price extends AbstractModel {
 	}
 	public void setValue(BigDecimal value) {
 		this.value = value;
+	}
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 }
