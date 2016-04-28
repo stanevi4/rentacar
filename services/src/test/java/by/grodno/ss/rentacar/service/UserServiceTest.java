@@ -1,6 +1,9 @@
 package by.grodno.ss.rentacar.service;
 
 import java.lang.reflect.Field;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -48,12 +51,23 @@ public class UserServiceTest {
 
         profile.setFirstName("testFName");
         profile.setLastName("testLName");
-
+        profile.setPassportNumber("KH6754329");
+        String datePattern = "MM.dd.yyyy";
+        SimpleDateFormat format = new SimpleDateFormat(datePattern);
+        Date date = null;
+		try {
+			date = format.parse("12.31.1990");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+        profile.setBirthDay(date);
+        profile.setAddress("г.Гродно, ул.Космонавтов 50/55");
+        profile.setPhoneNumber("+375-29-7886543");
+        
         userCredentials.setEmail(System.currentTimeMillis() + "mail@test.by");
         userCredentials.setPassword("pswd");
         userCredentials.setRole(UserRole.admin);
         userService.register(profile, userCredentials);
-
     }
 
 }
