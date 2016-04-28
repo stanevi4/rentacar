@@ -8,7 +8,7 @@ import by.grodno.ss.rentacar.datamodel.Price;
 @Repository
 public class PriceDaoImpl extends AbstractDaoImpl<Price, Long> implements PriceDao {
 
-	protected PriceDaoImpl(Class<Price> entityClass) {
+	protected PriceDaoImpl() {
 		super(Price.class);
 	}
 

@@ -1,0 +1,22 @@
+package by.grodno.ss.rentacar.service;
+
+import javax.transaction.Transactional;
+import by.grodno.ss.rentacar.datamodel.UserCredentials;
+import by.grodno.ss.rentacar.datamodel.UserProfile;
+
+public interface UserService {
+
+	@Transactional
+	void register(UserProfile profile, UserCredentials userCredentials);
+
+	UserProfile getProfile(Long id);
+
+	UserCredentials getCredentials(Long id);
+
+	@Transactional
+	void update(UserProfile profile);
+
+	@Transactional
+	void delete(Long id);
+
+}
