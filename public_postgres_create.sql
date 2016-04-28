@@ -145,7 +145,6 @@ CREATE TABLE "damage" (
 
 ALTER TABLE "user_profile" ADD CONSTRAINT "user_profile_fk0" FOREIGN KEY ("id") REFERENCES "user_credentials"("id");
 
-ALTER TABLE "user_credentials" ADD CONSTRAINT "user_credentials_fk0" FOREIGN KEY ("id") REFERENCES "user_profile"("id");
 
 ALTER TABLE "car" ADD CONSTRAINT "car_fk0" FOREIGN KEY ("model_id") REFERENCES "model"("id");
 
@@ -164,3 +163,4 @@ ALTER TABLE "order_history" ADD CONSTRAINT "order_history_fk0" FOREIGN KEY ("ord
 
 
 ALTER TABLE "damage" ADD CONSTRAINT "damage_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");
+
