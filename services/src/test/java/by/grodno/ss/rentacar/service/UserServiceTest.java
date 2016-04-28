@@ -68,6 +68,9 @@ public class UserServiceTest {
         userCredentials.setPassword("pswd");
         userCredentials.setRole(UserRole.admin);
         userService.register(profile, userCredentials);
+        
+        Assert.assertNull(userService.getProfile(profile.getId()));
+        Assert.assertNull(userService.getCredentials(userCredentials.getId()));
     }
 
 }
