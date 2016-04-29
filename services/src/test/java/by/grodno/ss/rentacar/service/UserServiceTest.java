@@ -69,8 +69,11 @@ public class UserServiceTest {
         userCredentials.setRole(UserRole.admin);
         userService.register(profile, userCredentials);
         
+        Assert.assertNotNull(userService.getProfile(profile.getId()));
+        Assert.assertNotNull(userService.getCredentials(userCredentials.getId()));
+        
+        userService.delete(userCredentials.getId());
         Assert.assertNull(userService.getProfile(profile.getId()));
-        Assert.assertNull(userService.getCredentials(userCredentials.getId()));
+        Assert.assertNull(userService.getCredentials(profile.getId()));
     }
-
 }
