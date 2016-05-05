@@ -2,7 +2,6 @@ package by.grodno.ss.rentacar.service;
 
 import javax.transaction.Transactional;
 
-import by.grodno.ss.rentacar.datamodel.Brand;
 import by.grodno.ss.rentacar.datamodel.Model;
 
 public interface ModelService {
@@ -13,7 +12,7 @@ public interface ModelService {
 	void update(Model model);
 	
 	@Transactional
-	void set(Model model);
+	void register(Model model);
 	
 	@Transactional
 	void delete(Long id);

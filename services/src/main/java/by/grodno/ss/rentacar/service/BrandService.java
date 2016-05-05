@@ -12,7 +12,7 @@ public interface BrandService {
 	void update(Brand brand);
 	
 	@Transactional
-	void set(Brand brand);
+	void register(Brand brand);
 	
 	@Transactional
 	void delete(Long id);

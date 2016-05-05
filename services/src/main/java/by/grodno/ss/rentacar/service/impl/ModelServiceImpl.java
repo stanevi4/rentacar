@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import by.grodno.ss.rentacar.dataaccess.BrandDao;
 import by.grodno.ss.rentacar.dataaccess.ModelDao;
+import by.grodno.ss.rentacar.datamodel.Brand;
 import by.grodno.ss.rentacar.datamodel.Model;
 import by.grodno.ss.rentacar.service.ModelService;
 
@@ -19,30 +20,26 @@ public class ModelServiceImpl implements ModelService {
 	@Inject
 	private ModelDao modelDao;
 	
-	@Inject
-	private BrandDao brandDao;
-	
 	@Override
 	public Model get(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return modelDao.get(id);
 	}
 
 	@Override
 	public void update(Model model) {
-		// TODO Auto-generated method stub
+		modelDao.update(model);
 		
 	}
 
 	@Override
-	public void set(Model model) {
-		// TODO Auto-generated method stub
+	public void register(Model model) {
+		modelDao.insert(model);
 		
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		modelDao.delete(id);
 		
 	}
 

@@ -21,7 +21,7 @@ public class BrandServiceTest {
 	public void test(){
 		Brand brand = new Brand();
 		brand.setBrandName("Mitsubishi");
-		brandService.set(brand);
+		brandService.register(brand);
 		Brand brandMitsubishi = brandService.get(brand.getId());
 		Assert.assertNotNull(brandMitsubishi);
 		
