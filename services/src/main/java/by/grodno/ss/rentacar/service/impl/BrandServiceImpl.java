@@ -25,8 +25,8 @@ public class BrandServiceImpl implements BrandService {
 
 	@Override
 	public void update(Brand brand) {
-		LOGGER.info("Brand updated: {}", brand.getBrandName());
 		brandDao.update(brand);
+		LOGGER.info("Brand updated: {}", brand.getBrandName());
 	}
 
 	@Override

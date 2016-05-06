@@ -9,28 +9,30 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import by.grodno.ss.rentacar.datamodel.Brand;
+import by.grodno.ss.rentacar.datamodel.Model;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
-public class BrandServiceTest {
+public class ModelServiceTest {
+
+	@Inject
+	private ModelService modelService;
 	
 	@Inject
 	private BrandService brandService;
 	
 	@Test
-	public void testBrand(){
+	public void testModel(){
 		Brand brand = new Brand();
 		brand.setBrandName("Mitsubishi");
 		brandService.register(brand);
-		Brand brandMitsubishi = brandService.get(brand.getId());
-		Assert.assertNotNull(brandMitsubishi);
 		
-		String updatedBrandName = "Mazda";
-		brandMitsubishi.setBrandName(updatedBrandName);
-		brandService.update(brandMitsubishi);
-		Assert.assertEquals(updatedBrandName, brandService.get(brandMitsubishi.getId()).getBrandName());
-		
-		brandService.delete(brandMitsubishi.getId());
-        Assert.assertNull(brandService.get(brandMitsubishi.getId()));
+		Model model = new Model();
+		model.setBrand(brand);
+		model.setModelName("Space Star");
+		modelService.register(model);
+		Long id = model.getId();
+		Model registeredModel = modelService.get(id);
+		Assert.assertNotNull(registeredModel);
 	}
 }
