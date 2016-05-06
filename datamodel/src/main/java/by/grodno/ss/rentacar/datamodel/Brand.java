@@ -14,7 +14,7 @@ public class Brand extends AbstractModel {
 	private String brandName;
 	
 	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
-	private List<Model> model;
+	private List<Model> models;
 
 	public String getBrandName() {
 		return brandName;
@@ -25,11 +25,11 @@ public class Brand extends AbstractModel {
 	}
 
 	public List<Model> getModels() {
-		return model;
+		return models;
 	}
 
 	public void setModels(List<Model> models) {
-		this.model = models;
+		this.models = models;
 	}
 
 }

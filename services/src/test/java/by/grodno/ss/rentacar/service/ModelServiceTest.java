@@ -26,13 +26,14 @@ public class ModelServiceTest {
 		Brand brand = new Brand();
 		brand.setBrandName("Mitsubishi");
 		brandService.register(brand);
+		Brand registeredBrand = brandService.get(brand.getId());
+		Assert.assertNotNull(registeredBrand);
 		
 		Model model = new Model();
 		model.setBrand(brand);
 		model.setModelName("Space Star");
 		modelService.register(model);
-		Long id = model.getId();
-		Model registeredModel = modelService.get(id);
+		Model registeredModel = modelService.get(model.getId());
 		Assert.assertNotNull(registeredModel);
 	}
 }
