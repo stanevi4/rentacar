@@ -32,7 +32,7 @@ public class ModelServiceImpl implements ModelService {
 	@Override
 	public void register(Model model) {
 		modelDao.insert(model);
-		LOGGER.info("Model registered: {}", model.getModelName());		
+		LOGGER.info("Model registered: {}", model.getModelName());
 	}
 
 	@Override

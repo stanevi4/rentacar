@@ -34,6 +34,6 @@ public class ModelServiceTest {
 		model.setModelName("Space Star");
 		modelService.register(model);
 		Model registeredModel = modelService.get(model.getId());
-		Assert.assertNotNull(registeredModel);
+		Assert.assertNotNull(registeredModel.getBrand().getId());
 	}
 }
