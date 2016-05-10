@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import by.grodno.ss.rentacar.dataaccess.BrandDao;
 import by.grodno.ss.rentacar.dataaccess.ModelDao;
 import by.grodno.ss.rentacar.datamodel.Model;
 import by.grodno.ss.rentacar.service.ModelService;
@@ -17,7 +18,7 @@ public class ModelServiceImpl implements ModelService {
 	
 	@Inject
 	private ModelDao modelDao;
-	
+
 	@Override
 	public Model get(Long id) {
 		return modelDao.get(id);
@@ -37,8 +38,8 @@ public class ModelServiceImpl implements ModelService {
 
 	@Override
 	public void delete(Long id) {
-		modelDao.delete(id);
 		LOGGER.info("Model deleted: {}", modelDao.get(id).getModelName());
+		modelDao.delete(id);
 	}
 
 }

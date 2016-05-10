@@ -19,6 +19,7 @@ public class BrandServiceTest {
 	
 	@Test
 	public void testBrand(){
+		
 		Brand brand = new Brand();
 		brand.setBrandName("Mitsubishi");
 		brandService.register(brand);

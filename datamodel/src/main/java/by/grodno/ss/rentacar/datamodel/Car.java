@@ -7,13 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "car")
 public class Car extends AbstractModel {
 
 	@ManyToOne(targetEntity = Model.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "model_id", nullable = false)
 	private Model model;
 	
 	@Column

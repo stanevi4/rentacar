@@ -14,7 +14,7 @@ import by.grodno.ss.rentacar.datamodel.Model;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:service-context-test.xml" })
 public class ModelServiceTest {
-
+	
 	@Inject
 	private ModelService modelService;
 	
@@ -23,6 +23,7 @@ public class ModelServiceTest {
 	
 	@Test
 	public void testModel(){
+		
 		Brand brand = new Brand();
 		brand.setBrandName("Mitsubishi");
 		brandService.register(brand);
@@ -34,6 +35,13 @@ public class ModelServiceTest {
 		model.setModelName("Space Star");
 		modelService.register(model);
 		Model registeredModel = modelService.get(model.getId());
-		Assert.assertNotNull(registeredModel.getBrand().getId());
+		Assert.assertNotNull(registeredModel);
+		
+		String updatedModelName = "Space Runner";
+		registeredModel.setModelName(updatedModelName);;
+		modelService.update(registeredModel);
+		Assert.assertEquals(updatedModelName, modelService.get(registeredModel.getId()).getModelName());
+		modelService.delete(registeredModel.getId());
+		Assert.assertNull(modelService.get(registeredModel.getId()));
 	}
 }
