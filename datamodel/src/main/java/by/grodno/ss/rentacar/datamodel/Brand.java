@@ -17,7 +17,7 @@ public class Brand extends AbstractModel {
 	private String brandName;
 	
 	@OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
-	 private Set<Model> models= new HashSet<>(0);
+	private Set<Model> models= new HashSet<>(0);
 
 	public String getBrandName() {
 		return brandName;
