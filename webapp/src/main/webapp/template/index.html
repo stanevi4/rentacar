@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+
+<head>
+<title>Car Rental Website | Home Page</title>
+<meta name="description" content="Home page short description. Up to 160 characters.">
+<meta name="keywords" content="Keywords">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/owl.carousel.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/theme2.css">
+<link type="text/css" rel="stylesheet" href="css/template.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<!--<script type="text/javascript" src="js/owl.carousel.min.js"></script>-->  
+</head>
+
+<body>
+<div class="pageLoader pageLoaderHidden"></div><!-- /.pageLoader -->	<div class="wrapper">
+    <header id="header">
+	<div class="navbar navbar-default">
+		<div class="shell">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+							<a href="index.html" class="navbar-brand"><img src="images/logo-1463940188.png" alt=""></a>
+										</div><!-- /.navbar-header -->
+
+				<nav class="collapse navbar-collapse" id="nav">
+					<ul class="navbar-right nav navbar-nav">
+						<li class="active"><a href="homepage.html">Home</a></li><li><a href="reservations.html">Reservations</a></li><li><a href="about-us.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="locations.html">Locations</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact-us.html">Contact Us</a></li>														
+													</ul><!-- /.navbar-right nav navbar-nav -->
+				</nav><!-- /#nav.collapse navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /.shell -->
+	</div><!-- /.navbar navbar-default -->
+</header><!-- /#header -->    
+
+<section class="intro4 sliderIntroSecondary">
+	<div class="slider">
+
+		<div class="sliderClip">
+			<div class="slides">
+				<div class="slide">
+					<div class="slideImage">
+						<img src="images/intro-slider-image-3-1463940188.jpg" alt="Slider image 1" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="slider-content">
+			<div class="shell">
+				<div class="row">
+					<div class="col-lg-8">
+						<header class="formHead">
+							<h1 class="formTitle"><span class="wc-editable" data-pk="ws_rent_a_car_at_low_prices" data-type="text">Rent a car at low prices</span></h1>
+						</header>
+
+						<div class="slider-content-body">
+							<div class="slider-paragraph"><span class="wc-editable" data-pk="ws_home_landing_desc" data-type="textarea">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam rem soluta eos exercitationem labore, itaque, reiciendis praesentium aut maiores tenetur.</span></div><!-- /.slider-paragraph -->
+
+							<a href="about-us.html" class="btn btn-primary">Learn More</a>
+						</div><!-- /.slider-content-body -->
+					</div><!-- /.col-md-6 -->
+				</div><!-- /.row -->
+			</div><!-- /.shell -->
+		</div><!-- /.slider-content -->
+	</div>
+</section>
+<section class="section-form4">
+	<div class="shell">
+		<div class="form formFilter">
+						<form action="" id="crFormSearch" method="post">
+				<div class="formBody">
+					<div class="row">
+						<div class="col-lg-3 col-xs-6">
+							<div class="form-group dateTimePick dateTimePickFrom" id="dateTimePickFrom">
+								<label for=""><span class="wc-editable" data-pk="ws_pickup_date_time" data-type="text">Pick-up Date/Time</span></label>
+								<div class="input-group datePick datePickFrom">
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									</span>
+									<input type="text" id="cr_date_from" name="date_from" class="form-control" readonly="readonly">
+								</div>
+							</div>
+
+						</div>
+					
+						<div class="col-lg-3 col-xs-6">
+							<div class="form-group dateTimePick dateTimePickTo" id="dateTimePickTo">
+								<label for=""><span class="wc-editable" data-pk="ws_return_date_time" data-type="text">Return Date/Time</span></label>
+								<div class="input-group datePick datePickTo">
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									</span>
+									<input type="text" id="cr_date_to" name="date_to" class="form-control" readonly="readonly">
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-xs-6">
+							<div class="form-group">
+								<label for=""><span class="wc-editable" data-pk="ws_pickup_location" data-type="text">Pick-up location</span></label>
+					
+								<select name="pickup_id" id="cr_pickup_id" class="form-control">
+									<option value="1">Hogarth Road, London</option><option value="2">Walton Street, London</option>								</select>
+					
+								<p>
+									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+									<span class="wc-editable" data-pk="ws_cannot_find_location" data-type="text">Can't find the location?</span> <a href="locations.html">View Map</a>
+								</p>
+								
+							</div>
+						</div>
+						<div class="col-lg-3 col-xs-6">
+							<div class="form-group returnLocationDisabled" id="returnLocation">
+								<label for=""><span class="wc-editable" data-pk="ws_return_location" data-type="text">Return location</span></label>
+					
+								<select name="return_id" id="cr_return_id" class="form-control" disabled="">
+								<option value="1">Hogarth Road, London</option><option value="2">Walton Street, London</option>								</select>
+					
+								<div class="checkbox customCheckbox customInputChecked">
+									<input type="checkbox" name="same_location" id="cr_same_location" value="1" checked="checked"> <span class="wc-editable" data-pk="ws_same_as_pickup_location" data-type="text">Same as the pick-up location</span>					
+									<label for="cr_same_location">
+										<span class="customCheckboxFake">
+											<span class="glyphicon glyphicon-ok"></span>
+										</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="formFilterAction">
+						<button type="submit" class="btn btn-primary btn-form" id="crBtnQuote">get a quote now</button>
+					</div><!-- /.text-center -->
+
+					<p class="crError text-danger" style="display: none;"></p>
+				</div>
+			</form>
+		</div>
+	</div><!-- /.shell -->
+</section><!-- /.section-form -->
+
+<section class="section section-offers4">
+	<div class="shell">
+		<header class="text-center sectionHead">
+			<h2 class="sectionTitle"><span class="wc-editable" data-pk="ws_special_offers" data-type="text">Special Offers</span></h2>
+		</header>
+
+		<div class="sectionBody">
+			<div class="row offers4">
+				<div class="col-md-4 col-sm-6 offer4">
+					<div class="offer-image4">
+						<img src="images/offer-image-1-1463940188.jpg" alt="">
+
+						<div class="offer-price4"><span class="wc-editable" data-pk="ws_offer_price_from_1" data-type="text">from</span><strong><span class="wc-editable" data-pk="ws_offer_price_1" data-type="text">$99.00</span></strong><span class="wc-editable" data-pk="ws_offer_per_1" data-type="text">per day</span></div><!-- /.offer-price4 -->
+					</div>
+
+					<div class="offer-title4"><span class="wc-editable" data-pk="ws_offer_title_1" data-type="text">top sellers</span></div>
+
+					<div class="offer-entry4">
+						<div class="offerParagraph"><span class="wc-editable" data-pk="ws_offer_description_1" data-type="textarea">From small and medium cars, to sedans, family cars, van rental or even something special to add a touch of luxury to your journey. </span></div>
+					</div>
+
+					<div class="offer-actions4">
+						<a href="reservations.html" class="btn btn-info">book now</a>
+					</div><!-- /.offer-actions4 -->
+				</div>
+
+				<div class="col-md-4 col-sm-6 offer4">
+					<div class="offer-image4">
+						<img src="images/offer-image-2-1463940188.jpg" alt="">
+
+						<div class="offer-price4"><span class="wc-editable" data-pk="ws_offer_price_from_2" data-type="text">from</span><strong><span class="wc-editable" data-pk="ws_offer_price_2" data-type="text">$99.00</span></strong><span class="wc-editable" data-pk="ws_offer_per_2" data-type="text">per day</span></div><!-- /.offer-price4 -->
+					</div>
+
+					<div class="offer-title4"><span class="wc-editable" data-pk="ws_offer_title_2" data-type="text">small &amp; medium cars</span></div>
+
+					<div class="offer-entry4">
+						<div class="offerParagraph"><span class="wc-editable" data-pk="ws_offer_description_2" data-type="textarea">From small and medium cars, to sedans, family cars, van rental or even something special to add a touch of luxury to your journey. </span></div>
+					</div>
+
+					<div class="offer-actions4">
+						<a href="reservations.html" class="btn btn-info">book now</a>
+					</div><!-- /.offer-actions4 -->
+				</div>
+
+				<div class="col-md-4 col-sm-6 offer4">
+					<div class="offer-image4">
+						<img src="images/offer-image-3-1463940188.jpg" alt="">
+
+						<div class="offer-price4"><span class="wc-editable" data-pk="ws_offer_price_from_3" data-type="text">from</span><strong><span class="wc-editable" data-pk="ws_offer_price_3" data-type="text">$99.00</span></strong><span class="wc-editable" data-pk="ws_offer_per_3" data-type="text">per day</span></div><!-- /.offer-price4 -->
+					</div>
+
+					<div class="offer-title4"><span class="wc-editable" data-pk="ws_offer_title_3" data-type="text">family cars</span></div>
+
+					<div class="offer-entry4">
+						<div class="offerParagraph"><span class="wc-editable" data-pk="ws_offer_description_3" data-type="textarea">From small and medium cars, to sedans, family cars, van rental or even something special to add a touch of luxury to your journey. </span></div>
+					</div>
+
+					<div class="offer-actions4">
+						<a href="reservations.html" class="btn btn-info">book now</a>
+					</div><!-- /.offer-actions4 -->
+				</div>
+			</div>
+			
+		</div><!-- /.sectionBody -->
+	</div><!-- /.shell -->
+</section>
+
+<section class="services4">
+	<div class="shell">
+		<div class="services-row4">
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoCar"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_1" data-type="text">vehicles to meet demands</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_1" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoWallet"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_2" data-type="text">Great Daily and Hourly Rates</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_2" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoCalendar"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_3" data-type="text">No hidden charges</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_3" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoPhoneHanded"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_4" data-type="text">Real time online booking</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_4" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoLock"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_5" data-type="text">Clean vehicles &amp; many extras</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_5" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+
+			<div class="service4">
+				<div class="service-head4">
+					<div class="service-image4">
+						<i class="ico icoExtras"></i>
+					</div>
+			
+					<div class="service-title4"><a href="services.html"><span class="wc-editable" data-pk="ws_vehicles_to_meet_6" data-type="text">Many extras available</span></a></div><!-- /.service-title -->
+				</div><!-- /.service-head4 -->
+			
+				<div class="service-body4">
+					<div class="service-paragraph"><span class="wc-editable" data-pk="ws_delivery_service_desc_6" data-type="textarea">Replace the dummy content here with your own. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+					<a href="services.html">View more</a>
+				</div><!-- /.service-body -->
+			</div><!-- /.service4 -->
+		</div><!-- /.row -->
+	</div><!-- /.shell -->
+</section>
+
+<section class="section section-about4">
+	<div class="shell">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="about-entry4">
+					<div class="sectionHead">
+						<h2 class="sectionTitle"><span class="wc-editable" data-pk="ws_home_about_us" data-type="text">about us</span></h2>
+					</div><!-- /.about-entry-head4 -->
+
+					<div class="about-entry-body4">
+						<div class="sectionArticleParagraph"><span class="wc-editable" data-pk="ws_home_about_us_desc" data-type="textarea">Replace the dummy content here with your own. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></div>
+
+						<p><a href="about-us.html" class="btn btn-link">Read more</a></p>
+					</div><!-- /.about-entry-body4 -->
+				</div><!-- /.about-entry -->
+
+				<div class="about-entry4">
+					<div class="sectionHead">
+						<h2 class="sectionTitle"><span class="wc-editable" data-pk="ws_home_locations" data-type="text">locations</span></h2>
+					</div><!-- /.about-entry-head4 -->
+
+					<div class="about-entry-body4">
+						<div class="sectionArticleParagraph"><span class="wc-editable" data-pk="ws_home_locations_desc" data-type="textarea">We serve multiple locations. Find out our offices, along with our pickup and return points.</span></div>
+
+						<p><a href="locations.html" class="btn btn-link">Read more</a></p>
+					</div><!-- /.about-entry-body4 -->
+				</div><!-- /.about-entry -->
+			</div><!-- /.col-md-6 -->
+
+			<div class="col-md-7">
+				<div class="about-image4">
+					<img src="images/home-page-1463940188.jpg" alt="">
+				</div><!-- /.about-image4 -->
+			</div><!-- /.col-md-6 -->
+		</div><!-- /.row -->
+	</div><!-- /.shell -->
+</section>    <footer id="footer">
+	<div class="footerInner">
+		<section class="footerUtilities">
+			<div class="shell clearfix">
+				<div class="pull-left footerContacts">
+					<ul class="list-inline">
+						<li>
+							<div class="footerContactsParagraph"><small><span class="wc-editable" data-pk="ws_call_us_now" data-type="text">Call Us Now</span>:</small></div>
+		
+							<div class="footerContactsParagraph">
+								<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+		
+								<strong><span class="wc-editable" data-pk="ws_footer_phone_number" data-type="text">123.456.7890</span></strong>
+							</div>
+						</li>
+		
+						<li>
+							<div class="footerContactsParagraph"><small><span class="wc-editable" data-pk="ws_send_us_a_message" data-type="text">Or send us a message</span>:</small></div>
+														<div class="footerContactsParagraph">
+								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+		
+								<a href="mailto:info@domainame.com">info@domainame.com</a>							</div>
+						</li>
+					</ul>
+				</div>
+		
+				<div class="pull-right footerSocials">
+					<div class="footerSocialsParagraph"><span class="wc-editable" data-pk="ws_we_are_social" data-type="text">We are social</span>:</div>
+		
+					<ul class="list-inline">
+						<li><a href="https://www.facebook.com/" target="_blank" class="linkFacebook">facebook</a></li><li><a href="https://twitter.com/" target="_blank" class="linkTwitter">twitter</a></li><li><a href="https://instagram.com/" target="_blank" class="linkInstagram">Instagram</a></li><li><a href="https://plus.google.com/" target="_blank" class="linkGooglePlus">googlePlus</a></li>					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<section class="footerOptions">
+			<div class="shell clearfix">
+				<nav class="pull-right footerNav">
+					<ul class="list-inline">
+						<li class="active"><a href="index.html">Home</a></li><li><a href="reservations.html">Reservations</a></li><li><a href="about-us.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="locations.html">Locations</a></li><li><a href="faq.html">FAQ</a></li><li><a href="terms.html">Rental Terms</a></li><li><a href="contact-us.html">Contact Us</a></li>					</ul>
+				</nav>
+		
+				<div class="pull-left copyright">© 2016 <span class="wc-editable" data-pk="ws_footer_company" data-type="text">Company, LLC.</span> <span class="wc-editable" data-pk="ws_rights_reserved" data-type="text">All rights reserved.</span></div>
+				
+				<div class="credits"><a href="https://www.vevs.com/car-rental-websites/" target="_blank">Car Rental Website Builder</a> by <a href="https://www.vevs.com/" target="_blank">VEVS.com</a></div>
+			</div>
+		</section>
+	</div>
+</footer>
+
+
+<script type="text/javascript">
+    $(function () {
+    	var today = new Date();
+    	tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+      	$('#dateTimePickFrom').datetimepicker({language: 'ru',sideBySide: true, defaultDate: today, minuteStepping:10 ,allowInputToggle: true,ignoreReadonly: true});
+      	$('#dateTimePickTo').datetimepicker({language: 'ru',  sideBySide: true, defaultDate: tomorrow, minuteStepping:10 ,allowInputToggle: true,ignoreReadonly: true});
+    });
+  </script>
+
+
+</body>
+
+</html>

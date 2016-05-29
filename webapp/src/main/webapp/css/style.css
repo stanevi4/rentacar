@@ -1,0 +1,1024 @@
+/* ==========================================================================
+	#Fonts
+========================================================================== */
+/* Arabik */
+/* font-family: 'Amiri', serif; */
+@import url(http://fonts.googleapis.com/css?family=Amiri:400,400italic,700,700italic&subset=arabic);
+
+/* Hebrew */
+/* font-family: 'Arimo', sans-serif; */
+@import url(http://fonts.googleapis.com/css?family=Arimo:400,700italic,700,400italic&subset=hebrew);
+
+/* Open Sans-serif Full(no Arabik and Hebrew) */
+/* font-family: 'Open Sans', sans-serif; */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,300italic,600,600italic,700,700italic,800,800italic&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic);
+
+/* Noto Serif Full(no Arabik and Hebrew) */
+/* font-family: 'Noto Serif', serif; */
+@import url(http://fonts.googleapis.com/css?family=Noto+Serif:400,700,700italic,400italic&subset=latin,cyrillic,greek-ext,vietnamese,latin-ext,cyrillic-ext,greek);
+
+/* ==========================================================================
+	#Basic
+========================================================================== */
+html,
+body { height: 100%; }
+html { overflow-x: hidden; }
+
+html { -webkit-text-size-adjust: 100%; }
+body { min-width: 1344px; font-family: 'PT Sans', sans-serif; font-size: 15px; line-height: 1.73; }
+body.bodyOvh { overflow: hidden; }
+
+img { border: 0; vertical-align: middle; }
+
+ol,
+ol li,
+ul,
+ul li,
+dl { margin: 0; padding: 0; }
+
+/* ==========================================================================
+	#General
+========================================================================== */
+a[href^=tel] { color: inherit; }
+
+/* ==========================================================================
+	#Transitions
+========================================================================== */
+.btn,
+.navbar-brand,
+#header .navbar-nav a,
+#header .navbar-toggle,
+#header .navbar-toggle .icon-bar,
+.sliderIntro .owl-dot,
+.dateTimePick .input-group-addon,
+.dateTimePick .input-group,
+.form .form-control,
+.form .form-group a,
+.product .thumbnail,
+.product .productOverlay,
+.product .productOverlay p,
+.sliderProducts .owl-dot,
+.offer .thumbnail,
+.offer .offerActions,
+.footerSocials a,
+.customCheckboxFake span,
+.returnLocation select,
+.footerNav a,
+.locationInner,
+.locationContent .locationTitle,
+.locationContent a,
+.locationActions a span,
+.sectionDetails .sliderProductThumbs .thumbnail,
+.sectionDetails .sliderProductThumbs .thumbnail img,
+.pageActions,
+.accordions .panel-heading a span,
+.paging .pagination a,
+.sectionReservations .sectionNav a,
+.sectionReservations .sectionNav .dropdown-toggle .caret { -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; transition: all .5s ease-in-out; }
+
+/* ==========================================================================
+	#Animations
+========================================================================== */
+@-webkit-keyframes preloadBefore {
+	50% { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); -o-transform: translateX(20px); transform: translateX(20px); }
+	100% { -webkit-transform: translateX(-20px); -ms-transform: translateX(-20px); -o-transform: translateX(-20px); transform: translateX(-20px); }
+}
+@keyframes preloadBefore {
+	50% { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); -o-transform: translateX(20px); transform: translateX(20px); }
+	100% { -webkit-transform: translateX(-20px); -ms-transform: translateX(-20px); -o-transform: translateX(-20px); transform: translateX(-20px); }
+}
+
+@-webkit-keyframes preloadAfter {
+	50% { -webkit-transform: translateX(-20px); -ms-transform: translateX(-20px); -o-transform: translateX(-20px); transform: translateX(-20px); }
+	100% { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); -o-transform: translateX(20px); transform: translateX(20px); }
+}
+@keyframes preloadAfter {
+	50% { -webkit-transform: translateX(-20px); -ms-transform: translateX(-20px); -o-transform: translateX(-20px); transform: translateX(-20px); }
+	100% { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); -o-transform: translateX(20px); transform: translateX(20px); }
+}
+
+/* ==========================================================================
+	#Icons
+========================================================================== */
+.ico { display: inline-block; background: url(images/sprite.png) no-repeat 0 0; vertical-align: middle; }
+
+.icoCar { width: 48px; height: 26px; background-position: -3px -2px; }
+.icoWallet { width: 40px; height: 40px; background-position: -70px -2px; }
+.icoCalendar { width: 44px; height: 44px; background-position: -130px -2px; }
+.icoPhoneHanded { width: 40px; height: 40px; background-position: -194px -1px; }
+.icoLock { width: 26px; height: 42px; background-position: -255px -2px; }
+.icoSettings { width: 44px; height: 44px; background-position: -438px -2px; }
+
+.icoExtras { background: url(images/many-extras.png) no-repeat 0 0; width: 40px; height: 40px; }
+
+/* ==========================================================================
+	#Buttons
+========================================================================== */
+.btn-primary { height: 52px; padding: 0 57px; border: 0; font-size: 22px; line-height: 52px; font-weight: bold; text-transform: capitalize; box-shadow: 0 4px 5px rgba(0, 0, 0, .45); border-radius: 6px; }
+
+.btn-info { height: 41px; padding: 0 40px; border: 0; font-size: 16px; line-height: 39px; font-weight: bold; text-transform: uppercase; box-shadow: 0 2px 4px rgba(0, 0, 0, .3); border-radius: 5px; }
+
+.btn-default { position: relative; height: 44px; padding: 0; border: 1px solid #b6b5b5; font-size: 15px; line-height: 44px; font-weight: 400; text-transform: capitalize; text-shadow: 0 1px 0 rgba(255, 255, 255, .9); -webkit-box-shadow: inset 0 0 1px rgba(255, 255, 255, .9); box-shadow: inset 0 0 1px rgba(255, 255, 255, .9); -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden; -moz-osx-font-smoothing: grayscale; -webkit-transition-property: color; transition-property: color; -webkit-transition-duration: 0.3s; transition-duration: 0.3s; }
+.btn-default:hover,
+.btn-default:focus { text-shadow: 0 1px 0 rgba(0, 0, 0, .1); }
+.btn-default:before { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; content: ''; -webkit-transform: scaleY(0); transform: scaleY(0); -webkit-transform-origin: 50%; transform-origin: 50%; -webkit-transition-property: transform; transition-property: transform; -webkit-transition-duration: 0.3s; transition-duration: 0.3s; -webkit-transition-timing-function: ease-out; transition-timing-function: ease-out; }
+.btn-default:hover:before,
+.btn-default:focus:before,
+.btn-default:active:before { -webkit-transform: scaleY(1); transform: scaleY(1); }
+
+.btn-link { padding: 0; font-size: 15px; line-height: 1.6; font-weight: 400; }
+
+.btnGoTop { width: 50px; height: 50px; padding: 5px 0; border: 1px solid #b6b5b5; border-bottom: 0; font-size: 30px; text-align: center; white-space: normal; border-radius: 0; }
+
+/* ==========================================================================
+	#Forms
+========================================================================== */
+.form .form-group { margin: 0; padding: 20px 0; }
+.form .form-control,
+.form .input-group .input-group-addon { border-radius: 0; }
+.form select.form-control { cursor: pointer; }
+.form .form-control { height: 46px; padding: 0 10px; font-size: 15px; line-height: 1.4; -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .1); box-shadow: inset 2px 2px 2px rgba(0, 0, 0, .1); }
+.form textarea.form-control { height: 110px; padding: 15px; }
+.form label { margin: 0; padding-bottom: 5px; font-size: 16px; line-height: 1.4; font-weight: 700; }
+.form .form-group p { margin: 0; padding-top: 5px; font-size: 14px; line-height: 1.4; font-weight: 400; }
+.form .form-group a { color: inherit; }
+.form .form-group a:hover { text-decoration: none; }
+
+.captchaImage img { margin-top: 6px; }
+
+.dateTimePick .input-group-addon,
+.dateTimePick .form-control { padding: 0; }
+.dateTimePick .input-group-addon { padding: 0 5px 0 10px; font-size: 22px; cursor: pointer; }
+
+.dateTimePick .timepicker .btn-primary { line-height: 44px; }
+
+.checkbox,
+.radio { margin: 0; padding-top: 5px; }
+.checkbox input,
+.radio input { margin: 4px 0 0; }
+.checkbox label,
+.radio label { font-size: 14px; font-weight: 400; }
+
+.customCheckbox input { position: absolute; opacity: 0; filter: alpha(opacity=0); }
+.customCheckbox label { padding: 0; }
+.customCheckboxFake { float: left; width: 16px; height: 16px; margin: 2px 5px 0 0; border: 1px solid #393f40; font-size: 10px; line-height: 12px; text-align: center; -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, .2); box-shadow: inset 0 2px 2px rgba(0, 0, 0, .2); }
+.customCheckboxFake span { -webkit-transform: scale(0); -ms-transform: scale(0); -o-transform: scale(0); transform: scale(0); }
+.customInputChecked .customCheckboxFake span { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+.customInputDisabled .customCheckboxFake { opacity: .5; filter: alpha(opacity=50); }
+
+.customRadio input { position: absolute; opacity: 0; filter: alpha(opacity=0); }
+.customRadioFake { float: left; width: 14px; height: 14px; margin-right: 5px; border: 2px solid #000; border-radius: 50%; }
+.customInputChecked .customRadioFake { background: #000; }
+.customInputDisabled .customRadioFake { opacity: .5; filter: alpha(opacity=50); }
+
+.checkbox label,
+.checkbox input,
+.radio input,
+.radio label { cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
+
+.customInputDisabled input,
+.customInputDisabled label { cursor: default; }
+
+/* ==========================================================================
+	#formFilter
+========================================================================== */
+.formFilter .formHead { padding-bottom: 20px; }
+.formFilter .formHead .formTitle { margin: 0; font-size: 55px; line-height: 1.1; font-weight: 700; text-shadow: 0 2px 5px rgba(0, 0, 0, .9); }
+
+/* ==========================================================================
+	#formContact
+========================================================================== */
+.formContact .form-group { padding: 13px 0; }
+.formContact textarea.form-control { height: 110px; padding: 15px; }
+.formContact .formAside { padding-top: 42px; }
+.formContact .formAsideInner { border: 1px solid #e2e2e7; }
+.formContact .formMap { height: 406px; }
+.formContact .formContacts { padding: 25px 10px; }
+.formContact .formContacts ul,
+.formContact .formContacts .formContactsParagraph { margin: 0; }
+.formContact .formContacts li { padding: 0 10px; }
+.formContact .formContacts .formContactsParagraph { line-height: 27px; }
+.formContact .formContacts .formContactsParagraph small { font-size: 14px; line-height: 27px; display: inline-block;}
+.formContact .formContacts .formContactsParagraph strong { font-size: 18px; line-height: 27px; font-weight: 700; display: inline-block; }
+.formContact .formContacts .formContactsParagraph a { font-size: 18px; line-height: 27px; display: inline-block; }
+
+#pjCF_captcha_img { height: 44px; width: auto; display: block; margin-top: 1px;} 
+
+/* ==========================================================================
+	#formReservation
+========================================================================== */
+.formReservation .form-group { padding: 10px 0; }
+
+/* ==========================================================================
+	#formFilter
+========================================================================== */
+.formFilter .form-group { padding: 0 0 10px; }
+
+/* ==========================================================================
+	#formExtras
+========================================================================== */
+.formExtras .extra { border-radius: 0; }
+.formExtras p { margin: 0; padding-top: 8px; }
+.formExtras .extraTitle { margin: 0; padding-top: 8px; font-size: 18px; font-weight: 700; }
+.formExtras .form-control { display: inline-block; width: auto; margin-left: 10px; }
+.formExtras .extra .btn { padding: 0; text-align: center; }
+
+/* ==========================================================================
+	#formPayment
+========================================================================== */
+.formPayment .formInner p { margin: 0; font-size: 15px; }
+.formPayment .formInner p strong { font-size: 17px; font-weight: 700; }
+.formPayment .formInner .formInnerTitle { padding: 15px 15px 0; font-size: 18px; line-height: 1.8; font-weight: 700; border-bottom: 1px solid #3e4042; }
+.formPayment .formActions .btn-primary { padding: 0 40px; }
+.formPayment .formActions .btn-link { margin-left: 10px; }
+
+/* ==========================================================================
+	#tables
+========================================================================== */
+.table p { margin: 0; font-size: 15px; }
+.table p strong { font-size: 18px; font-weight: 700; }
+.tableExtras { padding-top: 10px; }
+.tablePayment { padding-top: 10px; }
+
+/* ==========================================================================
+	#Paging
+========================================================================== */
+.paging { padding: 10px 0; }
+.paging .pagination { margin: 0; padding: 0; font-size: 0; }
+.paging .pagination li { display: inline-block; padding: 0 2px; vertical-align: middle; }
+.paging .pagination a { width: 34px; height: 34px; padding: 0; border: 1px solid #333232; font-size: 15px; line-height: 34px; font-weight: 700; border-radius: 0; }
+.paging .pagination a:first-of-type,
+.paging .pagination a:last-of-type { border-radius: 0; }
+
+/* ==========================================================================
+	#Accordions
+========================================================================== */
+.accordions { margin: 0; }
+
+.accordions .panel-default,
+.accordions .panel-heading,
+.accordions .panel-body,
+.accordions .panel-footer { border-radius: 0; }
+.accordions .panel-default { margin: 0 0 10px; }
+.accordions .panel-heading { padding: 0; }
+.accordions .panel-heading a { display: block; padding: 10px 15px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.accordions .panel-heading strong { display: block; padding: 10px 15px; font-size: 17px; font-weight: 700; text-decoration: none; }
+.accordions .panel-heading a span { margin-top: 5px; }
+/*
+.accordions .panel-heading .collapsed span { -webkit-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); }
+.accordions .panel-heading a span { -webkit-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg); }
+*/
+.accordionsFaq .listAnswers li,
+.accordionsFaq .panel-body .panelParagraph { margin: 0; font-size: 16px; line-height: 1.4; }
+.accordionsDetails .panel-heading .panel-title { padding-top: 0; }
+
+.accordionsDetails { padding: 10px 0 20px; }
+.accordionsDetails .accordionSection { padding-bottom: 20px; }
+.accordionsDetails .accordionSection:last-of-type { padding-bottom: 0; }
+.accordionsDetails .accordionSection p { margin: 0; }
+.accordionsDetails .product { padding: 5px 15px; }
+
+.accordions .panel-body { border-top: 1px solid #e6e8e9; }
+
+/* ==========================================================================
+	#Popups
+========================================================================== */
+.popup .modal-content { border-radius: 0; }
+.popup .modal-header,
+.popup .modal-body,
+.popup .modal-footer { border-radius: 0 !important; }
+.popup .modal-title { font-size: 18px; line-height: 1.4; font-weight: 700; }
+.popup .modal-footer .btn { padding: 0 30px; }
+
+/* ==========================================================================
+	#Containers
+========================================================================== */
+.wrapper { position: relative; overflow: hidden; min-height: 100%; }
+.shell { width: 1230px; margin: 0 auto; }
+
+/* ==========================================================================
+	#pageLoader
+========================================================================== */
+.pageLoader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; font-size: 0; text-align: center; }
+.pageLoaderHidden { display: none; }
+.pageLoader:before,
+.pageLoader:after { position: absolute; top: 50%; left: 50%; display: block; width: 20px; height: 20px; border-radius: 50%; content: ''; }
+.pageLoader:before { -webkit-transform: translateX(-20px); -ms-transform: translateX(-20px); -o-transform: translateX(-20px); transform: translateX(-20px); -webkit-animation: preloadBefore 1s ease-in-out .1s infinite normal; -moz-animation: preloadBefore 1s ease-in-out .1s infinite normal; -ms-animation: preloadBefore 1s ease-in-out .1s infinite normal; -o-animation: preloadBefore 1s ease-in-out .1s infinite normal; animation: preloadBefore 1s ease-in-out .1s infinite normal; }
+.pageLoader:after { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); -o-transform: translateX(20px); transform: translateX(20px); -webkit-animation: preloadAfter 1s ease-in-out .1s infinite normal; -moz-animation: preloadAfter 1s ease-in-out .1s infinite normal; -ms-animation: preloadAfter 1s ease-in-out .1s infinite normal; -o-animation: preloadAfter 1s ease-in-out .1s infinite normal; animation: preloadAfter 1s ease-in-out .1s infinite normal; }
+
+/* ==========================================================================
+	#pageActions
+========================================================================== */
+.pageActions { position: fixed; bottom: 0; right: 100px; z-index: 5; margin-bottom: -100px; -webkit-transform: scale(0); -ms-transform: scale(0); -o-transform: scale(0); transform: scale(0); opacity: 0; }
+.pageActions.pageActionsActive { margin-bottom: 0; -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); opacity: 1; }
+
+/* ==========================================================================
+	#Main
+========================================================================== */
+.main { width: 1342px; margin: 0 auto 280px; box-shadow: 0 0 13px rgba(0, 0, 0, .1); }
+.mainHome { margin-bottom: 0; }
+
+.introLoading ~ .main { padding-top: 100px; }
+
+/* ==========================================================================
+	#Header
+========================================================================== */
+#header { position: fixed; top: 0; left: 0; z-index: 3; width: 100%; box-shadow: 0 5px 10px rgba(0, 0, 0, .53); }
+#header .navbar { margin-bottom: 0; border: 0; background: none; border-radius: 0; }
+
+#header .navbar-brand { width: 225px; height: 45px; font-size: 0; text-align: center; vertical-align: middle; display: block; overflow: hidden; padding: 0; margin: 11px 0; letter-spacing: -5px; white-space: -5px; }
+#header .navbar-brand:before {content: ""; display: inline-block; height: 100%; margin-left: -0.25em; vertical-align: middle; }
+#header .navbar-brand img { display: inline-block; max-height: 100%; max-width: 100%; vertical-align: middle; }
+#header .navbar-brand:hover { opacity: .7; }
+
+#header .navbar-nav li { padding: 0 5px; }
+#header .navbar-nav a { padding: 23px 15px; font-size: 16px; line-height: 1.4; font-weight: bold; text-transform: capitalize; }
+#header .navbar-nav a img{ margin-left: 5px; }
+#header .navbar-nav a:hover,
+#header .navbar-nav .active a,
+#header .navbar-nav .dropdown.open .dropdown-toggle { position: relative; text-decoration: none; }
+#header .navbar-nav .active a,
+#header .navbar-nav .dropdown.open .dropdown-toggle { box-shadow: 0 0 13px rgba(0, 0, 0, .05); }
+#header .navbar-nav .active a:before,
+#header .navbar-nav .dropdown.open .dropdown-toggle:before { position: absolute; top: 0; left: 0; width: 100%; height: 7px; content: ''; }
+
+#header .navbar-nav .dropdown-menu { right: 5px; border: 0; }
+#header .navbar-nav .dropdown-menu li { padding: 3px 0; }
+#header .navbar-nav .dropdown-menu a { height: auto; padding: 0 10px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.6; }
+
+#header .navbar-nav .dropdown .dropdown-toggle img{ vertical-align: baseline; margin-left: 2px; }
+#header .navbar-nav .dropdown .dropdown-toggle .caret{ vertical-align: baseline; margin-bottom: 2px; }
+
+/* ==========================================================================
+	#Intro
+========================================================================== */
+.intro { position: relative; }
+.introLoading .introContent { display: none; }
+
+.sliderIntro,
+.sliderIntro .sliderClip,
+.sliderIntro .slides,
+.sliderIntro .slide { position: relative; overflow: hidden; width: 100%; height: 100%; }
+.sliderIntro .slideImage { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.sliderIntro .slideImage img { position: absolute; top: -9999px; right: -9999px; bottom: -9999px; left: -9999px; margin: auto; }
+.sliderIntro .slideImage img.changeHeight { width: auto; height: 100%; }
+.sliderIntro .slideImage img.changeWidth { width: 100%; height: auto; }
+.sliderIntro .slide:after { position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; content: ''; }
+.sliderIntro .owl-dots { position: absolute; bottom: 0; left: 0; z-index: 3; width: 100%; padding: 20px 0; font-size: 0; text-align: center; }
+.sliderIntro .owl-dot { display: inline-block; width: 14px; height: 14px; margin: 0 3px; border-radius: 50%; }
+
+.introContent { position: absolute; bottom: 0; left: 50%; z-index: 2; width: 600px; height: calc(100% - 100px); margin: 50px 0; font-size: 0; }
+.introContent:before { display: inline-block; height: 100%; margin-right: -0.25em; vertical-align: middle; content: ''; }
+.introContent .formFilter { display: inline-block; vertical-align: middle; }
+
+#returnLocation.returnLocationDisabled select { opacity: .7; }
+
+/* ==========================================================================
+	#sectionProducts
+========================================================================== */
+.sectionProducts .page-header { margin: 0; padding: 30px 0 20px; border: 0; text-align: center; }
+.sectionProducts .sectionTitle { margin: 0; font-size: 48px; line-height: 1.1; font-weight: 700; text-transform: uppercase; }
+.sectionProducts .sectionTitle a { color: inherit; }
+.sectionProducts .sectionTitle a:hover { text-decoration: none; }
+
+.sectionProducts .sectionBody { padding-bottom: 30px; }
+.products { font-size: 0; }
+.product.slide { width: 25%; }
+.product { display: inline-block; /*padding: 10px;*/ padding: 15px; vertical-align: top; }
+.sliderProducts .slide.product { display: block; width: 100%; }
+.product .thumbnail { position: relative; display: block; margin: 0; padding: 0; border: 2px solid #fff; text-decoration: none; border-radius: 0; }
+.product .productImage { height: 160px; font-size: 0; text-align: center; }
+.product .productImage:before { display: inline-block; height: 100%; margin-right: -0.25em; vertical-align: middle; content: ''; }
+.product .productImage img { display: inline-block; width: auto; max-width: 100%; max-height: 100%; vertical-align: middle; }
+.product .caption { padding: 0; }
+.product .caption p { padding: 10px 10px 0; font-size: 15px; line-height: 1.73; }
+.product .caption .productTitle { overflow: hidden; margin: 0; padding: 0 10px 10px; font-size: 18px; line-height: 1.1; font-weight: 700; text-transform: uppercase; white-space: nowrap; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
+.product .caption .productDescription { overflow: hidden; padding: 0 10px; font-size: 14px; line-height: 1.71; font-style: italic; white-space: nowrap; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
+.product .productMeta { margin: 0; font-size: 0; }
+.product .productMeta li { width: 25%; padding: 8px 0; border: 1px solid #e8e3e3; border-right: 0; font-size: 15px; line-height: 1.87; text-align: center; }
+.product .productMeta li * { vertical-align: middle; }
+.product .productMeta li:last-of-type { border-right: 1px solid #e8e3e3; }
+.product .productMeta li .glyphicon { font-size: 18px; }
+
+.product .productOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 20px 5px; font-size: 0; text-align: center; opacity: 0; }
+.product .productOverlay:before { display: inline-block; height: 100%; margin-left: -0.25em; vertical-align: middle; content: ''; }
+.product .productOverlayInner { display: inline-block; vertical-align: middle; }
+.product .productOverlay .productActions { padding-top: 20px; }
+.product .productOverlay p { overflow: hidden; max-height: 152px; font-size: 15px; }
+.product .thumbnail:hover .productOverlay { opacity: 1; }
+.product .productOverlay .btn,
+.product .productOverlay p { -webkit-transform: scale(0); -ms-transform: scale(0); -o-transform: scale(0); transform: scale(0); }
+.product .thumbnail:hover .productOverlay .btn,
+.product .thumbnail:hover .productOverlay p { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+
+.sliderProducts .owl-dots { padding: 5px 0; text-align: center; }
+.sliderProducts .owl-dots.dotsInactive { display: none !important; }
+.sliderProducts .owl-dot { display: inline-block; width: 14px; height: 14px; margin: 0 3px; vertical-align: middle; border-radius: 50%; }
+
+.accordions .panel-body .product { display: block; }
+.accordions .panel-body .product .productImage { margin-left: 0; margin-right: 0; }
+.accordions .panel-body .product .productImage img { display: block; width: 100%; height: auto; max-height: none; max-width: none; }
+
+.sectionReservations .accordionSection .product .thumbnail { border: 0!important; }
+
+
+.pjCrBtntDefault { min-width: 90px; }
+
+/* ==========================================================================
+	#sectionOffers
+========================================================================== */
+.sectionOffers { padding-bottom: 40px; border-top: 1px solid #e1e1e5; -webkit-box-shadow: 0 0 13px rgba(0, 0, 0, .1); box-shadow: 0 0 13px rgba(0, 0, 0, .1); }
+.sectionOffers .sectionSubsectionServices { padding-bottom: 0; }
+.sectionOffers .services { padding-bottom: 0; margin: 0; }
+.sectionOffers .services .serviceExcerpt { padding: 10px 15px; }
+.sectionOffers h3 small { display: block; font-size: 45%; padding-top: 10px; }
+.sectionOffers .page-header { margin: 0; padding: 30px 0; border: 0; text-align: center; }
+.sectionOffers .sectionTitle { margin: 0; font-size: 48px; line-height: 1.1; font-weight: 700; text-transform: uppercase; }
+.sectionOffers .sectionTitle a { color: inherit; }
+.sectionOffers .sectionTitle a:hover { text-decoration: none; }
+
+.offers { font-size: 0; }
+.offer { float: none; display: inline-block; vertical-align: top; }
+.offer .thumbnail { position: relative; margin: 0; padding: 0; border: 2px solid #fff; border-radius: 0; text-decoration: none; }
+
+.offer .offerContent { position: relative; }
+.offer .offerImage,
+.offer .offerOverlay { height: 131px; }
+.offer .offerImage img { width: 100%; height: 100%; }
+.offer .offerOverlay { position: absolute; top: 0; left: 0; padding: 0 10px; font-size: 0; }
+.offer .offerOverlay:before { display: inline-block; height: 100%; margin-right: -0.25em; vertical-align: middle; content: ''; }
+.offer .offerTitle { overflow: hidden; height: 36px; margin: 0; padding: 0 10px; font-size: 18px; line-height: 36px; font-weight: 700; text-transform: uppercase; white-space: nowrap; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
+.offer .offerOverlay .offerPrice { display: inline-block; font-size: 16px; line-height: 1.3; vertical-align: middle; }
+.offer .offerOverlay .offerPrice strong { display: block; font-size: 24px; font-weight: 700; }
+.offer .offerEntry .offerParagraph { margin: 0; font-size: 15px; line-height: 1.73; }
+.offer .offerActions { padding: 0 10px 10px; }
+
+.sectionOffers .sectionFoot { padding: 50px 0; }
+.sectionOffers .sectionFoot .btn { padding: 0 60px; }
+
+/* ==========================================================================
+	#Outro
+========================================================================== */
+.outro { padding: 30px 0 250px; }
+.outro .page-header { margin: 0; padding: 20px 0; border: 0; }
+.outro .sectionTitle { margin: 0; font-size: 48px; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
+.outro .sectionTitle small { display: block; padding-top: 15px; font-size: 24px; font-weight: 400; text-transform: none; }
+.outro .sectionTitle a { color: inherit; }
+.outro .sectionTitle a:hover { text-decoration: none; }
+
+.sectionSubsectionServices { padding-bottom: 20px; }
+.services { padding: 20px 0; font-size: 0; }
+.services .serviceExcerpt { width: 20%; padding: 10px 20px; vertical-align: top; }
+.serviceExcerptHead,
+.serviceExcerptHead .serviceExcerptTitle { overflow: hidden; }
+.serviceExcerptHead .serviceExcerptTitle { margin: 0; padding: 0 10px 0 15px; font-size: 17px; line-height: 1.65; font-weight: 700; text-transform: capitalize; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
+.serviceExcerptImage { float: left; width: 60px; height: 60px; border: 1px solid #e8bd11; font-size: 0; text-align: center; border-radius: 6px; }
+.serviceExcerptImage:before { display: inline-block; height: 100%; margin-right: -0.25em; vertical-align: middle; content: ''; }
+
+.serviceExcerptBody { padding: 10px 0; }
+.serviceExcerptBody .serviceExcerptParagraph { margin: 0; font-size: 14px; line-height: 1.86; }
+
+.sectionSubsectionAbout { padding: 40px 0; }
+.sectionSubsectionAbout .sectionArticle { padding-bottom: 20px; }
+.sectionSubsectionAbout .sectionArticleHead,
+.sectionSubsectionAbout .sectionArticleTitle { overflow: hidden; }
+.sectionSubsectionAbout .sectionArticleTitle { margin: 0; padding: 10px; font-size: 24px; line-height: 1.4; font-weight: 700; text-transform: uppercase; }
+.sectionSubsectionAbout .sectionArticleTitle a { color: inherit; }
+.sectionSubsectionAbout .sectionArticleTitle a:hover { text-decoration: none; }
+.sectionSubsectionAbout .sectionArticleImage { float: left; font-size: 36px; }
+
+.sectionSubsectionAbout .sectionArticleBody .sectionArticleParagraph { margin: 0; }
+.sectionSubsectionAbout .sectionArticleBody .sectionArticleActions { float: left; margin-right: 25px; padding-top: 5px; }
+.sectionSubsectionAbout .sectionArticleBody .sectionArticleActions .btn { padding: 0 60px; }
+
+.sectionSubsectionAbout .sectionSubsectionImage { padding-top: 15px; }
+.sectionSubsectionAbout .sectionSubsectionImage img { width: 100%; }
+
+/* ==========================================================================
+	#Sections
+========================================================================== */
+.section .page-header { margin: 0; padding: 100px 0 30px; border: 0; }
+.section .sectionHead .sectionHeadParagraph { margin: 0; padding: 0; }
+.section .sectionHead .sectionTitle { margin: 0; padding: 0 0 40px; font-size: 48px; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
+.section .sectionHead .sectionSubtitle { font-size: 30px; line-height: 1.2; font-style: italic; }
+.section .sectionHead .sectionAction { padding-top: 20px; }
+.section .sectionBody { padding-bottom: 50px; }
+.section .sectionFoot { padding-bottom: 50px; }
+
+/* ==========================================================================
+	#sectionReservations
+========================================================================== */
+.sectionReservations .sectionNav.btn-group { width: 100%; margin-bottom: 15px; }
+.sectionReservations .sectionNav.btn-group * { text-align: left; }
+.sectionReservations .sectionNav .dropdown-toggle { position: relative; height: 52px; padding: 0 15px; border: 1px solid #e6e8e9; font-size: 17px; font-weight: 700; -webkit-box-shadow: none; box-shadow: none; border-radius: 0; }
+.sectionReservations .sectionNav .dropdown-toggle .caret { border-right-width: 6px; border-top-width: 8px; border-left-width: 6px; }
+.sectionReservations .sectionNav .dropdown-toggle .caret { position: absolute; top: 50%; right: 20px; display: inline-block; margin-top: -2px; -webkit-transform: rotate(0); -ms-transform: rotate(0); -o-transform: rotate(0); transform: rotate(0); }
+.sectionReservations .sectionNav.open .dropdown-toggle .caret { -webkit-transform: rotate(180deg); -ms-transform: rotate(180deg); -o-transform: rotate(180deg); transform: rotate(180deg); }
+
+.sectionReservations .sectionNav .dropdown-menu { width: 100%; margin: -1px 0 0; border-top: 0; border-radius: 0; -webkit-box-shadow: none; box-shadow: none; }
+.sectionReservations .sectionNav .dropdown-menu a { font-size: 15px; line-height: 1.4; }
+.sectionReservations .sectionNav .dropdown-menu a[disabled] { pointer-events: none; }
+
+.sectionReservations .productImage { height: auto; margin: 10px; text-align: left; }
+.sectionReservations .productImage:before { display: none; }
+.sectionReservations .productPrice { margin: 20px 10px 10px; text-align: center; border-radius: 0; }
+.sectionReservations .productPrice p { margin: 0; font-size: 16px; line-height: 1.4; }
+.sectionReservations .productPrice p strong { font-size: 24px; font-weight: 700; }
+.sectionReservations .productActions { padding: 10px; }
+.sectionReservations .productActions .btn-info { padding: 0; }
+
+.sectionHeadReservations{display: none;}
+/* ==========================================================================
+	#Articles
+========================================================================== */
+.articles .article { padding: 15px 0 50px; margin-bottom: 35px; border-bottom: 1px solid rgba(0, 0, 0, .2); }
+.articles .article:last-of-type { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+.articles .articleImage img { width: 100%; }
+.articles .articleContent .articleParagraph { margin: 0; padding-bottom: 30px; }
+.articles .articleContent .articleParagraph:last-of-type { padding-bottom: 0; }
+.articles .articleContent .articleTitle { margin: 0; padding-bottom: 30px; font-size: 24px; line-height: 1.4; font-weight: 700; text-transform: uppercase; }
+
+/* ==========================================================================
+	#sectionServices
+========================================================================== */
+.sectionServices .services { font-size: 0; letter-spacing: -5px; white-space: -5px; }
+.sectionServices .service { float: none; display: inline-block; padding: 30px; vertical-align: top; letter-spacing: 0; white-space: 0; }
+.sectionServices .serviceHead,
+.sectionServices .serviceTitle { overflow: hidden; }
+.sectionServices .serviceTitle { height: 60px; margin: 0; padding-left: 10px; font-size: 0; line-height: 1.2; font-weight: 700; text-transform: capitalize; }
+.sectionServices .serviceTitle span { display: inline-block; font-size: 24px; vertical-align: middle; }
+.sectionServices .serviceImage { float: left; width: 60px; height: 60px; border: 1px solid #e8bd11; font-size: 0; text-align: center; border-radius: 6px; }
+.sectionServices .serviceImage:before,
+.sectionServices .serviceTitle:before { display: inline-block; height: 100%; margin-right: -0.25em; vertical-align: middle; content: ''; }
+
+.sectionServices .serviceBody { padding: 10px 0; }
+.sectionServices .serviceBody .serviceParagraph { margin: 0; font-size: 15px; line-height: 1.87; }
+
+/* ==========================================================================
+	#sectionLocations
+========================================================================== */
+.sectionLocations .customMap { height: 495px; }
+.customLocations .pre-scrollable { overflow-y: auto; max-height: 495px; padding-right: 0; }
+.locationInner { position: relative; overflow: hidden; padding: 10px; border: 1px solid transparent; cursor: pointer; }
+.locationImage { float: left; width: 130px; padding-top: 3px; }
+.locationImage img { width: 100%; }
+.locationContent { overflow: hidden; padding: 0 10px; text-align: left; }
+.locationContent .locationTitle { margin: 0; padding-bottom: 5px; font-size: 17px; line-height: 1.1; font-weight: 700; }
+.locationContent .locationMeta,
+.locationContent .locationMeta li,
+.locationContent dl { margin: 0; padding: 0; }
+.locationContent dl { font-size: 0; }
+.locationContent dt { width: auto; padding-right: 5px; font-size: 14px; line-height: 1.71; font-weight: 400; text-transform: capitalize; }
+.locationContent dd { margin: 0; font-size: 14px; line-height: 1.71; font-weight: 400; }
+.locationContent a:hover { text-decoration: none; }
+
+.locationContent .form label { padding-right: 5px; }
+.locationContent .form .btn-primary { padding: 0 10px; height: 46px; line-height: 44px; border-radius: 0; -webkit-box-shadow: none; box-shadow: none; }
+.locationContent .form .form-group { padding: 5px 0; }
+
+.locationActions { padding-top: 5px; }
+.locationActions ul { margin: 0; padding: 0; font-size: 0; }
+.locationActions li { padding: 0 10px 0 0; }
+.locationActions a { font-size: 13px; line-height: 14px; }
+.locationActions a span { display: inline-block; width: 16px; height: 16px; border: 1px solid #e0dcdc; }
+
+/* ==========================================================================
+	#sectionDetails
+========================================================================== */
+.sectionDetails .sectionHead .sectionTitle { padding-bottom: 10px; }
+.sectionDetails .sectionActions { padding-bottom: 40px; }
+.sectionDetails .sectionActions .btn-default { padding: 0 30px; }
+
+.sectionDetails .sectionSubsection { padding-top: 25px; border-bottom: 1px solid #d7d7d7; }
+.sectionDetails .sectionSubsectionHead { padding-bottom: 10px; }
+.sectionDetails .sectionSubsectionHead .sectionSubsectionTitle { margin: 0; font-size: 22px; line-height: 1.64; font-weight: 700; text-transform: uppercase; }
+.sectionDetails .sectionSubsectionBody { padding-bottom: 20px; }
+.sectionDetails dt,
+.sectionDetails dd { font-size: 16px; line-height: 2.13; }
+.sectionDetails dt { font-weight: 400; text-align: left; }
+.sectionDetails dd { margin: 0; font-weight: 700; }
+.sectionDetails .list-inline { margin: 0; }
+.sectionDetails li { padding: 0 20px 0 0; font-size: 16px; line-height: 1.9; }
+
+.sectionDetails .sectionSubsectionGallery { padding-top: 30px; }
+.sectionDetails .sectionSubsectionGallery .mainImage img { width: 100%; height: 100%; }
+
+.sectionDetails .sliderProductThumbs,
+.sectionDetails .sliderProductThumbs .sliderClip { position: relative; overflow: hidden; }
+.sectionDetails .sliderProductThumbs { height: 120px; padding: 15px 0; }
+.sectionDetails .sliderProductThumbs .sliderClip { height: 90px; padding: 0 16px; }
+.sectionDetails .sliderProductThumbs .slide { float: left; width: 100%; height: 90px; padding: 5px; }
+.sectionDetails .sliderProductThumbs .thumbnail { position: relative; overflow: hidden; height: 80px; margin: 0; padding: 0; border: 0; height: 80px; border-radius: 0; opacity: .4; }
+.sectionDetails .sliderProductThumbs .thumbnail:hover,
+.sectionDetails .sliderProductThumbs .thumbnail.active { opacity: 1; }
+.sectionDetails .sliderProductThumbs .thumbImage img { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+.sectionDetails .sliderProductThumbs .thumbnail:hover img { -webkit-transform: scale(1.2); -ms-transform: scale(1.2); -o-transform: scale(1.2); transform: scale(1.2); }
+
+.sectionDetails .sliderProductThumbs .thumbImage { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.sectionDetails .sliderProductThumbs .thumbImage img { position: absolute; top: -9999px; right: -9999px; bottom: -9999px; left: -9999px; margin: auto; }
+.sectionDetails .sliderProductThumbs .thumbImage img.changeHeight { width: auto; height: 100%; }
+.sectionDetails .sliderProductThumbs .thumbImage img.changeWidth { width: 100%; height: auto; }
+
+.sectionDetails .sliderProductThumbs .owl-prev,
+.sectionDetails .sliderProductThumbs .owl-next { position: absolute; top: 50%; overflow: hidden; width: 16px; height: 16px; margin-top: -8px; border: 2px solid #e8bd11; white-space: nowrap; text-indent: 100%; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg); }
+.sectionDetails .sliderProductThumbs .owl-prev { left: -12px; border-top: 0; border-right: 0; }
+.sectionDetails .sliderProductThumbs .owl-next { right: -12px; border-bottom: 0; border-left: 0; }
+
+.sectionDetails .sectionSubsectionBooking .sectionSubsectionBody { padding-top: 30px; }
+.sectionDetails .sectionSubsectionBooking .pre-scrollable { overflow-y: auto; max-height: 707px; }
+.sectionDetails .sectionSubsectionBooking .sectionSubsectionBody p { padding-bottom: 52px; }
+.sectionDetails .sectionSubsectionBooking .sectionSubsectionBody p:last-of-type { padding-bottom: 0; }
+
+/* ==========================================================================
+	#Footer
+========================================================================== */
+#footer { position: absolute; bottom: 0; left: 0; width: 100%; }
+.footerInner { width: 1342px; margin: 0 auto; }
+
+.footerUtilities { padding: 30px 0; border-top: 1px solid rgba(49, 38, 44, .1); }
+.footerContacts ul { margin: 0; }
+.footerContacts li { padding-right: 70px; }
+.footerContacts .footerContactsParagraph { margin: 0; font-size: 16px; line-height: 1.3; }
+.footerContacts .footerContactsParagraph small { display: block; padding-bottom: 5px; font-size: 14px; }
+.footerContacts .footerContactsParagraph strong { font-size: 18px; font-weight: 700; }
+.footerContacts .footerContactsParagraph a { font-size: 18px; }
+
+.footerSocials { padding-top: 12px; font-size: 0; }
+.footerSocials .footerSocialsParagraph,
+.footerSocials ul { display: inline-block; margin: 0; vertical-align: middle; }
+.footerSocials .footerSocialsParagraph { padding-right: 10px; font-size: 14px; line-height: 1.4; }
+.footerSocials a { display: inline-block; width: 30px; height: 30px; background: rgba(86, 86, 86, .5) url(images/sprite.png) no-repeat 0 0; vertical-align: middle; text-decoration: none; border-radius: 50%; }
+.footerSocials .linkFacebook { background-position: -295px 2px; }
+.footerSocials .linkTwitter { background-position: -396px 2px; }
+.footerSocials .linkGooglePlus { background-position: -359px 3px; }
+.footerSocials .linkInstagram { background-position: -325px 3px; }
+
+.footerOptions { padding: 30px 0; border-top: 1px solid rgba(49, 38, 44, .1); }
+.copyright { margin: 0; font-size: 15px; line-height: 1.8; }
+.copyright a { color: inherit; }
+
+.footerNav { margin: 0; }
+.footerNav li { padding: 0 15px; }
+.footerNav a { font-size: 14px; line-height: 1.6; }
+
+.credits { overflow: hidden; width: 100%; margin: 0; padding-top: 10px; font-size: 13px; line-height: 1.8; }
+.credits a { color: inherit; }
+
+.bcal-container{z-index: 99999;}
+.modal-backdrop.fade {
+	opacity: 0 !important;
+	filter: alpha(opacity=0)  !important;
+}
+.modal-backdrop.fade.in {
+	opacity: 0.5  !important;
+	filter: alpha(opacity=50)  !important;
+}
+
+.question-answer-question2,
+.question-answer-question { outline: none!important; }
+
+.question-answer-question2:active,
+.question-answer-question2:focus,
+.question-answer-question2:hover,
+.question-answer-question:active,
+.question-answer-question:focus,
+.question-answer-question:hover { text-decoration: none!important; }
+
+/* ==========================================================================
+	#Google Maps
+========================================================================== */
+.yp-map-info-window label{
+	display: inline;
+	color: #444 !important;
+	font-size: inherit;
+	font-weight: normal;
+	line-height: 1;
+	margin: 0;
+	max-width: none;
+	padding: 0;
+}
+
+.intro5 .owl-item,
+.intro4 .owl-item,
+.intro .owl-item {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+}
+
+/* ==========================================================================
+	#RTL
+========================================================================== */
+html[dir="rtl"] .col-lg-1, html[dir="rtl"] .col-lg-10, html[dir="rtl"] .col-lg-11, html[dir="rtl"] .col-lg-12, html[dir="rtl"] .col-lg-2, html[dir="rtl"] .col-lg-3, html[dir="rtl"] .col-lg-4, html[dir="rtl"] .col-lg-5, html[dir="rtl"] .col-lg-6, html[dir="rtl"] .col-lg-7, html[dir="rtl"] .col-lg-8, html[dir="rtl"] .col-lg-9, html[dir="rtl"] .col-md-1, html[dir="rtl"] .col-md-10, html[dir="rtl"] .col-md-11, html[dir="rtl"] .col-md-12, html[dir="rtl"] .col-md-2, html[dir="rtl"] .col-md-3, html[dir="rtl"] .col-md-4, html[dir="rtl"] .col-md-5, html[dir="rtl"] .col-md-6, html[dir="rtl"] .col-md-7, html[dir="rtl"] .col-md-8, html[dir="rtl"] .col-md-9, html[dir="rtl"] .col-sm-1, html[dir="rtl"] .col-sm-10, html[dir="rtl"] .col-sm-11, html[dir="rtl"] .col-sm-12, html[dir="rtl"] .col-sm-2, html[dir="rtl"] .col-sm-3, html[dir="rtl"] .col-sm-4, html[dir="rtl"] .col-sm-5, html[dir="rtl"] .col-sm-6, html[dir="rtl"] .col-sm-7, html[dir="rtl"] .col-sm-8, html[dir="rtl"] .col-sm-9, html[dir="rtl"] .col-xs-1, html[dir="rtl"] .col-xs-10, html[dir="rtl"] .col-xs-11, html[dir="rtl"] .col-xs-12, html[dir="rtl"] .col-xs-2, html[dir="rtl"] .col-xs-3, html[dir="rtl"] .col-xs-4, html[dir="rtl"] .col-xs-5, html[dir="rtl"] .col-xs-6, html[dir="rtl"] .col-xs-7, html[dir="rtl"] .col-xs-8, html[dir="rtl"] .col-xs-9 { float: right; }
+
+html[dir="rtl"] .navbar-header { float: right; }
+html[dir="rtl"] .navbar-right { float: left !important; }
+html[dir="rtl"] .navbar-nav > li { float: right; }
+html[dir="rtl"] #header .navbar-nav a img { margin-right: 5px; margin-left: 0; }
+
+html[dir="rtl"] .footerSocials .footerSocialsParagraph { padding-right: 0; padding-left: 10px; }
+html[dir="rtl"] .footerContacts,
+html[dir="rtl"] .copyright { float: right !important; }
+html[dir="rtl"] .footerSocials,
+html[dir="rtl"] .footerNav { float: left !important; }
+html[dir="rtl"] .footerContacts li { padding-right: 5px; padding-left: 70px; }
+
+html[dir="rtl"] .formReservation .customCheckboxFake { float: right; margin-right: 0; margin-left: 5px; }
+html[dir="rtl"] .sectionReservations .formFilter .pull-right { float: left !important; }
+html[dir="rtl"] .sectionReservations .sectionNav.btn-group * { text-align: right; }
+html[dir="rtl"] .sectionReservations .sectionNav .dropdown-toggle .caret { right: auto; left: 20px; }
+html[dir="rtl"] .sectionReservations .productImage { text-align: right; }
+html[dir="rtl"] .sectionReservations .accordionsDetails .btn-link.pull-right { float: left !important; }
+html[dir="rtl"] .formExtras .form-control { margin-right: 10px; margin-left: 0; }
+html[dir="rtl"] .formExtras .text-right { text-align: left !important; }
+html[dir="rtl"] .tablePayment .text-right { text-align: left !important; }
+html[dir="rtl"] .customCheckboxFake { float: right; margin-right: 0; margin-left: 5px; }
+html[dir="rtl"] .formPayment .formActions .btn-link { margin-right: 10px; margin-left: 0; }
+
+/* ==========================================================================
+	#Responsive
+========================================================================== */
+@media only screen and (max-width: 1350px) {
+	/* ==========================================================================
+		#General
+	========================================================================== */
+	body { min-width: 100%; }
+	.shell { width: 90%; }
+	.main { width: 100%; }
+
+	/* ==========================================================================
+		#Header
+	========================================================================== */
+	#header .shell { width: 98%; }
+	#header .container-fluid { padding: 0; }
+
+	/* ==========================================================================
+		#Intro
+	========================================================================== */
+	.introContent { left: auto; right: 50px; }
+
+	/* ==========================================================================
+		#sectionSubsectionServices
+	========================================================================== */
+	.sectionSubsectionServices .services { text-align: center; }
+	.services .serviceExcerpt { width: 33.3%; }
+	.serviceExcerptHead .serviceExcerptTitle,
+	.serviceExcerptBody .serviceExcerptParagraph { text-align: left; }
+
+	/* ==========================================================================
+		#sectionSubsectionAbout
+	========================================================================== */
+	.sectionSubsectionAbout .sectionArticleBody .sectionArticleActions { float: none; }
+
+	/* ==========================================================================
+		#customLocations
+	========================================================================== */
+	.locationContent .form .form-control { width: 115px; }
+
+	/* ==========================================================================
+		#Footer
+	========================================================================== */
+	.footerInner { width: 100%; }
+	.footerNav li { padding: 0 5px; }
+}
+
+@media only screen and (max-width: 1080px) {
+	/* ==========================================================================
+		#General
+	========================================================================== */
+	.shell { width: 98%; }
+	
+	/* ==========================================================================
+		#Header
+	========================================================================== */
+	#header .shell { width: 100%; }
+	#header .container-fluid { padding: 0; }
+	#header .navbar-nav li { padding: 0 3px; }
+	#header .navbar-nav a { padding: 14px 5px; }
+	#header .navbar-brand { margin: 3px 0 2px; }
+
+	/* ==========================================================================
+		#sectionOffers
+	========================================================================== */
+	.offer .offerTitle { font-size: 17px; font-weight: 400; }
+}
+
+@media only screen and (max-width: 990px) {
+	/* ==========================================================================
+		#Header
+	========================================================================== */
+	#header .navbar-nav li { padding: 0 2px; }
+
+	/* ==========================================================================
+		#Outro
+	========================================================================== */
+	.outro { padding-bottom: 270px; }
+
+	/* ==========================================================================
+		#Main
+	========================================================================== */
+	.main { margin-bottom: 300px; }
+	.mainHome { margin-bottom: 0; }
+
+	/* ==========================================================================
+		#Sections
+	========================================================================== */
+	.section .sectionHead { padding-top: 90px; }
+	.section .sectionHead .sectionTitle { padding-bottom: 10px; font-size: 34px; }
+	.section .sectionHead .sectionSubtitle { font-size: 24px; }
+
+	/* ==========================================================================
+		#sectionDetails
+	========================================================================== */
+	.sectionDetails .sectionActions { padding-bottom: 0; }
+
+	.sectionDetails .sectionSubsectionBooking .pre-scrollable { max-height: 9999px; }
+
+	/* ==========================================================================
+		#Footer
+	========================================================================== */
+	.footerNav,
+	.copyright { float: none !important; }
+	.credits { padding: 0; text-align: left; }
+
+	.formContact .panel-body { padding: 25px 0 0; }
+}
+
+@media only screen and (max-width: 767px) {
+	/* ==========================================================================
+		#Header
+	========================================================================== */
+	#header .container-fluid { padding: 0 15px; }
+	#header .navbar-header,
+	#header .navbar-collapse { margin: 0; }
+	#header .navbar-toggle { margin: 8px 15px; }
+	#header .navbar-nav a { padding: 0; }
+	#header .navbar-nav .active a:before,
+	#header .navbar-nav .dropdown.open .dropdown-toggle:before { display: none; }
+	#header .navbar-nav { padding: 0; }
+	
+	#header .navbar-nav .dropdown-menu { background: none !important; }
+	#header .navbar-nav .dropdown-menu a { text-align: left; }
+	#header .navbar-nav .dropdown.open .dropdown-toggle { background: none !important; -webkit-box-shadow: none; box-shadow: none; }
+
+	/* ==========================================================================
+		#Intro
+	========================================================================== */
+	.intro { height: auto !important; }
+	.introContent { position: relative; right: 0; width: 100%; margin: 0; padding: 85px 10px 20px; }
+	.formFilter .formHead { padding-bottom: 10px; }
+	.formFilter .formHead .formTitle { font-size: 24px; }
+	.sliderIntro { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+	.sliderIntro * { height: 100% !important; }
+	.sliderIntro .owl-controls { display: none; }
+	.introContent .form .form-control,
+	.introContent .btn-primary { height: 36px; }
+	.introContent .btn-primary { width: auto; margin: 0 auto; font-size: 18px; line-height: 36px; }
+	.dateTimePick .timepicker .btn-primary { line-height: 26px; }
+
+	/* ==========================================================================
+		#sectionSubsectionServices
+	========================================================================== */
+	.outro .sectionTitle { font-size: 28px; }
+	.outro .sectionTitle small { padding-top: 5px; font-size: 24px; }
+	.services .serviceExcerpt { width: 50%; }
+
+	.outro { padding-bottom: 10px; }
+	.main { margin-bottom: 30px; }
+	.mainHome { margin-bottom: 0; }
+
+	/* ==========================================================================
+		#customLocations
+	========================================================================== */
+	.customLocations { margin: 0; }
+	.sectionLocations .customMap { height: 320px; padding-bottom: 20px; }
+	.customLocations .pre-scrollable { max-height: 99999px; padding-right: 15px; }
+	.locationContent dt,
+	.locationContent dd,
+	.locationContent .form .form-group,
+	.locationContent .form .form-control { display: inline-block; }
+	.locationContent .form .form-group { vertical-align: middle; }
+
+	/* ==========================================================================
+		#sectionDetails
+	========================================================================== */
+	.sectionDetails .sectionHead .sectionTitle { font-size: 24px; }
+	.sectionDetails .sectionHead .sectionSubtitle { font-size: 18px; }
+	.sectionDetails dl { display: inline-block; padding: 10px; vertical-align: top; }
+	.sectionDetails dt,
+	.sectionDetails dd { line-height: 1.4; }
+
+	/* ==========================================================================
+		#Footer
+	========================================================================== */
+	#footer { position: relative; }
+
+	.footerContacts,
+	.footerSocials { font: none; width: 100%; }
+
+	/* ==========================================================================
+		#formExtras
+	========================================================================== */
+	.formExtras .text-right { text-align: left; }
+	.formExtras .row > div { padding: 5px 15px; }
+	.formExtras .extra { padding: 0 15px; }
+	.formExtras .formActions { text-align: left; }
+
+	/* ==========================================================================
+		#RTL
+	========================================================================== */
+	html[dir="rtl"] .navbar-header,
+	html[dir="rtl"] .navbar-right,
+	html[dir="rtl"] .navbar-nav,
+	html[dir="rtl"] .navbar-nav > li { float: none; }
+	html[dir="rtl"] .navbar-nav,
+	html[dir="rtl"] .navbar-nav > li { width: 100%; }
+	html[dir="rtl"] .navbar-nav { margin: 0; }
+	html[dir="rtl"] #header .navbar-nav .dropdown-menu a { text-align: right; }
+
+	html[dir="rtl"] .footerContacts,
+	html[dir="rtl"] .copyright,
+	html[dir="rtl"] .footerSocials,
+	html[dir="rtl"] .footerNav { float: none !important; }
+	html[dir="rtl"] .credits { text-align: right; }
+}
+
+@media only screen and (max-width: 520px) {
+	/* ==========================================================================
+		#sectionProducts
+	========================================================================== */
+	.section.sectionReservations .products { margin: 0; }
+	.section.sectionReservations .product { width: 100%; }
+	.product .thumbnail .productOverlay { opacity: 1; }
+	.product .productOverlay p,
+	.product .thumbnail .productOverlay .btn { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+
+	.sectionReservations .form-group { width: 100%; }
+
+	/* ==========================================================================
+		#sectionOffers
+	========================================================================== */
+	.sectionOffers .sectionTitle { font-size: 34px; }
+	.offer { width: 100%; padding-bottom: 10px; }
+	.offer .offerTitle { font-weight: 700; }
+	.offer .thumbnail .offerActions { opacity: 1; }
+	.offer .thumbnail .offerActions .btn { -webkit-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
+
+	/* ==========================================================================
+		#sectionSubsectionServices
+	========================================================================== */
+	.services .serviceExcerpt { width: 100%; }
+
+	.outro .sectionTitle { font-size: 24px; }
+	.outro .sectionTitle small { font-size: 18px; }
+
+	/* ==========================================================================
+		#pageActions
+	========================================================================== */
+	.pageActions { right: 50px; }
+
+	/* ==========================================================================
+		#sectionReservations
+	========================================================================== */
+	.sectionReservations .product > .thumbnail > .row > .col-xs-8,
+	.sectionReservations .product > .thumbnail > .row > .col-xs-4 { width: 100%; }
+	.sectionReservations .productPrice { float: left; margin-top: 0; margin-bottom: 0; padding: 0 23px; }
+	.sectionReservations .productActions { overflow: hidden; width: 100%; }
+	.sectionReservations .productActions .btn-info { width: auto; padding: 0 30px; }
+
+	/* ==========================================================================
+		#RTL
+	========================================================================== */
+	html[dir="rtl"] .sectionReservations .productPrice { float: right; }
+}
+
+@media only screen and (max-width: 480px) {
+	/* ==========================================================================
+		#General
+	========================================================================== */
+	body { min-width: 320px; }
+
+
+	/* ==========================================================================
+		#sectionDetails
+	========================================================================== */
+	.sectionDetails .sectionHead { padding-bottom: 10px; }
+
+	/* ==========================================================================
+		#formPayment
+	========================================================================== */
+	.formPayment .formInner .col-xs-6 { width: 100%; }
+
+	/* ==========================================================================
+		#sectionReservations
+	========================================================================== */
+	.sectionReservations .productImage { width: 100%; height: auto; }
+	.sectionReservations .accordionsDetails .productImage { width: auto; }
+
+	#header .navbar-brand { width: 215px; height: 40px; }
+
+	/* ==========================================================================
+		#RTL
+	========================================================================== */
+	html[dir="rtl"] .footerContacts li { padding-left: 5px; }
+	html[dir="rtl"] .formExtras .form-control { margin-right: 3px; }
+}
