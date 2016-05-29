@@ -1,0 +1,198 @@
+<wicket:extend>
+
+	<div class="main">
+		<section class="section sectionContact">
+			<header class="page-header sectionHead">
+				<div class="shell">
+					<h1 class="sectionTitle">
+						<span class="wc-editable" data-pk="ws_contact_us_title"
+							data-type="text">Contact us</span>
+					</h1>
+
+					<div class="sectionHeadParagraph">
+						<div class="wc-editable" data-pk="ws_contact_us_desc"
+							data-type="textarea">
+							Replace the dummy content here with your own text. &nbsp;<span
+								style="line-height: 1.4em; word-spacing: normal; background-color: initial;">Lorem
+								ipsum dolor sit amet, consectetur adipisicing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris
+								nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+								in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+								nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+								sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="sectionBody">
+				<div class="shell">
+					<div class="form formContact">
+						<div class="row">
+							<div class="col-sm-6 col-xs-12 formContent">
+								<div class="contact-form">
+									<div class="row">
+										<div id="pjWrapperContactForm_1">
+											<div class="container-fluid pjCF-container">
+												<div id="pjCF_container_1" class="panel-body">
+													<form
+														action="http://vevs.website/home/index.php?controller=pjForm&action=pjActionSubmit"
+														name="pjCF_form_1" id="pjCF_form_1"
+														class="pjCF-form form-horizontal" data-toggle="validator"
+														role="form" method="post" enctype="multipart/form-data">
+														<input type="hidden" name="id" value="1" />
+														<div class="form-group">
+															<label class="col-sm-3 control-label">First name</label>
+															<div class="col-sm-9 col-xs-12">
+																<input type="text" id="pjCF_field_1" name="pjCF_field_1"
+																	value="" style="width: 100% !important;"
+																	class="form-control pjCF-form-field pjCF-checked-field"
+																	placeholder="" />
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Last name</label>
+															<div class="col-sm-9 col-xs-12">
+																<input type="text" id="pjCF_field_2" name="pjCF_field_2"
+																	value="" style="width: 100% !important;"
+																	class="form-control pjCF-form-field pjCF-checked-field"
+																	placeholder="" />
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Email</label>
+															<div class="col-sm-9 col-xs-12">
+																<input type="text" id="pjCF_field_3" name="pjCF_field_3"
+																	value="" style="width: 100% !important;"
+																	class="form-control pjCF-form-field" placeholder="" />
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Phone</label>
+															<div class="col-sm-9 col-xs-12">
+																<input type="text" id="pjCF_field_4" name="pjCF_field_4"
+																	value="" style="width: 100% !important;"
+																	class="form-control pjCF-form-field pjCF-checked-field"
+																	placeholder="" />
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Question</label>
+															<div class="col-sm-9 col-xs-12">
+																<textarea name="pjCF_field_5" placeholder="" rows="6"
+																	cols="40"
+																	class="form-control pjCF-form-field pjCF-checked-field"></textarea>
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="col-sm-3 control-label">Captcha</label>
+															<div class="col-sm-9 col-xs-12">
+																<div class="row">
+																	<div class="col-sm-6 col-xs-12">
+																		<input type="text" name="captcha" maxlength="6"
+																			class="form-control pjCF-form-field required" />
+																	</div>
+																	<div class="col-sm-6 col-xs-12">
+																		<img id="pjCF_captcha_img"
+																			src="http://vevs.website/home/index.php?controller=pjForm&amp;action=pjActionCaptcha&amp;id=1&amp;rand=311271"
+																			alt="Captcha" />
+																	</div>
+																</div>
+																<div class="help-block with-errors">
+																	<ul class="list-unstyled"></ul>
+																</div>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="col-sm-offset-3 col-sm-6">
+																<button style="pointer-events: all; cursor: pointer;"
+																	type="submit"
+																	class="btn pjVrBtnPrimary pjCF-button btn-primary">Send</button>
+															</div>
+														</div>
+													</form>
+													<div class="form-group">
+														<div id="pjCF_message_container_1" class="alert"
+															role="alert"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /.row -->
+								</div>
+							</div>
+
+							<div class="col-sm-6 col-xs-12 formAside">
+								<div class="formAsideInner">
+									<div class="formContacts">
+										<ul class="list-inline">
+											<li>
+												<div class="formContactsParagraph">
+													<small><span class="wc-editable"
+														data-pk="ws_contact_call_us_now" data-type="text">Call
+															Us Now</span>:</small>
+												</div>
+
+												<div class="formContactsParagraph">
+													<span class="glyphicon glyphicon-earphone"
+														aria-hidden="true"></span> <strong><span
+														class="wc-editable" data-pk="ws_contact_phone_number"
+														data-type="text">123.456.7890</span></strong>
+												</div>
+											</li>
+
+											<li>
+												<div class="formContactsParagraph">
+													<small><span class="wc-editable"
+														data-pk="ws_contact_send_a_message" data-type="text">Or
+															send us a message</span>:</small>
+												</div>
+
+												<div class="formContactsParagraph">
+													<span class="glyphicon glyphicon-envelope"
+														aria-hidden="true"></span> <a
+														href="mailto:info@domainame.com">info@domainame.com</a>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+									<div id="formMap" class="formMap"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+<script> /*google map*/
+	function initMap() {
+	var mapDiv = document.getElementById('formMap');
+	var myLatlng = {lat: 53.677978, lng: 23.829393};
+	var map = new google.maps.Map(mapDiv, {center:myLatlng, scrollwheel: false, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP});
+	var marker = new google.maps.Marker({position: myLatlng, map: map, title: 'Car Rental Service'});
+}
+</script>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+		async defer></script>
+
+</wicket:extend>
