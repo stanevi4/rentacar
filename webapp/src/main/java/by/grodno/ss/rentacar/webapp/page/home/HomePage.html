@@ -35,7 +35,7 @@
 <section class="section-form4">
 	<div class="shell">
 		<div class="form formFilter">
-						<form action="" id="crFormSearch" method="post">
+			<form wicket:id="form-search" action="" id="crFormSearch" method="post">
 				<div class="formBody">
 					<div class="row">
 						<div class="col-lg-3 col-xs-6">
@@ -97,12 +97,13 @@
 					</div>
 					
 					<div class="formFilterAction">
-						<button type="submit" class="btn btn-primary btn-form" id="crBtnQuote">get a quote now</button>
+						<button wicket:id="submit-search" type="submit" class="btn btn-primary btn-form" id="crBtnQuote">get a quote now</button>
 					</div><!-- /.text-center -->
 
 					<p class="crError text-danger" style="display: none;"></p>
 				</div>
 			</form>
+			
 		</div>
 	</div><!-- /.shell -->
 </section><!-- /.section-form -->

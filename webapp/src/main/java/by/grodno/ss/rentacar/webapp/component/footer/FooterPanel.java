@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.about.AboutUsPage;
+import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
 import by.grodno.ss.rentacar.webapp.page.contact.ContactUsPage;
 import by.grodno.ss.rentacar.webapp.page.faq.FaqPage;
 import by.grodno.ss.rentacar.webapp.page.home.HomePage;
@@ -46,7 +47,7 @@ public class FooterPanel extends Panel{
 		add(liHomePage);
 
 		WebMarkupContainer liReservations = new WebMarkupContainer("link-container-reservations");
-		if (selectedPage.equals(ReservationPage.class)) {
+		if (selectedPage.equals(ReservationPage.class) || selectedPage.equals(ChooseCarPage.class)) {
 			liReservations.add(new AttributeModifier("class", "active"));
 		}
 		liReservations.add(new Link("link-reservations") {
