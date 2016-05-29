@@ -13,6 +13,7 @@ import by.grodno.ss.rentacar.webapp.page.home.HomePage;
 import by.grodno.ss.rentacar.webapp.page.locations.LocationsPage;
 import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
 import by.grodno.ss.rentacar.webapp.page.services.ServicesPage;
+import by.grodno.ss.rentacar.webapp.page.terms.TermsPage;
 
 public class FooterPanel extends Panel{
 
@@ -104,6 +105,18 @@ public class FooterPanel extends Panel{
 		});
 		add(liFaq);
 
+		WebMarkupContainer liTerms = new WebMarkupContainer("link-container-terms");
+		if (selectedPage.equals(TermsPage.class)) {
+			liTerms.add(new AttributeModifier("class", "active"));
+		}
+		liTerms.add(new Link("link-terms") {
+			@Override
+			public void onClick() {
+				setResponsePage(new TermsPage());
+			}
+		});
+		add(liTerms);
+		
 		WebMarkupContainer liContactUs = new WebMarkupContainer("link-container-contact-us");
 		if (selectedPage.equals(ContactUsPage.class)) {
 			liContactUs.add(new AttributeModifier("class", "active"));
