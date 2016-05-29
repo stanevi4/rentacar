@@ -1,10 +1,7 @@
-package by.grodno.ss.rentacar.webapp.component.menu;
+package by.grodno.ss.rentacar.webapp.component.footer;
 
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Page;
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
@@ -17,19 +14,19 @@ import by.grodno.ss.rentacar.webapp.page.locations.LocationsPage;
 import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
 import by.grodno.ss.rentacar.webapp.page.services.ServicesPage;
 
-public class TopMenuPanel extends Panel {
+public class FooterPanel extends Panel{
 
 	private Class<? extends AbstractPage> selectedPage;
 	
-	public TopMenuPanel(String id) {
+	public FooterPanel(String id) {
 		super(id);
 	}
 
-	public TopMenuPanel(String id, Class<? extends AbstractPage> selectedPage) {
+	public FooterPanel(String id, Class<? extends AbstractPage> selectedPage) {
 		super(id);
 		this.selectedPage = selectedPage;
 	}
-
+	
 	@Override
 	protected void onInitialize() {
 		
