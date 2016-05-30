@@ -13,7 +13,7 @@
 	<div id="pjCrContainer"><div class="sectionBody">
 	<div class="shell">
 		<div class="form formReservation">
-						<form action="" id="crFormSearch" method="post">
+			<form wicket:id="form-search" action="" id="crFormSearch" method="post">
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group dateTimePick dateTimePickFrom">
@@ -109,7 +109,7 @@
 				</div><!-- /.row -->
 
 				<div class="form-group text-center">
-					<button type="submit" class="btn btn-primary" id="crBtnQuote">Make reservation</button>
+					<button wicket:id="submit-search" type="submit" class="btn btn-primary" id="crBtnQuote">Make reservation</button>
 				</div><!-- /.form-group text-center -->
 				
 				<p class="crError text-danger text-center" style="display: block;"></p>

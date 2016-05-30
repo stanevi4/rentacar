@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+
+<head>
+<title>Car Rental Website | Home Page</title>
+<meta name="description" content="Home page short description. Up to 160 characters.">
+<meta name="keywords" content="Keywords">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/owl.carousel.css">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/theme2.css">
+<link type="text/css" rel="stylesheet" href="css/template.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+</head>
+
+<body>
+	<div class="wrapper">
+    <header id="header">
+	<div class="navbar navbar-default">
+		<div class="shell">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+											<a href="index.html" class="navbar-brand">
+							<img src="images/logo-1463940188.png" alt="" />
+						</a>
+										</div><!-- /.navbar-header -->
+
+				<nav class="collapse navbar-collapse" id="nav">
+					<ul class="navbar-right nav navbar-nav">
+						<li><a href="index.html">Home</a></li><li class="active"><a href="reservations.html">Reservations</a></li><li><a href="about-us.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="locations.html">Locations</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact-us.html">Contact Us</a></li>														
+													</ul><!-- /.navbar-right nav navbar-nav -->
+				</nav><!-- /#nav.collapse navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</div><!-- /.shell -->
+	</div><!-- /.navbar navbar-default -->
+</header><!-- /#header -->    
+
+
+
+<div class="main">
+	<section class="section sectionReservations">
+		<header	class="page-header sectionHead sectionHeadReservations sectionHeadSearch" style="display: block;">
+			<div class="shell">
+				<h1 class="sectionTitle"><span class="wc-editable" data-pk="ws_reservations_title" data-type="text">Register page</span></h1>
+
+				<div class="sectionHeadParagraph">
+					<div class="wc-editable" data-pk="ws_reservations_desc"
+						data-type="textarea">Enter your data below:</div>
+				</div>
+				</div>
+		</header>
+
+		<div id="pjCrContainer">
+			<div class="sectionBody">
+				<div class="shell">
+					<!-- /.row -->
+
+					<div class="form formPayment">
+			<form id="crCheckoutForm" name="crCheckoutForm" class="pjCrFormCheckout" action="" method="post" role="form" data-toggle="validator" novalidate="novalidate">
+				
+				<div class="row formInner">
+					<p class="formInnerTitle">Email / password</p><!-- /.formInnerTitle -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">E-Mail  <span class="asterisk">*</span></label>
+									<input id="crEmail" name="c_email" class="form-control email required" data-msg-required="Email is required" data-msg-email="Email is invalid" aria-required="true" type="text">
+									<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+								</div><!-- /.form-group -->
+							</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Password <span class="asterisk">*</span></label>
+									<input name="c_name" class="form-control required" data-msg-required="Password is required" aria-required="true" type="text">
+
+									<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+								</div><!-- /.form-group -->
+							</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+				</div>
+
+				<div class="row formInner">
+					<p class="formInnerTitle">Personal Details</p><!-- /.formInnerTitle -->
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group">
+								<label for="">First Name <span class="asterisk">*</span></label>
+								<input name="c_name" class="form-control required" data-msg-required="Name is required" aria-required="true" type="text">
+								
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+						
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group">
+								<label for="">Last Name <span class="asterisk">*</span></label>
+								<input name="c_name" class="form-control required" data-msg-required="Name is required" aria-required="true" type="text">
+								
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group">
+								<label for="">Telephone Number <span class="asterisk">*</span></label>
+								<input name="c_phone" class="form-control required" data-msg-required="Phone is required" aria-required="true" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+						
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group dateTimePick">
+								<label for="">Driver's date of birth </label>
+								<div class="input-group datePick">
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+									</span>
+									<input name="c_dob" class="form-control" data-msg-required="Driver's date of birth is required." readonly="readonly" type="text">
+								</div>
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+																
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group">
+								<label for="">Driver's licence number </label>
+								<input name="c_licence" class="form-control" data-msg-required="Driver's licence number is required." maxlength="255" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+					</div><!-- /.row formInner -->
+									<div class="row formInner">
+					</div><!-- /.row -->
+							
+				<div class="row formInner">
+					<p class="formInnerTitle">Billing Address</p><!-- /.formInnerTitle -->
+											
+						
+						<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+							<div class="form-group">
+								<label for="">Address </label>
+								<input name="c_address" class="form-control" data-msg-required="Address is required" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+												<div class="col-lg-3 col-md-3 col-xs-12">
+							<div class="form-group">
+								<label for="">City </label>
+															
+								<input name="c_city" class="form-control" data-msg-required="City is required" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+												<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<div class="form-group">
+								<label for="">County/Region/State </label>
+															
+								<input name="c_state" class="form-control" data-msg-required="City is required" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+												<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+							<div class="form-group">
+								<label for="">Postcode/ZIP Code </label>
+															
+								<input name="c_zip" class="form-control" data-msg-required="City is required" type="text">
+								<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+							</div><!-- /.form-group -->
+						</div><!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+					</div><!-- /.row formInner -->
+								
+				<div class="row formInner">
+					<p class="formInnerTitle">Confirm registration</p><!-- /.formInnerTitle -->
+				</div><!-- /.row formInner -->
+				
+				<div class="row formInner">
+					<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+						<div class="form-group">
+							<div class="checkbox customCheckbox">
+								<input id="c_agree" name="c_agree" value="1" class="required" data-msg-required="You have to agree to the Booking Conditions" aria-required="true" type="checkbox">
+														
+								<label for="c_agree">
+									<span class="customCheckboxFake">
+										<span class="glyphicon glyphicon-ok"></span>
+									</span>
+														
+									I have read and agree to the <a href="terms.html" target="_blank">rentals terms</a>
+								</label>
+							</div><!-- /.checkbox customCheckbox -->
+							<div class="help-block with-errors"><ul class="list-unstyled"></ul></div>
+						</div><!-- /.form-group -->
+					</div><!-- /.col-lg-6 col-md-6 col-sm-8 col-xs-12 -->
+				</div><!-- /.row formInner -->
+
+				<div class="formActions">
+					<button type="button" class="btn btn-primary" id="crBtnConfirm">Register</button>
+
+					<a href="#" class="btn btn-link" id="crBtnBack">Back</a>
+				</div><!-- /.formActions -->
+				<br>
+				<div class="crError text-danger" style="display: none;"></div>
+			</form>						<!-- /.row -->
+
+						
+					</div>
+					<!-- /.form formPayment -->
+				</div>
+				<!-- /.shell -->
+			</div>
+			<!-- /.sectionBody -->
+		</div>
+		</section>
+	</div>
+
+
+
+    <footer id="footer">
+	<div class="footerInner">
+		<section class="footerUtilities">
+			<div class="shell clearfix">
+				<div class="pull-left footerContacts">
+					<ul class="list-inline">
+						<li>
+							<div class="footerContactsParagraph"><small><span class="wc-editable" data-pk="ws_call_us_now" data-type="text">Call Us Now</span>:</small></div>
+		
+							<div class="footerContactsParagraph">
+								<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+		
+								<strong><span class="wc-editable" data-pk="ws_footer_phone_number" data-type="text">123.456.7890</span></strong>
+							</div>
+						</li>
+		
+						<li>
+							<div class="footerContactsParagraph"><small><span class="wc-editable" data-pk="ws_send_us_a_message" data-type="text">Or send us a message</span>:</small></div>
+														<div class="footerContactsParagraph">
+								<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+		
+								<a href="mailto:info@domainame.com">info@domainame.com</a>							</div>
+						</li>
+					</ul>
+				</div>
+		
+				<div class="pull-right footerSocials">
+					<div class="footerSocialsParagraph"><span class="wc-editable" data-pk="ws_we_are_social" data-type="text">We are social</span>:</div>
+		
+					<ul class="list-inline">
+						<li><a href="https://www.facebook.com/" target="_blank" class="linkFacebook">facebook</a></li><li><a href="https://twitter.com/" target="_blank" class="linkTwitter">twitter</a></li><li><a href="https://instagram.com/" target="_blank" class="linkInstagram">Instagram</a></li><li><a href="https://plus.google.com/" target="_blank" class="linkGooglePlus">googlePlus</a></li>					</ul>
+				</div>
+			</div>
+		</section>
+		
+		<section class="footerOptions">
+			<div class="shell clearfix">
+				<nav class="pull-right footerNav">
+					<ul class="list-inline">
+						<li><a href="index.html">Home</a></li><li class="active"><a href="reservations.html">Reservations</a></li><li><a href="about-us.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="locations.html">Locations</a></li><li><a href="faq.html">FAQ</a></li><li><a href="terms.html">Rental Terms</a></li><li><a href="contact-us.html">Contact Us</a></li>					</ul>
+				</nav>
+		
+				<div class="pull-left copyright">&copy; 2016 <span class="wc-editable" data-pk="ws_footer_company" data-type="text">Company, LLC.</span> <span class="wc-editable" data-pk="ws_rights_reserved" data-type="text">All rights reserved.</span></div>
+				
+				<div class="credits"><a href="https://www.vevs.com/car-rental-websites/" target="_blank">Car Rental Website Builder</a> by <a href="https://www.vevs.com/" target="_blank">VEVS.com</a></div>
+			</div>
+		</section>
+	</div>
+</footer>
+
+</div>
+</body>
+</html>

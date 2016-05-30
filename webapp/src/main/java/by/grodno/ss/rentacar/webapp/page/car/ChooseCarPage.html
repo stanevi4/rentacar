@@ -36,33 +36,6 @@
 
 						<div class="row">
 							<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-								<div class="btn-group sectionNav">
-									<button class="btn btn-block dropdown-toggle" type="button"
-										data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										Step 2 of 5 - Choose A Car <span class="caret"></span>
-									</button>
-
-									<ul class="dropdown-menu">
-										<li><a href="javascript:void(0);" rel="1"
-											class="crBreadcrumbsEl btn btn-link pjCrBtn pjCrBtnPassed">Step
-												1 - When And Where</a></li>
-										<li><a href="javascript:void(0);" rel="2"
-											class="crBreadcrumbsEl btn btn-link pjCrBtn pjCrBtnActive">Step
-												2 - Choose A Car</a></li>
-										<li><a href="javascript:void(0);" rel="3"
-											class="crBreadcrumbsEl btn btn-link pjCrBtn disabled"
-											style="cursor: default;">Step 3 - Price And Extras</a></li>
-										<li><a href="javascript:void(0);" rel="4"
-											class="crBreadcrumbsEl btn btn-link pjCrBtn disabled"
-											style="cursor: default;">Step 4 - Checkout</a></li>
-										<li><a href="javascript:void(0);" rel="5"
-											class="crBreadcrumbsEl btn btn-link pjCrBtn disabled"
-											style="cursor: default;">Step 4 - Finish</a></li>
-									</ul>
-									<!-- /.dropdown-menu -->
-								</div>
-								<!-- /.btn-group sectionNav -->
 								<div class="panel-group accordions accordionsDetails"
 									id="accordion" role="tablist" aria-multiselectable="true">
 									<div class="panel panel-default">
@@ -192,9 +165,9 @@
 													<!-- /.well well-sm text-center productPrice -->
 
 													<div class="productActions">
-														<button type="button" value="3"
-															class="btn btn-block btn-info crBtnContinue">book
-															now</button>
+														<form wicket:id="form-submit-continue" action="" id="crFormSearch" method="post">
+															<button wicket:id="submit-continue" type="button" value="3" class="btn btn-block btn-info crBtnContinue">book now</button>
+														</form>
 													</div>
 													<!-- /.productActions -->
 												</div>

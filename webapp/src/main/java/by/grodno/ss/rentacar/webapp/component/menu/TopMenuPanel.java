@@ -15,6 +15,7 @@ import by.grodno.ss.rentacar.webapp.page.contact.ContactUsPage;
 import by.grodno.ss.rentacar.webapp.page.faq.FaqPage;
 import by.grodno.ss.rentacar.webapp.page.home.HomePage;
 import by.grodno.ss.rentacar.webapp.page.locations.LocationsPage;
+import by.grodno.ss.rentacar.webapp.page.order.CheckoutPage;
 import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
 import by.grodno.ss.rentacar.webapp.page.services.ServicesPage;
 

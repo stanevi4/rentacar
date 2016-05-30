@@ -1,0 +1,894 @@
+<wicket:extend>
+
+	<div class="main">
+		<section class="section sectionReservations">
+			<header
+				class="page-header sectionHead sectionHeadReservations sectionHeadSearch"
+				style="display: block;">
+				<div class="shell">
+					<h1 class="sectionTitle">
+						<span class="wc-editable" data-pk="ws_reservations_title"
+							data-type="text">Checkout</span>
+					</h1>
+
+					<div class="sectionHeadParagraph">
+						<div class="wc-editable" data-pk="ws_reservations_desc"
+							data-type="textarea">
+							STEP 3 of the car booking process. Replace the dummy content here
+							with your own. You can add different content on each step.
+							<div>
+								<span style="line-height: 20.3px;"><br></span>
+								<div>Excepteur sint occaecat cupidatat non proident, sunt
+									in culpa qui officia deserunt mollit anim id est laborum. Lorem
+									ipsum dolor sit amet, consectetur adipisicing elit, sed do
+									eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+									enim ad minim veniam, quis nostrud exercitation ullamco laboris
+									nisi ut aliquip ex ea commodo consequat.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div id="pjCrContainer">
+				<div class="sectionBody">
+					<div class="shell">
+						<div class="form formPayment">
+							<div class="row">
+								<div class="col-lg-4 col-md-5 col-sm-4 col-xs-12">
+									<div class="panel-group accordions accordionsDetails"
+										id="accordion" role="tablist" aria-multiselectable="true">
+										<div class="panel panel-default">
+											<header class="panel-heading" role="tab" id="headingOne">
+												<p class="panel-title">
+													<strong> Booking details </strong>
+												</p>
+												<!-- /.panel-title -->
+											</header>
+											<!-- /.panel-heading -->
+
+											<div id="collapseOne">
+												<div class="panel-body">
+													<div class="accordionSection">
+														<p class="clearfix">
+															<strong>Time and place</strong> <a href="#"
+																id="crBtnWhen"
+																class="btn btn-link pull-right text-capitalize">change</a>
+														</p>
+
+														<div class="row">
+															<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Pick-up:</div>
+															<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
+
+															<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+																29-05-2016, 09:00<br>Hogarth Road, London
+															</div>
+															<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
+														</div>
+														<!-- /.row -->
+
+														<div class="row">
+															<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Return:</div>
+															<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
+
+															<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+																30-05-2016, 09:00<br>Hogarth Road, London
+															</div>
+															<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
+														</div>
+														<!-- /.row -->
+														<div class="row">
+															<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Rental
+																Duration:</div>
+															<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
+
+															<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">1
+																day</div>
+															<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
+														</div>
+														<!-- /.row -->
+													</div>
+													<!-- /.accordionSection -->
+
+													<div class="accordionSection">
+														<p class="clearfix">
+															<strong><span class="wc-editable"
+																data-pk="ws_car_type" data-type="text">Car type</span></strong> <a
+																href="#" id="crBtnChoise"
+																class="btn btn-link pull-right text-capitalize">change</a>
+														</p>
+
+														<div class="row products">
+															<!-- <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 product"> -->
+															<div class="product">
+																<div class="thumbnail">
+																	<div class="productImage">
+																		<img
+																			src="images/4_64746dd6e60c5caac6aee50bc810dda4.jpg"
+																			alt="" class="img-responsive">
+																	</div>
+																	<!-- /.productImage -->
+
+																	<div class="caption">
+																		<p class="productTitle">Large: Premium</p>
+																		<!-- /.productTitle -->
+
+																		<p class="productDescription">(Example of this
+																			range: BMW 7)</p>
+																		<!-- /.productDescription -->
+
+																		<ul class="list-inline productMeta">
+																			<li><span class="glyphicon glyphicon-user"
+																				aria-hidden="true"></span> <span
+																				class="text-uppercase">5</span></li>
+
+																			<li><span class="glyphicon glyphicon-briefcase"
+																				aria-hidden="true"></span> <span
+																				class="text-uppercase">5</span></li>
+
+																			<li><span
+																				class="glyphicon glyphicon-modal-window"
+																				aria-hidden="true"></span> <span
+																				class="text-uppercase">4</span></li>
+
+																			<li><span class="glyphicon glyphicon-cog"
+																				aria-hidden="true"></span> <span
+																				class="text-uppercase">A</span></li>
+																		</ul>
+																		<!-- /.list-inline productMeta -->
+																	</div>
+																	<!-- /.caption -->
+																</div>
+																<!-- /.thumbnail -->
+															</div>
+															<!-- /.col-lg-10 col-md-10 col-sm-10 col-xs-12 product -->
+														</div>
+														<!-- /.row products -->
+													</div>
+													<!-- /.accordionSection -->
+												</div>
+												<!-- /.panel-body -->
+											</div>
+											<!-- /#collapseOne.panel-collapse collapse -->
+										</div>
+										<!-- /.panel panel-default -->
+									</div>
+									<!-- /#accordion.panel-group accordions accordionsDetails -->
+								</div>
+								<!-- /.col-lg-4 col-md-5 col-sm-4 col-xs-12 -->
+
+								<div class="col-lg-8 col-md-7 col-sm-4 col-xs-12">
+									<div class="table-responsive tablePayment">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0"
+											class="table">
+											<tbody>
+												<tr>
+													<td>
+														<p>
+															<strong>Rental Duration</strong>
+														</p>
+													</td>
+
+													<td class="text-right">
+														<p>1 day</p>
+													</td>
+												</tr>
+
+												<tr style="display: table-row">
+													<td>
+														<p>
+															<strong>Price per day</strong>
+														</p>
+
+														<p>1 day x € 140</p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 140.00</p>
+													</td>
+												</tr>
+
+												<tr style="display: table-row">
+													<td>
+														<p>
+															<strong>Price per hour</strong>
+														</p>
+
+														<p></p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 0.00</p>
+													</td>
+												</tr>
+
+												<tr>
+													<td>
+														<p>
+															<strong><span class="wc-editable"
+																data-pk="ws_car_rental_fee" data-type="text">Car
+																	rental fee</span></strong>
+														</p>
+
+														<p>€ 140.00 + € 0.00</p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 140.00</p>
+													</td>
+												</tr>
+
+												<tr>
+													<td>
+														<p>
+															<strong><span class="wc-editable"
+																data-pk="ws_extras_price" data-type="text">Extras'
+																	price</span></strong>
+														</p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 0.00</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<strong>Sub-total</strong>
+														</p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 140.00</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<strong> <span>Total Price</span>
+															</strong>
+														</p>
+													</td>
+
+													<td class="text-right">
+														<p>
+															<strong> <span>€ 140.00</span>
+															</strong>
+														</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<strong>Required deposit</strong>
+														</p>
+
+														<p>10% of € 140.00</p>
+													</td>
+
+													<td class="text-right">
+														<p>€ 14.00</p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- /.table -->
+									</div>
+									<!-- /.table-responsive tableExtras -->
+								</div>
+								<!-- /.col-lg-8 col-md-7 col-sm-4 col-xs-12 -->
+							</div>
+							<!-- /.row -->
+
+							<form id="crCheckoutForm" name="crCheckoutForm"
+								class="pjCrFormCheckout" action="" method="post" role="form"
+								data-toggle="validator" novalidate="novalidate">
+								<div class="row formInner">
+									<p class="formInnerTitle">Personal Details</p>
+									<!-- /.formInnerTitle -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Title <span class="asterisk">*</span></label> <select
+												name="c_title" class="form-control required"
+												rev="Title is required" aria-required="true">
+												<option value="">-- Select Title --</option>
+												<option value="Dr">Dr</option>
+												<option value="Mr">Mr</option>
+												<option value="Mrs">Mrs</option>
+												<option value="Ms">Ms</option>
+												<option value="Other">Other</option>
+												<option value="Prof">Prof</option>
+												<option value="Rev">Rev</option>
+											</select>
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Name <span class="asterisk">*</span></label> <input
+												type="text" name="c_name" class="form-control required"
+												data-msg-required="Name is required" aria-required="true">
+
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">E-Mail <span class="asterisk">*</span></label>
+											<input type="text" id="crEmail" name="c_email"
+												class="form-control email required"
+												data-msg-required="Email is required"
+												data-msg-email="Email is invalid" aria-required="true">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Telephone Number <span class="asterisk">*</span></label>
+											<input type="text" name="c_phone"
+												class="form-control required"
+												data-msg-required="Phone is required" aria-required="true">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group dateTimePick">
+											<label for="">Driver's date of birth </label>
+											<div class="input-group datePick">
+												<span class="input-group-addon"> <span
+													class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+												</span> <input type="text" name="c_dob" class="form-control"
+													data-msg-required="Driver's date of birth is required."
+													readonly="readonly">
+											</div>
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Driver's licence number </label> <input
+												type="text" name="c_licence" class="form-control"
+												data-msg-required="Driver's licence number is required."
+												maxlength="255">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+								</div>
+								<!-- /.row formInner -->
+								<div class="row formInner">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<label for="">Notes </label>
+										<textarea name="c_notes" rows="6" class="form-control"
+											data-msg-required="Notes is required"></textarea>
+										<div class="help-block with-errors">
+											<ul class="list-unstyled"></ul>
+										</div>
+									</div>
+								</div>
+								<!-- /.row -->
+
+								<div class="row formInner">
+									<p class="formInnerTitle">Billing Address</p>
+									<!-- /.formInnerTitle -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Company Name </label> <input type="text"
+												name="c_company" class="form-control"
+												data-msg-required="Company name is required">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label for="">Address </label> <input type="text"
+												name="c_address" class="form-control"
+												data-msg-required="Address is required">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+									<div class="col-lg-3 col-md-3 col-xs-12">
+										<div class="form-group">
+											<label for="">City </label> <input type="text" name="c_city"
+												class="form-control" data-msg-required="City is required">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+										<div class="form-group">
+											<label for="">County/Region/State </label> <input type="text"
+												name="c_state" class="form-control"
+												data-msg-required="City is required">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+										<div class="form-group">
+											<label for="">Postcode/ZIP Code </label> <input type="text"
+												name="c_zip" class="form-control"
+												data-msg-required="City is required">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+									<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+										<div class="form-group">
+											<label for="">Country </label> <select name="c_country"
+												class="form-control" data-msg-required="Country is required">
+												<option value="">-- Select Country --</option>
+												<option value="1">Afghanistan</option>
+												<option value="2">Åland Islands</option>
+												<option value="3">Albania</option>
+												<option value="4">Algeria</option>
+												<option value="5">American Samoa</option>
+												<option value="6">Andorra</option>
+												<option value="7">Angola</option>
+												<option value="8">Anguilla</option>
+												<option value="9">Antarctica</option>
+												<option value="10">Antigua and Barbuda</option>
+												<option value="11">Argentina</option>
+												<option value="12">Armenia</option>
+												<option value="13">Aruba</option>
+												<option value="14">Australia</option>
+												<option value="15">Austria</option>
+												<option value="16">Azerbaijan</option>
+												<option value="17">Bahamas</option>
+												<option value="18">Bahrain</option>
+												<option value="19">Bangladesh</option>
+												<option value="20">Barbados</option>
+												<option value="21">Belarus</option>
+												<option value="22">Belgium</option>
+												<option value="23">Belize</option>
+												<option value="24">Benin</option>
+												<option value="25">Bermuda</option>
+												<option value="26">Bhutan</option>
+												<option value="27">Bolivia, Plurinational State of</option>
+												<option value="28">Bonaire, Sint Eustatius and Saba</option>
+												<option value="29">Bosnia and Herzegovina</option>
+												<option value="30">Botswana</option>
+												<option value="31">Bouvet Island</option>
+												<option value="32">Brazil</option>
+												<option value="33">British Indian Ocean Territory</option>
+												<option value="34">Brunei Darussalam</option>
+												<option value="35">Bulgaria</option>
+												<option value="36">Burkina Faso</option>
+												<option value="37">Burundi</option>
+												<option value="38">Cambodia</option>
+												<option value="39">Cameroon</option>
+												<option value="40">Canada</option>
+												<option value="41">Cape Verde</option>
+												<option value="42">Cayman Islands</option>
+												<option value="43">Central African Republic</option>
+												<option value="44">Chad</option>
+												<option value="45">Chile</option>
+												<option value="46">China</option>
+												<option value="47">Christmas Island</option>
+												<option value="48">Cocos array(Keeling) Islands</option>
+												<option value="49">Colombia</option>
+												<option value="50">Comoros</option>
+												<option value="51">Congo</option>
+												<option value="52">Congo, the Democratic Republic
+													of the</option>
+												<option value="53">Cook Islands</option>
+												<option value="54">Costa Rica</option>
+												<option value="55">Côte d'Ivoire</option>
+												<option value="56">Croatia</option>
+												<option value="57">Cuba</option>
+												<option value="58">Curaçao</option>
+												<option value="59">Cyprus</option>
+												<option value="60">Czech Republic</option>
+												<option value="61">Denmark</option>
+												<option value="62">Djibouti</option>
+												<option value="63">Dominica</option>
+												<option value="64">Dominican Republic</option>
+												<option value="65">Ecuador</option>
+												<option value="66">Egypt</option>
+												<option value="67">El Salvador</option>
+												<option value="68">Equatorial Guinea</option>
+												<option value="69">Eritrea</option>
+												<option value="70">Estonia</option>
+												<option value="71">Ethiopia</option>
+												<option value="72">Falkland Islands array(Malvinas)</option>
+												<option value="73">Faroe Islands</option>
+												<option value="74">Fiji</option>
+												<option value="75">Finland</option>
+												<option value="76">France</option>
+												<option value="77">French Guiana</option>
+												<option value="78">French Polynesia</option>
+												<option value="79">French Southern Territories</option>
+												<option value="80">Gabon</option>
+												<option value="81">Gambia</option>
+												<option value="82">Georgia</option>
+												<option value="83">Germany</option>
+												<option value="84">Ghana</option>
+												<option value="85">Gibraltar</option>
+												<option value="86">Greece</option>
+												<option value="87">Greenland</option>
+												<option value="88">Grenada</option>
+												<option value="89">Guadeloupe</option>
+												<option value="90">Guam</option>
+												<option value="91">Guatemala</option>
+												<option value="92">Guernsey</option>
+												<option value="93">Guinea</option>
+												<option value="94">Guinea-Bissau</option>
+												<option value="95">Guyana</option>
+												<option value="96">Haiti</option>
+												<option value="97">Heard Island and McDonald
+													Islands</option>
+												<option value="98">Holy See array(Vatican City
+													State)</option>
+												<option value="99">Honduras</option>
+												<option value="100">Hong Kong</option>
+												<option value="101">Hungary</option>
+												<option value="102">Iceland</option>
+												<option value="103">India</option>
+												<option value="104">Indonesia</option>
+												<option value="105">Iran, Islamic Republic of</option>
+												<option value="106">Iraq</option>
+												<option value="107">Ireland</option>
+												<option value="108">Isle of Man</option>
+												<option value="109">Israel</option>
+												<option value="110">Italy</option>
+												<option value="111">Jamaica</option>
+												<option value="112">Japan</option>
+												<option value="113">Jersey</option>
+												<option value="114">Jordan</option>
+												<option value="115">Kazakhstan</option>
+												<option value="116">Kenya</option>
+												<option value="117">Kiribati</option>
+												<option value="118">Korea, Democratic People's
+													Republic of</option>
+												<option value="119">Korea, Republic of</option>
+												<option value="120">Kuwait</option>
+												<option value="121">Kyrgyzstan</option>
+												<option value="122">Lao People's Democratic
+													Republic</option>
+												<option value="123">Latvia</option>
+												<option value="124">Lebanon</option>
+												<option value="125">Lesotho</option>
+												<option value="126">Liberia</option>
+												<option value="127">Libya</option>
+												<option value="128">Liechtenstein</option>
+												<option value="129">Lithuania</option>
+												<option value="130">Luxembourg</option>
+												<option value="131">Macao</option>
+												<option value="132">Macedonia, The Former Yugoslav
+													Republic of</option>
+												<option value="133">Madagascar</option>
+												<option value="134">Malawi</option>
+												<option value="135">Malaysia</option>
+												<option value="136">Maldives</option>
+												<option value="137">Mali</option>
+												<option value="138">Malta</option>
+												<option value="139">Marshall Islands</option>
+												<option value="140">Martinique</option>
+												<option value="141">Mauritania</option>
+												<option value="142">Mauritius</option>
+												<option value="143">Mayotte</option>
+												<option value="144">Mexico</option>
+												<option value="145">Micronesia, Federated States of</option>
+												<option value="146">Moldova, Republic of</option>
+												<option value="147">Monaco</option>
+												<option value="148">Mongolia</option>
+												<option value="149">Montenegro</option>
+												<option value="150">Montserrat</option>
+												<option value="151">Morocco</option>
+												<option value="152">Mozambique</option>
+												<option value="153">Myanmar</option>
+												<option value="154">Namibia</option>
+												<option value="155">Nauru</option>
+												<option value="156">Nepal</option>
+												<option value="157">Netherlands</option>
+												<option value="158">New Caledonia</option>
+												<option value="159">New Zealand</option>
+												<option value="160">Nicaragua</option>
+												<option value="161">Niger</option>
+												<option value="162">Nigeria</option>
+												<option value="163">Niue</option>
+												<option value="164">Norfolk Island</option>
+												<option value="165">Northern Mariana Islands</option>
+												<option value="166">Norway</option>
+												<option value="167">Oman</option>
+												<option value="168">Pakistan</option>
+												<option value="169">Palau</option>
+												<option value="170">Palestine, State of</option>
+												<option value="171">Panama</option>
+												<option value="172">Papua New Guinea</option>
+												<option value="173">Paraguay</option>
+												<option value="174">Peru</option>
+												<option value="175">Philippines</option>
+												<option value="176">Pitcairn</option>
+												<option value="177">Poland</option>
+												<option value="178">Portugal</option>
+												<option value="179">Puerto Rico</option>
+												<option value="180">Qatar</option>
+												<option value="181">Réunion</option>
+												<option value="182">Romania</option>
+												<option value="183">Russian Federation</option>
+												<option value="184">Rwanda</option>
+												<option value="185">Saint Barthélemy</option>
+												<option value="186">Saint Helena, Ascension and
+													Tristan da Cunha</option>
+												<option value="187">Saint Kitts and Nevis</option>
+												<option value="188">Saint Lucia</option>
+												<option value="189">Saint Martin array(French part)</option>
+												<option value="190">Saint Pierre and Miquelon</option>
+												<option value="191">Saint Vincent and the
+													Grenadines</option>
+												<option value="192">Samoa</option>
+												<option value="193">San Marino</option>
+												<option value="194">Sao Tome and Principe</option>
+												<option value="195">Saudi Arabia</option>
+												<option value="196">Senegal</option>
+												<option value="197">Serbia</option>
+												<option value="198">Seychelles</option>
+												<option value="199">Sierra Leone</option>
+												<option value="200">Singapore</option>
+												<option value="201">Sint Maarten array(Dutch part)</option>
+												<option value="202">Slovakia</option>
+												<option value="203">Slovenia</option>
+												<option value="204">Solomon Islands</option>
+												<option value="205">Somalia</option>
+												<option value="206">South Africa</option>
+												<option value="207">South Georgia and the South
+													Sandwich Islands</option>
+												<option value="208">South Sudan</option>
+												<option value="209">Spain</option>
+												<option value="210">Sri Lanka</option>
+												<option value="211">Sudan</option>
+												<option value="212">Suriname</option>
+												<option value="213">Svalbard and Jan Mayen</option>
+												<option value="214">Swaziland</option>
+												<option value="215">Sweden</option>
+												<option value="216">Switzerland</option>
+												<option value="217">Syrian Arab Republic</option>
+												<option value="218">Taiwan, Province of China</option>
+												<option value="219">Tajikistan</option>
+												<option value="220">Tanzania, United Republic of</option>
+												<option value="221">Thailand</option>
+												<option value="222">Timor-Leste</option>
+												<option value="223">Togo</option>
+												<option value="224">Tokelau</option>
+												<option value="225">Tonga</option>
+												<option value="226">Trinidad and Tobago</option>
+												<option value="227">Tunisia</option>
+												<option value="228">Turkey</option>
+												<option value="229">Turkmenistan</option>
+												<option value="230">Turks and Caicos Islands</option>
+												<option value="231">Tuvalu</option>
+												<option value="232">Uganda</option>
+												<option value="233">Ukraine</option>
+												<option value="234">United Arab Emirates</option>
+												<option value="235">United Kingdom</option>
+												<option value="236">United States</option>
+												<option value="237">United States Minor Outlying
+													Islands</option>
+												<option value="238">Uruguay</option>
+												<option value="239">Uzbekistan</option>
+												<option value="240">Vanuatu</option>
+												<option value="241">Venezuela, Bolivarian Republic
+													of</option>
+												<option value="242">Viet Nam</option>
+												<option value="243">Virgin Islands, British</option>
+												<option value="244">Virgin Islands, U.S.</option>
+												<option value="245">Wallis and Futuna</option>
+												<option value="246">Western Sahara</option>
+												<option value="247">Yemen</option>
+												<option value="248">Zambia</option>
+												<option value="249">Zimbabwe</option>
+											</select>
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+								</div>
+								<!-- /.row formInner -->
+
+								<div class="row formInner">
+									<p class="formInnerTitle">Payment Method</p>
+									<!-- /.formInnerTitle -->
+
+									<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="" class="control-label">Payment Method <span
+												class="text-danger">*</span></label> <select name="payment_method"
+												class="form-control required"
+												data-msg-required="Payment Method is required"
+												aria-required="true">
+												<option value="">-- Select Payment Method --</option>
+												<option value="bank">Bank</option>
+												<option value="cash">Cash</option>
+												<option value="creditcard">Credit Card</option>
+												<option value="paypal">Paypal</option>
+											</select>
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+								</div>
+								<!-- /.row formInner -->
+								<div id="crBankData" style="display: none">
+									<div class="crLeft100">
+										<p>
+											<strong>Bank Account </strong>
+										</p>
+										<p>
+											Bank Name<br> IBAN: 123456789
+										</p>
+									</div>
+								</div>
+								<div id="crCCData" style="display: none" class="row">
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="" class="control-label">CC type <span
+												class="text-danger">*</span></label> <select name="cc_type"
+												class="form-control required"
+												data-msg-required="Credit Card type is required"
+												aria-required="true">
+												<option value="">---</option>
+												<option value="AmericanExpress">AmericanExpress</option>
+												<option value="Maestro">Maestro</option>
+												<option value="MasterCard">MasterCard</option>
+												<option value="Visa">Visa</option>
+											</select>
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="" class="control-label">CC number <span
+												class="text-danger">*</span></label> <input type="text"
+												name="cc_num" class="form-control required"
+												data-msg-required="Credit Card number is required"
+												aria-required="true">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<div class="form-group pjCrDatePicker">
+											<label for="" class="control-label">CC expiration
+												date <span class="text-danger">*</span>
+											</label> <input type="text" name="cc_exp"
+												class="form-control required"
+												data-msg-required="Credit Card expiration date is required"
+												aria-required="true">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group pjCrDatePicker -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="" class="control-label">CC security code
+												<span class="text-danger">*</span>
+											</label> <input type="text" name="cc_code"
+												class="form-control required"
+												data-msg-required="Credit Card security code is required"
+												aria-required="true">
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
+								</div>
+								<!-- /.row -->
+
+								<div class="row formInner">
+									<p class="formInnerTitle">Rental terms</p>
+									<!-- /.formInnerTitle -->
+								</div>
+								<!-- /.row formInner -->
+
+								<div class="row formInner">
+									<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+										<div class="form-group">
+											<div class="checkbox customCheckbox">
+												<input type="checkbox" id="c_agree" name="c_agree" value="1"
+													class="required"
+													data-msg-required="You have to agree to the Booking Conditions"
+													aria-required="true"> <label for="c_agree">
+													<span class="customCheckboxFake"> <span
+														class="glyphicon glyphicon-ok"></span>
+												</span> I have read and agree to the <a href="terms.html"
+													target="_blank">rentals terms</a>
+												</label>
+											</div>
+											<!-- /.checkbox customCheckbox -->
+											<div class="help-block with-errors">
+												<ul class="list-unstyled"></ul>
+											</div>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col-lg-6 col-md-6 col-sm-8 col-xs-12 -->
+								</div>
+								<!-- /.row formInner -->
+
+								<div class="formActions">
+									<button type="button" class="btn btn-primary" id="crBtnConfirm">Confirm
+										Booking</button>
+
+									<a href="#" class="btn btn-link" id="crBtnBack">Back</a>
+								</div>
+								<!-- /.formActions -->
+								<br>
+								<div class="crError text-danger" style="display: none;"></div>
+							</form>
+						</div>
+						<!-- /.form formPayment -->
+					</div>
+					<!-- /.shell -->
+				</div>
+				<!-- /.sectionBody -->
+			</div>
+		</section>
+	</div>
+
+</wicket:extend>
