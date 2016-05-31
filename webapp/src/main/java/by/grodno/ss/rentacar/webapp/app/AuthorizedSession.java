@@ -12,7 +12,12 @@ import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.service.UserService;
 
 public class AuthorizedSession extends AuthenticatedWebSession {
-    @Inject
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -933259137901929401L;
+
+	@Inject
     private UserService userService;
 
     private UserCredentials loggedUser;

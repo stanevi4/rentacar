@@ -1,10 +1,7 @@
 package by.grodno.ss.rentacar.webapp.component.menu;
 
 import org.apache.wicket.AttributeModifier;
-import org.apache.wicket.Page;
-import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
@@ -15,12 +12,15 @@ import by.grodno.ss.rentacar.webapp.page.contact.ContactUsPage;
 import by.grodno.ss.rentacar.webapp.page.faq.FaqPage;
 import by.grodno.ss.rentacar.webapp.page.home.HomePage;
 import by.grodno.ss.rentacar.webapp.page.locations.LocationsPage;
-import by.grodno.ss.rentacar.webapp.page.order.CheckoutPage;
+import by.grodno.ss.rentacar.webapp.page.login.LoginPage;
 import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
 import by.grodno.ss.rentacar.webapp.page.services.ServicesPage;
 
 public class TopMenuPanel extends Panel {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Class<? extends AbstractPage> selectedPage;
 	
 	public TopMenuPanel(String id) {
@@ -120,6 +120,17 @@ public class TopMenuPanel extends Panel {
 			}
 		});
 		add(liContactUs);
+		
+		WebMarkupContainer liLogin = new WebMarkupContainer("link-container-login");
+		if (selectedPage.equals(LoginPage.class)) {
+			liLogin.add(new AttributeModifier("class", "active"));
+		}
+		liLogin.add(new Link("link-login") {
+			@Override
+			public void onClick() {
+				setResponsePage(new LoginPage());
+			}
+		});
+		add(liLogin);
 	}
-
 }

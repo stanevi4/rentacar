@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import by.grodno.ss.rentacar.webapp.page.home.HomePage;
+import by.grodno.ss.rentacar.webapp.page.login.LoginPage;
 
 @Component("wicketWebApplicationBean")
 public class WicketApplication extends AuthenticatedWebApplication {
@@ -49,7 +50,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
-        return HomePage.class;
+        return LoginPage.class;
     }
 
     /**

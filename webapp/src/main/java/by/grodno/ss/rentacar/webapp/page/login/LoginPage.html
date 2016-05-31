@@ -10,68 +10,57 @@
 						<span class="wc-editable" data-pk="ws_reservations_title"
 							data-type="text">Login page</span>
 					</h1>
-
 				</div>
 			</header>
 
 			<div id="pjCrContainer">
 				<div class="sectionBody">
 					<div class="shell">
-						<!-- /.row -->
-
 						<div class="form formPayment">
-							<form id="crCheckoutForm" name="crCheckoutForm"
+						
+							<form wicket:id="form-login" name="crCheckoutForm"
 								class="pjCrFormCheckout" action="" method="post" role="form"
 								data-toggle="validator" novalidate="novalidate">
 
 								<div class="row formInner">
 									<p class="formInnerTitle">Enter your account</p>
-									<!-- /.formInnerTitle -->
+
 									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 										<div class="form-group">
 											<label for="">E-Mail <span class="asterisk">*</span></label>
-											<input id="crEmail" name="c_email"
-												class="form-control email required"
-												data-msg-required="Email is required"
-												data-msg-email="Email is invalid" aria-required="true"
-												type="text">
+											<input wicket:id="username" class="form-control email required" type="text">
 											<div class="help-block with-errors">
 												<ul class="list-unstyled"></ul>
 											</div>
 										</div>
-										<!-- /.form-group -->
+
 									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
 									<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 										<div class="form-group">
 											<label for="">Password <span class="asterisk">*</span></label>
-											<input name="c_name" class="form-control required"
-												data-msg-required="Password is required"
-												aria-required="true" type="text">
+											<input wicket:id="password" class="form-control required" type="password" >
 
 											<div class="help-block with-errors">
 												<ul class="list-unstyled"></ul>
 											</div>
 										</div>
-										<!-- /.form-group -->
+
 									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
 								</div>
 
 								<div class="formActions">
-									<button type="button" class="btn btn-primary" id="crBtnConfirm">Login</button>
+								
+									<button wicket:id="login-button" type="button" class="btn btn-primary" id="crBtnConfirm">Login</button>
 
-									<a href="#" class="btn btn-link" id="crBtnBack"> Sign up</a>
+									<a href="#" class="btn btn-link" id="crBtnBack"> Register new user</a>
 								</div>
 								<!-- /.formActions -->
 								<br>
-								<div class="crError text-danger" style="display: none;"></div>
+								<div wicket:id="feedbackpanel" class="crError text-danger"></div>
 							</form>
-							<!-- /.row -->
-
-
+							
 						</div>
-						<!-- /.form formPayment -->
 					</div>
 					<!-- /.shell -->
 				</div>
