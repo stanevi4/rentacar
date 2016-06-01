@@ -36,7 +36,7 @@ public class AuthorizedSession extends AuthenticatedWebSession {
 
     @Override
     public boolean authenticate(final String userName, final String password) {
-        //loggedUser = userService.getByNameAndPassword(userName, password);
+        loggedUser = userService.getByNameAndPassword(userName, password);
         return loggedUser != null;
     }
 
@@ -44,7 +44,7 @@ public class AuthorizedSession extends AuthenticatedWebSession {
     public Roles getRoles() {
         if (isSignedIn() && (roles == null)) {
             roles = new Roles();
-           // roles.addAll(userService.resolveRoles(loggedUser.getId()));
+            roles.addAll(userService.resolveRoles(loggedUser.getId()));
         }
         return roles;
     }

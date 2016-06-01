@@ -66,7 +66,7 @@ public class UserServiceTest {
         
         userCredentials.setEmail(System.currentTimeMillis() + "mail@test.by");
         userCredentials.setPassword("pswd");
-        userCredentials.setRole(UserRole.admin);
+        userCredentials.setRole(UserRole.ADMIN);
         userService.register(profile, userCredentials);
         
         Assert.assertNotNull(userService.getProfile(profile.getId()));

@@ -4,4 +4,5 @@ import by.grodno.ss.rentacar.datamodel.UserCredentials;
 
 public interface UserCredentialsDao extends AbstractDao<UserCredentials, Long> {
 
+	UserCredentials find(String userName, String password);
 }
