@@ -28,6 +28,7 @@ public class RegisterPanel extends Panel {
 	
 	@Inject
 	private UserService userService;
+	
 	private UserProfile userProfile;
 	private UserCredentials userCredentials;
 
@@ -48,7 +49,7 @@ public class RegisterPanel extends Panel {
 		super.onInitialize();
 		Form<UserCredentials> form = new Form<UserCredentials>("form-register",
 				new CompoundPropertyModel<UserCredentials>(userCredentials));
-		form.add(new FeedbackPanel("panel-feedback"));
+		form.add(new FeedbackPanel("feedbackpanel"));
 
 		TextField<String> email = new TextField<String>("email");
 		email.setRequired(true);
@@ -82,7 +83,7 @@ public class RegisterPanel extends Panel {
 		phone.setRequired(true);
 		phone.add(StringValidator.maximumLength(100));
 		phone.add(StringValidator.minimumLength(2));
-		phone.add(new PatternValidator("[0-9]+-"));
+		phone.add(new PatternValidator("[0-9]+"));
 		form.add(phone);
 
 		DateTextField dateBirth = new DateTextField("date-birth", new PropertyModel<>(userProfile, "birthDay"));

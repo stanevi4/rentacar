@@ -1,6 +1,5 @@
 package by.grodno.ss.rentacar.webapp.page.register;
 
-import by.grodno.ss.rentacar.webapp.component.menu.TopMenuPanel;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 
 public class RegisterPage extends AbstractPage {
@@ -17,7 +16,7 @@ public class RegisterPage extends AbstractPage {
 
 		super.onInitialize();
 		
-		add(new TopMenuPanel("register-panel"));
+		add(new RegisterPanel("register-panel"));
 	}
 
 }
