@@ -1,10 +1,14 @@
 package by.grodno.ss.rentacar.webapp.component.menu;
 
+import javax.inject.Inject;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
+import by.grodno.ss.rentacar.service.UserService;
+import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.about.AboutUsPage;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
@@ -22,6 +26,9 @@ public class TopMenuPanel extends Panel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Class<? extends AbstractPage> selectedPage;
+	
+	@Inject
+	private UserService userService;
 	
 	public TopMenuPanel(String id) {
 		super(id);
@@ -131,6 +138,19 @@ public class TopMenuPanel extends Panel {
 				setResponsePage(new LoginPage());
 			}
 		});
+		liLogin.setVisible(!AuthorizedSession.get().isSignedIn());
 		add(liLogin);
+		
+		WebMarkupContainer liLogOut = new WebMarkupContainer("link-container-logout");
+		liLogOut.add(new Link("link-logout") {
+			@Override
+			public void onClick() {
+				userService.setLogingLog(AuthorizedSession.get().getLoggedUser().getEmail(), false);
+				getSession().invalidate();
+				setResponsePage(new HomePage());
+			}
+		});
+		liLogOut.setVisible(AuthorizedSession.get().isSignedIn());
+		add(liLogOut);
 	}
 }

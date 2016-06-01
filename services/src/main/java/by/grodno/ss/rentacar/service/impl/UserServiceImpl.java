@@ -20,7 +20,7 @@ import by.grodno.ss.rentacar.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-	
+
 	@Inject
 	private UserProfileDao userProfileDao;
 
@@ -29,13 +29,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void register(UserProfile profile, UserCredentials userCredentials) {
-		
+
 		userCredentials.setRole(UserRole.CLIENT);
 		userCredentialsDao.insert(userCredentials);
 		profile.setUserCredentials(userCredentials);
 		profile.setCreated(new Date());
 		userProfileDao.insert(profile);
-		
+
 		LOGGER.info("User regirstred: {}", userCredentials.getEmail());
 	}
 
@@ -51,7 +51,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void update(UserProfile profile) {
-		String flName = String.format("id=%1$d %2$d %3$d", profile.getId(), profile.getFirstName(), profile.getLastName());
+		String flName = String.format("id=%1$d %2$d %3$d", profile.getId(), profile.getFirstName(),
+				profile.getLastName());
 		LOGGER.info("User profile updated: {}", flName);
 		userProfileDao.update(profile);
 	}
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
 	public void delete(Long id) {
 		LOGGER.info("User deleted: {}", userCredentialsDao.get(id).getEmail());
 		userProfileDao.delete(id);
-        userCredentialsDao.delete(id);
+		userCredentialsDao.delete(id);
 	}
 
 	@Override
@@ -86,13 +87,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Collection<? extends String> resolveRoles(Long id) {
 		UserCredentials userCredentials = userCredentialsDao.get(id);
-        return Collections.singletonList(userCredentials.getRole().name());
+		return Collections.singletonList(userCredentials.getRole().name());
 	}
 
 	@Override
 	public void update(UserCredentials credentials) {
 		LOGGER.info("User credential updated: {}", credentials.getEmail());
-		userCredentialsDao.update(credentials);		
+		userCredentialsDao.update(credentials);
+	}
+
+	@Override
+	public void setLogingLog(String email, boolean login) {
+		if (login) {
+			LOGGER.info("User login: {}", email);
+		} else{
+			LOGGER.info("User logout: {}", email);
+		}
 	}
 
 }

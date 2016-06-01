@@ -12,52 +12,55 @@ import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.service.UserService;
 
 public class AuthorizedSession extends AuthenticatedWebSession {
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -933259137901929401L;
 
 	@Inject
-    private UserService userService;
+	private UserService userService;
 
-    private UserCredentials loggedUser;
+	private UserCredentials loggedUser;
 
-    private Roles roles;
+	private Roles roles;
 
-    public AuthorizedSession(Request request) {
-        super(request);
-        Injector.get().inject(this);
+	public AuthorizedSession(Request request) {
+		super(request);
+		Injector.get().inject(this);
 
-    }
+	}
 
-    public static AuthorizedSession get() {
-        return (AuthorizedSession) Session.get();
-    }
+	public static AuthorizedSession get() {
+		return (AuthorizedSession) Session.get();
+	}
 
-    @Override
-    public boolean authenticate(final String userName, final String password) {
-        loggedUser = userService.getByNameAndPassword(userName, password);
-        return loggedUser != null;
-    }
+	@Override
+	public boolean authenticate(final String userName, final String password) {
+		loggedUser = userService.getByNameAndPassword(userName, password);
+		if (loggedUser != null) {
+			userService.setLogingLog(loggedUser.getEmail(), true);
+		}
+		return loggedUser != null;
+	}
 
-    @Override
-    public Roles getRoles() {
-        if (isSignedIn() && (roles == null)) {
-            roles = new Roles();
-            roles.addAll(userService.resolveRoles(loggedUser.getId()));
-        }
-        return roles;
-    }
+	@Override
+	public Roles getRoles() {
+		if (isSignedIn() && (roles == null)) {
+			roles = new Roles();
+			roles.addAll(userService.resolveRoles(loggedUser.getId()));
+		}
+		return roles;
+	}
 
-    @Override
-    public void signOut() {
-        super.signOut();
-        loggedUser = null;
-        roles = null;
-    }
+	@Override
+	public void signOut() {
+		super.signOut();
+		loggedUser = null;
+		roles = null;
+	}
 
-    public UserCredentials getLoggedUser() {
-        return loggedUser;
-    }
+	public UserCredentials getLoggedUser() {
+		return loggedUser;
+	}
 
 }

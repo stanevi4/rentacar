@@ -1,5 +1,7 @@
 package by.grodno.ss.rentacar.webapp.page.login;
 
+import javax.inject.Inject;
+
 import org.apache.wicket.Application;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.form.Form;
@@ -16,7 +18,7 @@ public class LoginPage extends AbstractPage {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 9114854893665783937L;
+	private static final long serialVersionUID = 9114854893665783937L;	
 
 	public static final String ID_FORM = "form-login";
 
