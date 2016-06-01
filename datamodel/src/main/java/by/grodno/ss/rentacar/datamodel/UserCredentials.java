@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserCredentials extends AbstractModel {
@@ -17,6 +18,9 @@ public class UserCredentials extends AbstractModel {
 	@Column
     @Enumerated(value = EnumType.ORDINAL)
     private UserRole role;
+	
+	@OneToOne(mappedBy = "userCredentials")
+	private UserProfile userProfile;
 
 	public String getEmail() {
 		return email;
@@ -42,4 +46,11 @@ public class UserCredentials extends AbstractModel {
 		this.role = role;
 	}
 
+	public UserProfile getUserProfile() {
+		return userProfile;
+	}
+
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile;
+	}
 }

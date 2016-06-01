@@ -1,24 +1,24 @@
 package by.grodno.ss.rentacar.webapp.page.login;
 
-import javax.inject.Inject;
-
 import org.apache.wicket.Application;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.string.Strings;
 
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
+import by.grodno.ss.rentacar.webapp.page.register.RegisterPage;
 
 public class LoginPage extends AbstractPage {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 9114854893665783937L;	
+	private static final long serialVersionUID = 9114854893665783937L;
 
 	public static final String ID_FORM = "form-login";
 
@@ -62,6 +62,15 @@ public class LoginPage extends AbstractPage {
 				}
 			}
 		});
+
+		form.add(new Link("link-register") {
+			@Override
+			public void onClick() {
+				setResponsePage(new RegisterPage());
+			}
+
+		});
+
 		form.add(new FeedbackPanel("feedbackpanel"));
 		add(form);
 	}

@@ -1,0 +1,236 @@
+<wicket:panel>
+
+	<div id="pjCrContainer">
+		<div class="sectionBody">
+			<div class="shell">
+				<!-- /.row -->
+
+				<div class="form formPayment">
+					<form wicket:id="form-register" name="crCheckoutForm"
+						class="pjCrFormCheckout" action="" method="post" role="form"
+						data-toggle="validator" novalidate="novalidate">
+
+						<div class="row formInner">
+							<p class="formInnerTitle">Email / password</p>
+							<!-- /.formInnerTitle -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">E-Mail <span class="asterisk">*</span></label> <input
+										id="crEmail" name="c_email"
+										class="form-control email required"
+										data-msg-required="Email is required"
+										data-msg-email="Email is invalid" aria-required="true"
+										type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Password <span class="asterisk">*</span></label>
+									<input name="c_name" class="form-control required"
+										data-msg-required="Password is required" aria-required="true"
+										type="text">
+
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+						</div>
+
+						<div class="row formInner">
+							<p class="formInnerTitle">Personal Details</p>
+							<!-- /.formInnerTitle -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">First Name <span class="asterisk">*</span></label>
+									<input name="c_name" class="form-control required"
+										data-msg-required="Name is required" aria-required="true"
+										type="text">
+
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Last Name <span class="asterisk">*</span></label>
+									<input name="c_name" class="form-control required"
+										data-msg-required="Name is required" aria-required="true"
+										type="text">
+
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Telephone Number <span class="asterisk">*</span></label>
+									<input name="c_phone" class="form-control required"
+										data-msg-required="Phone is required" aria-required="true"
+										type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group dateTimePick">
+									<label for="">Driver's date of birth </label>
+									<div class="input-group datePick">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										</span> <input name="c_dob" class="form-control"
+											data-msg-required="Driver's date of birth is required."
+											readonly="readonly" type="text">
+									</div>
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Driver's licence number </label> <input
+										name="c_licence" class="form-control"
+										data-msg-required="Driver's licence number is required."
+										maxlength="255" type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+						</div>
+						<!-- /.row formInner -->
+						<div class="row formInner"></div>
+						<!-- /.row -->
+
+						<div class="row formInner">
+							<p class="formInnerTitle">Billing Address</p>
+							<!-- /.formInnerTitle -->
+
+
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+								<div class="form-group">
+									<label for="">Address </label> <input name="c_address"
+										class="form-control" data-msg-required="Address is required"
+										type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-6 -->
+							<div class="col-lg-3 col-md-3 col-xs-12">
+								<div class="form-group">
+									<label for="">City </label> <input name="c_city"
+										class="form-control" data-msg-required="City is required"
+										type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+								<div class="form-group">
+									<label for="">County/Region/State </label> <input
+										name="c_state" class="form-control"
+										data-msg-required="City is required" type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+								<div class="form-group">
+									<label for="">Postcode/ZIP Code </label> <input name="c_zip"
+										class="form-control" data-msg-required="City is required"
+										type="text">
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-3 col-md-3 col-sm-4 col-xs-12 -->
+						</div>
+						<!-- /.row formInner -->
+
+						<div class="row formInner">
+							<p class="formInnerTitle">Confirm registration</p>
+							<!-- /.formInnerTitle -->
+						</div>
+						<!-- /.row formInner -->
+
+						<div class="row formInner">
+							<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+								<div class="form-group">
+									<div class="checkbox customCheckbox">
+										<input id="c_agree" name="c_agree" value="1" class="required"
+											data-msg-required="You have to agree to the Booking Conditions"
+											aria-required="true" type="checkbox"> <label
+											for="c_agree"> <span class="customCheckboxFake">
+												<span class="glyphicon glyphicon-ok"></span>
+										</span> I have read and agree to the <a href="terms.html"
+											target="_blank">rentals terms</a>
+										</label>
+									</div>
+									<!-- /.checkbox customCheckbox -->
+									<div class="help-block with-errors">
+										<ul class="list-unstyled"></ul>
+									</div>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-6 col-md-6 col-sm-8 col-xs-12 -->
+						</div>
+						<!-- /.row formInner -->
+
+						<div class="formActions">
+							<button type="button" class="btn btn-primary" id="crBtnConfirm">Register</button>
+
+							<a href="#" class="btn btn-link" id="crBtnBack">Back</a>
+						</div>
+						<!-- /.formActions -->
+						<br>
+						<div class="crError text-danger" style="display: none;"></div>
+					</form>
+					<!-- /.row -->
+
+
+				</div>
+				<!-- /.form formPayment -->
+			</div>
+			<!-- /.shell -->
+		</div>
+		<!-- /.sectionBody -->
+	</div>
+
+</wicket:panel>

@@ -145,8 +145,9 @@ public class TopMenuPanel extends Panel {
 		liLogOut.add(new Link("link-logout") {
 			@Override
 			public void onClick() {
-				userService.setLogingLog(AuthorizedSession.get().getLoggedUser().getEmail(), false);
+				String email = AuthorizedSession.get().getLoggedUser().getEmail();
 				getSession().invalidate();
+				userService.setLogingLog(email, false); //add log string
 				setResponsePage(new HomePage());
 			}
 		});
