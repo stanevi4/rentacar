@@ -27,8 +27,8 @@ public class UserProfile extends AbstractModel {
 	@Column
 	private Date created;
 	
-	@Column
-	private String passportNumber;
+	//@Column
+	//private String passportNumber;
 	
 	@Column
 	private String licenseNumber;
@@ -83,13 +83,13 @@ public class UserProfile extends AbstractModel {
 		this.created = created;
 	}
 
-	public String getPassportNumber() {
-		return passportNumber;
-	}
-
-	public void setPassportNumber(String passportNumber) {
-		this.passportNumber = passportNumber;
-	}
+//	public String getPassportNumber() {
+//		return passportNumber;
+//	}
+//
+//	public void setPassportNumber(String passportNumber) {
+//		this.passportNumber = passportNumber;
+//	}
 
 	public Date getBirthDay() {
 		return birthDay;

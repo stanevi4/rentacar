@@ -51,7 +51,7 @@ public class UserServiceTest {
 
         profile.setFirstName("testFName");
         profile.setLastName("testLName");
-        profile.setPassportNumber("KH6754329");
+        //profile.setPassportNumber("KH6754329");
         String datePattern = "MM.dd.yyyy";
         SimpleDateFormat format = new SimpleDateFormat(datePattern);
         Date date = null;

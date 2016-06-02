@@ -64,31 +64,31 @@ public class RegisterPanel extends Panel {
 		password.setRequired(true);
 		password.add(StringValidator.maximumLength(100));
 		password.add(StringValidator.minimumLength(6));
-		password.add(new PatternValidator("[A-Za-z0-9]+"));
+		password.add(new PatternValidator("[A-Za-z0-9_-]+"));
 		form.add(password);
 
 		TextField<String> firstName = new TextField<String>("firstName", new PropertyModel<>(userProfile, "firstName"));
 		firstName.setRequired(true);
 		firstName.add(StringValidator.maximumLength(100));
 		firstName.add(StringValidator.minimumLength(2));
-		firstName.add(new PatternValidator("[A-Za-z0-9]+"));
+		firstName.add(new PatternValidator("[A-Za-z]+"));
 		form.add(firstName);
 
 		TextField<String> lastName = new TextField<String>("lastName", new PropertyModel<>(userProfile, "lastName"));
 		lastName.setRequired(true);
 		lastName.add(StringValidator.maximumLength(100));
 		lastName.add(StringValidator.minimumLength(2));
-		firstName.add(new PatternValidator("[A-Za-z0-9]+"));
+		firstName.add(new PatternValidator("[A-Za-z]+"));
 		form.add(lastName);
 
 		TextField<String> phone = new TextField<String>("phone", new PropertyModel<>(userProfile, "phoneNumber"));
 		phone.setRequired(true);
 		phone.add(StringValidator.maximumLength(100));
 		phone.add(StringValidator.minimumLength(2));
-		phone.add(new PatternValidator("[0-9]+"));
+		phone.add(new PatternValidator("[0-9+()-]+"));
 		form.add(phone);
 
-		final DateTextFieldConfig config = new DateTextFieldConfig();
+		DateTextFieldConfig config = new DateTextFieldConfig();
 		config.withLanguage(AuthorizedSession.get().getLocale().getLanguage());
 		config.withFormat("dd.MM.yyyy");
 		DateTextField dateBirth = new DateTextField("date-birth", new PropertyModel<>(userProfile, "birthDay"), config);
@@ -104,25 +104,25 @@ public class RegisterPanel extends Panel {
 		TextField<String> address = new TextField<String>("address", new PropertyModel<>(userProfile, "address"));
 		address.add(StringValidator.maximumLength(100));
 		address.add(StringValidator.minimumLength(2));
-		address.add(new PatternValidator("[A-Za-z0-9]+"));
+		address.add(new PatternValidator("[A-Za-z0-9 /-]+"));
 		form.add(address);
 
 		TextField<String> city = new TextField<String>("city", new PropertyModel<>(userProfile, "city"));
 		city.add(StringValidator.maximumLength(100));
 		city.add(StringValidator.minimumLength(2));
-		city.add(new PatternValidator("[A-Za-z]"));
+		city.add(new PatternValidator("[A-Za-z0-9]+"));
 		form.add(city);
 
 		TextField<String> region = new TextField<String>("region", new PropertyModel<>(userProfile, "region"));
 		region.add(StringValidator.maximumLength(100));
 		region.add(StringValidator.minimumLength(2));
-		region.add(new PatternValidator("[A-Za-z]"));
+		region.add(new PatternValidator("[A-Za-z0-9]+"));
 		form.add(region);
 
 		TextField<String> zip = new TextField<String>("zip-code", new PropertyModel<>(userProfile, "zipCode"));
 		zip.add(StringValidator.maximumLength(20));
 		zip.add(StringValidator.minimumLength(2));
-		zip.add(new PatternValidator("[A-Za-z]"));
+		zip.add(new PatternValidator("[0-9]+"));
 		form.add(zip);
 		
 		form.add(new SubmitLink("button-register") {

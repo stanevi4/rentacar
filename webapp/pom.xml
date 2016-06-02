@@ -12,7 +12,6 @@
 	<packaging>war</packaging>
 
 
-
 	<dependencies>
 
 		<dependency>
@@ -74,6 +73,11 @@
 		<dependency>
     	<groupId>de.agilecoders.wicket</groupId>
     		<artifactId>wicket-bootstrap-themes</artifactId>
+    		<version>0.10.6</version>
+		</dependency>
+		<dependency>
+    		<groupId>de.agilecoders.wicket</groupId>
+    		<artifactId>wicket-bootstrap-less</artifactId>
     		<version>0.10.6</version>
 		</dependency>
 		<!-- wicket bootstrap extention -->
