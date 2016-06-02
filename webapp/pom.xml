@@ -60,7 +60,24 @@
 			<artifactId>jetty-jmx</artifactId>
 		</dependency>
 
-
+		<!-- wicket bootstrap extention -->
+		<dependency>
+			<groupId>de.agilecoders.wicket</groupId>
+			<artifactId>wicket-bootstrap-core</artifactId>
+			<version>0.10.6</version>
+		</dependency>
+		<dependency>
+    		<groupId>de.agilecoders.wicket</groupId>
+    		<artifactId>wicket-bootstrap-extensions</artifactId>
+    		<version>0.10.6</version>
+		</dependency>
+		<dependency>
+    	<groupId>de.agilecoders.wicket</groupId>
+    		<artifactId>wicket-bootstrap-themes</artifactId>
+    		<version>0.10.6</version>
+		</dependency>
+		<!-- wicket bootstrap extention -->
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>

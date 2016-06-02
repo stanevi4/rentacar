@@ -2,8 +2,6 @@ package by.grodno.ss.rentacar.webapp.page.register;
 
 import javax.inject.Inject;
 
-import org.apache.wicket.extensions.markup.html.form.DateTextField;
-import org.apache.wicket.extensions.yui.calendar.DatePicker;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
@@ -18,7 +16,10 @@ import org.apache.wicket.validation.validator.StringValidator;
 import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
 import by.grodno.ss.rentacar.service.UserService;
+import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.home.HomePage;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 
 public class RegisterPanel extends Panel {
 	/**
@@ -28,9 +29,10 @@ public class RegisterPanel extends Panel {
 	
 	@Inject
 	private UserService userService;
-	
 	private UserProfile userProfile;
 	private UserCredentials userCredentials;
+	
+	
 
 	public RegisterPanel(String id, UserCredentials userCredentials) {
 		super(id);
@@ -86,8 +88,10 @@ public class RegisterPanel extends Panel {
 		phone.add(new PatternValidator("[0-9]+"));
 		form.add(phone);
 
-		DateTextField dateBirth = new DateTextField("date-birth", new PropertyModel<>(userProfile, "birthDay"));
-		dateBirth.add(new DatePicker());
+		final DateTextFieldConfig config = new DateTextFieldConfig();
+		config.withLanguage(AuthorizedSession.get().getLocale().getLanguage());
+		config.withFormat("dd.MM.yyyy");
+		DateTextField dateBirth = new DateTextField("date-birth", new PropertyModel<>(userProfile, "birthDay"), config);
 		form.add(dateBirth);
 
 		TextField<String> licNumber = new TextField<String>("lic-number",

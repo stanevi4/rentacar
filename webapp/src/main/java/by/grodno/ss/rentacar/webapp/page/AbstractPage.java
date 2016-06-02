@@ -7,8 +7,12 @@ import by.grodno.ss.rentacar.webapp.component.footer.FooterPanel;
 import by.grodno.ss.rentacar.webapp.component.menu.TopMenuPanel;
 
 public abstract class AbstractPage extends WebPage{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    public AbstractPage() {
+	public AbstractPage() {
     	super();
     }
 
@@ -24,16 +28,25 @@ public abstract class AbstractPage extends WebPage{
         
         add(new FooterPanel("footer-panel", this.getClass()));
 
-        //AbstractReadOnlyModel<Integer> yearModel = new AbstractReadOnlyModel<Integer>() {
-        //    @Override
-        //    public Integer getObject() {
-        //        return Calendar.getInstance().get(Calendar.YEAR);
-        //    }
         };
 
-       // WebMarkupContainer footer = new WebMarkupContainer("footer");
-       // add(footer);
-       // footer.add(new Label("current-year", yearModel));
-       // footer.add(AttributeModifier.append("onclick", "alert('Im clicked')"));
-    //}
+//	@Override
+//	public void renderHead(IHeaderResponse response) {
+//		super.renderHead(response);
+		
+		//CSS
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/style.css"))));
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/bootstrap.min.css"))));
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/theme2.css"))));
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/template.css"))));
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/bootstrap-datetimepicker.min.css"))));
+//		response.render(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url.parse("css/owl.carousel.css"))));
+		
+		//JS
+		//response.render(JavaScriptHeaderItem.forReference(Application.get().getJavaScriptLibrarySettings().getJQueryReference()));
+		//response.render(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url.parse("js/jquery.min.js"))));
+		//response.render(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url.parse("js/bootstrap.min.js"))));
+		//response.render(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url.parse("js/moment-with-locales.min.js"))));
+		//response.render(JavaScriptHeaderItem.forReference(new UrlResourceReference(Url.parse("js/bootstrap-datetimepicker.min.js"))));
+//	}
 }
