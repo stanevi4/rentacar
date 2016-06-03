@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
+import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
@@ -70,17 +71,17 @@ public class TopMenuPanel extends Panel {
 		});
 		add(liReservations);
 		
-		WebMarkupContainer liAboutUs = new WebMarkupContainer("link-container-about-us");
-		if (selectedPage.equals(AboutUsPage.class)) {
-			liAboutUs.add(new AttributeModifier("class", "active"));
-		}
-		liAboutUs.add(new Link("link-about-us") {
-			@Override
-			public void onClick() {
-				setResponsePage(new AboutUsPage());
-			}
-		});
-		add(liAboutUs);
+//		WebMarkupContainer liAboutUs = new WebMarkupContainer("link-container-about-us");
+//		if (selectedPage.equals(AboutUsPage.class)) {
+//			liAboutUs.add(new AttributeModifier("class", "active"));
+//		}
+//		liAboutUs.add(new Link("link-about-us") {
+//			@Override
+//			public void onClick() {
+//				setResponsePage(new AboutUsPage());
+//			}
+//		});
+//		add(liAboutUs);
 
 		WebMarkupContainer liServices = new WebMarkupContainer("link-container-services");
 		if (selectedPage.equals(ServicesPage.class)) {
@@ -155,5 +156,25 @@ public class TopMenuPanel extends Panel {
 		});
 		liLogOut.setVisible(AuthorizedSession.get().isSignedIn());
 		add(liLogOut);
+		
+		WebMarkupContainer liBookings = new WebMarkupContainer("link-container-bookings");
+		liBookings.add(new Link("link-bookings") {
+			@Override
+			public void onClick() {
+				//setResponsePage(new HomePage());
+			}
+		});
+		liBookings.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.CLIENT));
+		add(liBookings);
+		
+		WebMarkupContainer liAdmin = new WebMarkupContainer("link-container-admin");
+		liAdmin.add(new Link("link-admin") {
+			@Override
+			public void onClick() {
+				//setResponsePage(new HomePage());
+			}
+		});
+		liAdmin.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
+		add(liAdmin);
 	}
 }
