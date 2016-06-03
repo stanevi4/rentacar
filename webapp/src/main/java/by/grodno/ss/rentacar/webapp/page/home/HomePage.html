@@ -35,81 +35,7 @@
 	</div>
 </section>
 
-<section class="section-form4">
-	<div class="shell">
-		<div class="form formFilter">
-			<form wicket:id="form-search" action="" id="crFormSearch" method="post">
-				<div class="formBody">
-					<div class="row">
-						<div class="col-lg-3 col-xs-6">
-							<div class="form-group dateTimePick dateTimePickFrom" id="dateTimePickFrom">
-								<label for=""><span class="wc-editable" data-pk="ws_pickup_date_time" data-type="text">Pick-up Date/Time</span></label>
-								<div class="input-group datePick datePickFrom">
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-									</span>
-									<input type="text" id="cr_date_from" name="date_from" class="form-control" readonly="readonly">
-								</div>
-							</div>
-
-						</div>
-					
-						<div class="col-lg-3 col-xs-6">
-							<div class="form-group dateTimePick dateTimePickTo" id="dateTimePickTo">
-								<label for=""><span class="wc-editable" data-pk="ws_return_date_time" data-type="text">Return Date/Time</span></label>
-								<div class="input-group datePick datePickTo">
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-									</span>
-									<input type="text" id="cr_date_to" name="date_to" class="form-control" readonly="readonly">
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-3 col-xs-6">
-							<div class="form-group">
-								<label for=""><span class="wc-editable" data-pk="ws_pickup_location" data-type="text">Pick-up location</span></label>
-					
-								<select name="pickup_id" id="cr_pickup_id" class="form-control">
-									<option value="1">Hogarth Road, London</option><option value="2">Walton Street, London</option>								</select>
-					
-								<p>
-									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-									<span class="wc-editable" data-pk="ws_cannot_find_location" data-type="text">Can't find the location?</span> <a href="locations.html">View Map</a>
-								</p>
-								
-							</div>
-						</div>
-						<div class="col-lg-3 col-xs-6">
-							<div class="form-group returnLocationDisabled" id="returnLocation">
-								<label for=""><span class="wc-editable" data-pk="ws_return_location" data-type="text">Return location</span></label>
-					
-								<select name="return_id" id="cr_return_id" class="form-control" disabled="">
-								<option value="1">Hogarth Road, London</option><option value="2">Walton Street, London</option>								</select>
-					
-								<div class="checkbox customCheckbox customInputChecked">
-									<input type="checkbox" name="same_location" id="cr_same_location" value="1" checked="checked"> <span class="wc-editable" data-pk="ws_same_as_pickup_location" data-type="text">Same as the pick-up location</span>					
-									<label for="cr_same_location">
-										<span class="customCheckboxFake">
-											<span class="glyphicon glyphicon-ok"></span>
-										</span>
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="formFilterAction">
-						<button wicket:id="submit-search" type="submit" class="btn btn-primary btn-lg">get a quote now</button>
-					</div><!-- /.text-center -->
-
-					<p class="crError text-danger" style="display: none;"></p>
-				</div>
-			</form>
-			
-		</div>
-	</div><!-- /.shell -->
-</section><!-- /.section-form -->
+<wicket:container wicket:id="reservation-panel"></wicket:container>
 
 <section class="section section-offers4">
 	<div class="shell">
@@ -215,15 +141,5 @@
 		</div><!-- /.row -->
 	</div><!-- /.shell -->
 </section>
-
-<script type="text/javascript">
-    $(function () {
-    	var today = new Date();
-    	tomorrow = new Date();
-		tomorrow.setDate(tomorrow.getDate() + 1);
-      	$('#dateTimePickFrom').datetimepicker({language: 'ru',sideBySide: true, defaultDate: today, minuteStepping:10 ,allowInputToggle: true,ignoreReadonly: true});
-      	$('#dateTimePickTo').datetimepicker({language: 'ru',  sideBySide: true, defaultDate: tomorrow, minuteStepping:10 ,allowInputToggle: true,ignoreReadonly: true});
-    });
-</script>
 
 </wicket:extend>

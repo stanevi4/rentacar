@@ -6,7 +6,9 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
@@ -63,7 +65,7 @@ public class TopMenuPanel extends Panel {
 		liReservations.add(new Link("link-reservations") {
 			@Override
 			public void onClick() {
-				setResponsePage(new ReservationPage());
+				setResponsePage(new ReservationPage(new CarFilter()));
 			}
 		});
 		add(liReservations);

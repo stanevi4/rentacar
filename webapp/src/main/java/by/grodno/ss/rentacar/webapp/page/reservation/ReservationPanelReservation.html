@@ -1,0 +1,115 @@
+<wicket:panel>
+
+	<div id="pjCrContainer">
+		<div class="sectionBody">
+			<div class="shell">
+				<div class="form formReservation">
+					<form wicket:id="form-search" method="post">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="form-group dateTimePick dateTimePickFrom">
+									<label for=""><span class="wc-editable"
+										data-pk="ws_pickup_date_time" data-type="text">Pick-up
+											Date/Time</span></label>
+
+									<div class="input-group datePick datePickFrom">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										</span> <input wicket:id="dateFrom" type="text" class="form-control">
+									</div>
+									<!-- /.input-group datePick datePickFrom -->
+
+									<!-- /.row -->
+								</div>
+								<!-- /.form-group dateTimePick dateTimePickFrom -->
+							</div>
+							<!-- /.col-lg-6 col-md-6 col-sm-6 col-xs-12 -->
+
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="form-group dateTimePick dateTimePickTo">
+									<label for=""><span class="wc-editable"
+										data-pk="ws_return_date_time" data-type="text">Return
+											Date/Time</span></label>
+
+									<div class="input-group datePick datePickTo">
+										<span class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+										</span> <input wicket:id="dateTo" type="text" class="form-control">
+									</div>
+
+									<!-- /.row -->
+								</div>
+								<!-- /.form-group dateTimePick dateTimePickTo -->
+							</div>
+							<!-- /.col-lg-6 col-md-6 col-sm-6 col-xs-12 -->
+						</div>
+						<!-- /.row -->
+
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="form-group">
+									<label for=""><span class="wc-editable"
+										data-pk="ws_pickup_location" data-type="text">Pick-up
+											location</span></label> <select name="pickup_id" id="cr_pickup_id"
+										class="form-control">
+										<option value="1">Hogarth Road, London</option>
+										<option value="2">Walton Street, London</option>
+									</select>
+
+									<p>
+										<span class="glyphicon glyphicon-map-marker"
+											aria-hidden="true"></span> <span class="wc-editable"
+											data-pk="ws_cannot_find_location" data-type="text">Can't
+											find the location?</span> <a href="locations.html">View Map</a>
+									</p>
+								</div>
+								<!-- /.form-group -->
+							</div>
+							<!-- /.col-lg-6 col-md-6 col-sm-6 col-xs-12 -->
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="form-group" id="returnLocation">
+									<label for=""><span class="wc-editable"
+										data-pk="ws_return_location" data-type="text">Return
+											location</span></label> <select name="return_id" id="cr_return_id"
+										class="form-control" disabled="disabled">
+										<option value="1">Hogarth Road, London</option>
+										<option value="2">Walton Street, London</option>
+									</select>
+
+									<div class="checkbox customCheckbox customInputChecked">
+										<input type="checkbox" name="same_location"
+											id="cr_same_location" value="1" checked="checked"> <label
+											for="cr_same_location"> <span
+											class="customCheckboxFake"> <span
+												class="glyphicon glyphicon-ok"></span>
+										</span> <span class="wc-editable"
+											data-pk="ws_same_as_pickup_location" data-type="text">Same
+												as the pick-up location</span></label>
+									</div>
+									<!-- /.checkbox customCheckbox -->
+								</div>
+								<!-- /#returnLocation.form-group -->
+							</div>
+							<!-- /.col-lg-6 col-md-6 col-sm-6 col-xs-12 -->
+						</div>
+						<!-- /.row -->
+
+						<div class="form-group text-center">
+							<button wicket:id="submit-search" type="submit"
+								class="btn btn-primary" id="crBtnQuote">Make
+								reservation</button>
+						</div>
+						<!-- /.form-group text-center -->
+
+						<p wicket:id="feedbackpanel"
+							class="crError text-danger text-center" style="display: block;"></p>
+					</form>
+				</div>
+				<!-- /.form formReservation -->
+			</div>
+			<!-- /.shell -->
+		</div>
+		<!-- /.sectionBody -->
+	</div>
+
+</wicket:panel>

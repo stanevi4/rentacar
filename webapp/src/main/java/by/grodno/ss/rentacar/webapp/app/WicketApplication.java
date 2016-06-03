@@ -17,6 +17,7 @@ import de.agilecoders.wicket.core.settings.ThemeProvider;
 import de.agilecoders.wicket.less.BootstrapLess;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
+import de.agilecoders.wicket.webjars.WicketWebjars;
 
 @Component("wicketWebApplicationBean")
 public class WicketApplication extends AuthenticatedWebApplication {
@@ -41,7 +42,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         getSecuritySettings().setAuthorizationStrategy(new AnnotationsRoleAuthorizationStrategy(this));
         
-        configureBootstrap();
+        configureBootstrap();  //добавил ништячков
         
         // mount
         mountPage("/home", HomePage.class);
@@ -76,9 +77,11 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
 		final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Spacelab);
 		settings.setThemeProvider(themeProvider);
-
+		
 		Bootstrap.install(this, settings);
 		BootstrapLess.install(this);
+		WicketWebjars.install(this);
+
 	}
 
 }

@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.about.AboutUsPage;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
@@ -53,7 +54,7 @@ public class FooterPanel extends Panel{
 		liReservations.add(new Link("link-reservations") {
 			@Override
 			public void onClick() {
-				setResponsePage(new ReservationPage());
+				setResponsePage(new ReservationPage(new CarFilter()));
 			}
 		});
 		add(liReservations);

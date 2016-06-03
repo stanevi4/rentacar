@@ -32,11 +32,11 @@ public class Order extends AbstractModel {
 	private Date dateTo;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "location_id", nullable = false)
+	//@JoinColumn(name = "location_id", nullable = false)
 	private Location locationFrom;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "location_id", nullable = false)
+	//@JoinColumn(name = "location_id", nullable = false)
 	private Location locationTo;
 
 	@Column

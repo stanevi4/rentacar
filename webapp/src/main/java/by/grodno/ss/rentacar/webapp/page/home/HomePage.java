@@ -1,13 +1,13 @@
 package by.grodno.ss.rentacar.webapp.page.home;
-
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.SubmitLink;
-
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
-import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
 
 public class HomePage extends AbstractPage {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public HomePage() {
 		super();
 	}
@@ -16,15 +16,8 @@ public class HomePage extends AbstractPage {
 	protected void onInitialize() {
 		super.onInitialize();
 
-		Form<Void> form = new Form<Void>("form-search");
-		form.add(new SubmitLink("submit-search") {
-			@Override
-			public void onSubmit() {
-				super.onSubmit();
-				setResponsePage(new ChooseCarPage());
-			}
-		});
-		add(form);
+		add(new ReservationPanelHome("reservation-panel", new CarFilter()));
+
 	}
 
 }

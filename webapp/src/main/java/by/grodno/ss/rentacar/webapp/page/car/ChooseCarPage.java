@@ -8,6 +8,10 @@ import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.order.CheckoutPage;
 
 public class ChooseCarPage extends AbstractPage {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public ChooseCarPage() {
 		super();
@@ -23,6 +27,11 @@ public class ChooseCarPage extends AbstractPage {
 
 		Form<Void> form = new Form<Void>("form-submit-continue");
 		form.add(new SubmitLink("submit-continue") {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
