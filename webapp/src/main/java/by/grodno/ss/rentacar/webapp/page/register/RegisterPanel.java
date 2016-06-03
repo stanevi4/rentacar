@@ -17,7 +17,7 @@ import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
-import by.grodno.ss.rentacar.webapp.page.home.HomePage;
+import by.grodno.ss.rentacar.webapp.page.login.LoginPage;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
 
@@ -135,7 +135,7 @@ public class RegisterPanel extends Panel {
 					userService.update(userProfile);
 					userService.update(userCredentials);
 				}
-				setResponsePage(new HomePage());
+				setResponsePage(new LoginPage());
 			}
 		});
 		add(form);

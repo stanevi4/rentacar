@@ -1,6 +1,6 @@
 package by.grodno.ss.rentacar.datamodel;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +18,10 @@ public class Car extends AbstractModel {
 	@ManyToOne(targetEntity = Model.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "model_id", nullable = false)
 	private Model model;
+	
+	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "location_id", nullable = false)
+	private Location location;
 	
 	@Column
 	private String regNumber;
@@ -43,9 +46,9 @@ public class Car extends AbstractModel {
 	@Enumerated(value = EnumType.STRING)
 	private CarStatus carStatus;
 	
-	@OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
-	private List<Price> price;
-
+	@Column
+	private BigDecimal price;
+	
 	public Model getModel() {
 		return model;
 	}
@@ -110,12 +113,20 @@ public class Car extends AbstractModel {
 		this.carStatus = carStatus;
 	}
 
-	public List<Price> getPrice() {
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(List<Price> price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-
+	
 }
