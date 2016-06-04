@@ -6,14 +6,13 @@ import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
-import by.grodno.ss.rentacar.webapp.page.about.AboutUsPage;
+import by.grodno.ss.rentacar.webapp.page.admin.AdminPage;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
 import by.grodno.ss.rentacar.webapp.page.contact.ContactUsPage;
 import by.grodno.ss.rentacar.webapp.page.faq.FaqPage;
@@ -158,6 +157,9 @@ public class TopMenuPanel extends Panel {
 		add(liLogOut);
 		
 		WebMarkupContainer liBookings = new WebMarkupContainer("link-container-bookings");
+//		if (selectedPage.equals(ContactUsPage.class)) {
+//			liContactUs.add(new AttributeModifier("class", "active"));
+//		}
 		liBookings.add(new Link("link-bookings") {
 			@Override
 			public void onClick() {
@@ -168,10 +170,13 @@ public class TopMenuPanel extends Panel {
 		add(liBookings);
 		
 		WebMarkupContainer liAdmin = new WebMarkupContainer("link-container-admin");
+		if (selectedPage.equals(AdminPage.class)) {
+			liAdmin.add(new AttributeModifier("class", "active"));
+		}
 		liAdmin.add(new Link("link-admin") {
 			@Override
 			public void onClick() {
-				//setResponsePage(new HomePage());
+				setResponsePage(new AdminPage());
 			}
 		});
 		liAdmin.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
