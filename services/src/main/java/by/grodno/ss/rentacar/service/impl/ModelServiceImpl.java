@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import by.grodno.ss.rentacar.dataaccess.BrandDao;
 import by.grodno.ss.rentacar.dataaccess.ModelDao;
 import by.grodno.ss.rentacar.datamodel.Model;
 import by.grodno.ss.rentacar.service.ModelService;

@@ -63,6 +63,18 @@ public class AdminPage extends AbstractPage {
 			}
 		});
 		
+		menu.add(new AjaxLink<Void>("models-link") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				Panel modelsPanel = new CarsEditPanel(replacedPanel.getId());
+				modelsPanel.setOutputMarkupId(true);
+				replacedPanel.replaceWith(modelsPanel);
+				target.add(modelsPanel);
+				replacedPanel = modelsPanel;
+			}
+		});
+		
 		menu.add(new AjaxLink<Void>("cars-link") {
 			private static final long serialVersionUID = 1L;
 			@Override

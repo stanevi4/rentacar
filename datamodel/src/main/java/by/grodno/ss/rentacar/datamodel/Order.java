@@ -51,9 +51,6 @@ public class Order extends AbstractModel {
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
 	private List<Damage> damage;
 
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<OrderHistory> orderHistory;
-
 	@Column
 	@Enumerated(value = EnumType.STRING)
 	private OrderStatus orderStatus;
@@ -150,14 +147,6 @@ public class Order extends AbstractModel {
 
 	public void setReason(Reason reason) {
 		this.reason = reason;
-	}
-
-	public List<OrderHistory> getOrderHistory() {
-		return orderHistory;
-	}
-
-	public void setOrderHistory(List<OrderHistory> orderHistory) {
-		this.orderHistory = orderHistory;
 	}
 
 	public Invoice getInvoice() {
