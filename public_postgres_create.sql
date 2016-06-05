@@ -122,7 +122,7 @@ CREATE TABLE "setting" (
 	"min_booking_length" integer NOT NULL DEFAULT '0',
 	"car_while_pending" integer NOT NULL DEFAULT '0',
 	"deposit_payment" integer NOT NULL DEFAULT '10',
-	"currency" character varying NOT NULL DEFAULT 'USD',
+	"currency" integer NOT NULL,
 	CONSTRAINT setting_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE

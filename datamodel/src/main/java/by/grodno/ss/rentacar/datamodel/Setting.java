@@ -2,6 +2,8 @@ package by.grodno.ss.rentacar.datamodel;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,8 @@ public class Setting extends AbstractModel {
 	private Integer depositPayment;
 
 	@Column
-	private String currency;
+	@Enumerated(value = EnumType.ORDINAL)
+	private Currency currency;
 
 	public Integer getMinBookingLength() {
 		return minBookingLength;
@@ -44,11 +47,11 @@ public class Setting extends AbstractModel {
 		this.depositPayment = depositPayment;
 	}
 
-	public String getCurrency() {
+	public Currency getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(String currency) {
+	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
 

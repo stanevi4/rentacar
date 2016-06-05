@@ -210,7 +210,6 @@
 				<version>${jetty9.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
 
 		</dependencies>
 	</dependencyManagement>
