@@ -1,5 +1,5 @@
 package by.grodno.ss.rentacar.service;
 
-public interface DamageService {
+public interface SettingService {
 
 }

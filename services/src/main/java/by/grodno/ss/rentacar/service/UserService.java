@@ -36,5 +36,5 @@ public interface UserService {
     @Transactional
     void update(UserCredentials credentials);
     
-    void setLogingLog(String email, boolean login);
+    void setLog(String email, boolean login);
 }

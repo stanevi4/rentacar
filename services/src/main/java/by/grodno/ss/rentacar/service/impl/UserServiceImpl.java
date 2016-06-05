@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void setLogingLog(String email, boolean login) {
+	public void setLog(String email, boolean login) {
 		if (login) {
 			LOGGER.info("User login: {}", email);
 		} else{

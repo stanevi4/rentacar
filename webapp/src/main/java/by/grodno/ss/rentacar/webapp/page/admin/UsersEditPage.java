@@ -1,22 +1,19 @@
 package by.grodno.ss.rentacar.webapp.page.admin;
 
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-public class UsersEditPanel extends Panel {
+public class UsersEditPage extends AdminPage {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public UsersEditPanel(String id) {
-		super(id);
-		// TODO Auto-generated constructor stub
+	public UsersEditPage() {
+		super();
 	}
 
-	public UsersEditPanel(String id, IModel<?> model) {
-		super(id, model);
-		// TODO Auto-generated constructor stub
+	public UsersEditPage(PageParameters parameters) {
+		super(parameters);
 	}
 
 }

@@ -38,7 +38,7 @@ public class AuthorizedSession extends AuthenticatedWebSession {
 	public boolean authenticate(final String userName, final String password) {
 		loggedUser = userService.getByNameAndPassword(userName, password);
 		if (loggedUser != null) {
-			userService.setLogingLog(loggedUser.getEmail(), true);
+			userService.setLog(loggedUser.getEmail(), true);
 		}
 		return loggedUser != null;
 	}

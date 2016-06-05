@@ -17,26 +17,20 @@
 
 							<table class="table table-striped">
 								<tr>
-									<td wicket:id="menu" width="20%">
-										<ul class="nav navbar">
-											<li><a wicket:id="settings-link">Settings</a></li>
-											<li><a wicket:id="reservations-link">Reservations</a></li>
-											<li><a wicket:id="models-link">Cars</a></li>
-											<li><a wicket:id="cars-link">Cars</a></li>
-											<li><a wicket:id="locations-link">Locations</a></li>
-											<li><a wicket:id="users-link">Users</a></li>
-										</ul>
-									</td>
 									
-
+									<wicket:container wicket:id="admin-menu"></wicket:container>
+									
 									<td>
-										<div wicket:id="replaced-panel"></div>
+										
+										<wicket:child/>
+									
 									</td>
 									
 
 								</tr>
 							</table>
-							<div wicket:id="feedbackpanel" class="crError text-danger"></div>
+							
+							
 						</div>
 					</div>
 				</div>

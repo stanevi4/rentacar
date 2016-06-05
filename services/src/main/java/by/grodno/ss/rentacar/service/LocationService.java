@@ -1,5 +1,5 @@
 package by.grodno.ss.rentacar.service;
 
-public interface OrderHistoryService {
+public interface LocationService {
 
 }

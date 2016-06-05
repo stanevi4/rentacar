@@ -26,18 +26,18 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public void update(Car car) {
 		carDao.update(car);
-		LOGGER.info("Car updated: {}", car.getModel().getModelName());
+		LOGGER.info("Car updated: {}", car.getName());
 	}
 
 	@Override
 	public void register(Car car) {
 		carDao.insert(car);
-		LOGGER.info("Model registered: {}", car.getModel().getModelName());
+		LOGGER.info("Model registered: {}", car.getName());
 	}
 
 	@Override
 	public void delete(Long id) {
-		LOGGER.info("Model deleted: {}", carDao.get(id).getModel().getModelName());
+		LOGGER.info("Model deleted: {}", carDao.get(id).getName());
 		carDao.delete(id);
 	}
 

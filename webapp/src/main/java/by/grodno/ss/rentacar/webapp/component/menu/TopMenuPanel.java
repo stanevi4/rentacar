@@ -13,6 +13,7 @@ import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.admin.AdminPage;
+import by.grodno.ss.rentacar.webapp.page.admin.SettingEditPage;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
 import by.grodno.ss.rentacar.webapp.page.contact.ContactUsPage;
 import by.grodno.ss.rentacar.webapp.page.faq.FaqPage;
@@ -149,7 +150,7 @@ public class TopMenuPanel extends Panel {
 			public void onClick() {
 				String email = AuthorizedSession.get().getLoggedUser().getEmail();
 				getSession().invalidate();
-				userService.setLogingLog(email, false); //add log string
+				userService.setLog(email, false); //add log string
 				setResponsePage(new HomePage());
 			}
 		});
@@ -170,13 +171,13 @@ public class TopMenuPanel extends Panel {
 		add(liBookings);
 		
 		WebMarkupContainer liAdmin = new WebMarkupContainer("link-container-admin");
-		if (selectedPage.equals(AdminPage.class)) {
+		if (AdminPage.class.isAssignableFrom(selectedPage)) {
 			liAdmin.add(new AttributeModifier("class", "active"));
 		}
 		liAdmin.add(new Link("link-admin") {
 			@Override
 			public void onClick() {
-				setResponsePage(new AdminPage());
+				setResponsePage(new SettingEditPage());
 			}
 		});
 		liAdmin.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));

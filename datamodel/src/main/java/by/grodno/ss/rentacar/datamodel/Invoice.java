@@ -5,36 +5,23 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "invoice")
 public class Invoice extends AbstractModel {
 
 	@Column
 	private Date created;
 	
 	@Column
-	private String checkNumber;
-	
-	@Column
 	private BigDecimal summ;
 	
 	@Column
-	private String reason;
+	private String note;
 	
 	public Date getCreated() {
 		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public String getCheckNumber() {
-		return checkNumber;
-	}
-
-	public void setCheckNumber(String checkNumber) {
-		this.checkNumber = checkNumber;
 	}
 
 	public BigDecimal getSumm() {
@@ -45,12 +32,16 @@ public class Invoice extends AbstractModel {
 		this.summ = summ;
 	}
 
-	public String getReason() {
-		return reason;
+	public String getNote() {
+		return note;
 	}
 
-	public void setReason(String reason) {
-		this.reason = reason;
+	public void setNote(String note) {
+		this.note = note;
 	}
 
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+	
 }

@@ -2,28 +2,27 @@ package by.grodno.ss.rentacar.datamodel;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "order")
 public class Order extends AbstractModel {
 
+	@Column
+	private Date created;
+	
 	@ManyToOne(targetEntity = UserProfile.class, fetch = FetchType.LAZY)
 	private UserProfile client;
 
 	@ManyToOne(targetEntity = Car.class, fetch = FetchType.LAZY)
 	private Car car;
-
-	@Column
-	private Date created;
 
 	@Column
 	private Date dateFrom;
@@ -32,34 +31,37 @@ public class Order extends AbstractModel {
 	private Date dateTo;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
-	//@JoinColumn(name = "location_id", nullable = false)
 	private Location locationFrom;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
-	//@JoinColumn(name = "location_id", nullable = false)
 	private Location locationTo;
-
-	@Column
-	private String contract;
-
+	
 	@Column
 	private BigDecimal summ;
-
-	@Column
-	private String note;
-
-	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-	private List<Damage> damage;
-
-	@Column
-	@Enumerated(value = EnumType.STRING)
-	private OrderStatus orderStatus;
-
+	
 	@ManyToOne(targetEntity = Reason.class, fetch = FetchType.LAZY)
 	private Reason reason;
 
 	@ManyToOne(targetEntity = Invoice.class, fetch = FetchType.LAZY)
 	private Invoice invoice;
+
+	@Column
+	private String damage;
+	
+	@Column
+	private String note;
+
+	@Column
+	@Enumerated(value = EnumType.STRING)
+	private OrderStatus orderStatus;
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 
 	public UserProfile getClient() {
 		return client;
@@ -75,14 +77,6 @@ public class Order extends AbstractModel {
 
 	public void setCar(Car car) {
 		this.car = car;
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
 	}
 
 	public Date getDateFrom() {
@@ -101,12 +95,20 @@ public class Order extends AbstractModel {
 		this.dateTo = dateTo;
 	}
 
-	public String getContract() {
-		return contract;
+	public Location getLocationFrom() {
+		return locationFrom;
 	}
 
-	public void setContract(String contract) {
-		this.contract = contract;
+	public void setLocationFrom(Location locationFrom) {
+		this.locationFrom = locationFrom;
+	}
+
+	public Location getLocationTo() {
+		return locationTo;
+	}
+
+	public void setLocationTo(Location locationTo) {
+		this.locationTo = locationTo;
 	}
 
 	public BigDecimal getSumm() {
@@ -115,30 +117,6 @@ public class Order extends AbstractModel {
 
 	public void setSumm(BigDecimal summ) {
 		this.summ = summ;
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	public List<Damage> getDamage() {
-		return damage;
-	}
-
-	public void setDamage(List<Damage> damage) {
-		this.damage = damage;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public Reason getReason() {
@@ -155,6 +133,30 @@ public class Order extends AbstractModel {
 
 	public void setInvoice(Invoice invoice) {
 		this.invoice = invoice;
+	}
+
+	public String getDamage() {
+		return damage;
+	}
+
+	public void setDamage(String damage) {
+		this.damage = damage;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public OrderStatus getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 }

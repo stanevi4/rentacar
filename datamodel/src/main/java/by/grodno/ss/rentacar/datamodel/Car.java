@@ -1,7 +1,5 @@
 package by.grodno.ss.rentacar.datamodel;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,14 +12,21 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "car")
 public class Car extends AbstractModel {
-
-	@ManyToOne(targetEntity = Model.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "model_id", nullable = false)
-	private Model model;
+	
+	@Column
+	private String name;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "location_id", nullable = false)
 	private Location location;
+	
+	@ManyToOne(targetEntity = Type.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "type_id", nullable = false)
+	private Type type;
+	
+	@Column
+	@Enumerated(value = EnumType.STRING)
+	private CarStatus carStatus;
 	
 	@Column
 	private String regNumber;
@@ -30,31 +35,41 @@ public class Car extends AbstractModel {
 	private Integer yearProdaction;
 	
 	@Column
-	@Enumerated(value = EnumType.STRING)
-	private TransmissionType transmissionType;
-	
-	@Column
-	private Integer power;
-	
-	@Column
 	private String description;
 	
 	@Column
 	private String image;
-	
-	@Column
-	@Enumerated(value = EnumType.STRING)
-	private CarStatus carStatus;
-	
-	@Column
-	private BigDecimal price;
-	
-	public Model getModel() {
-		return model;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setModel(Model model) {
-		this.model = model;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public CarStatus getCarStatus() {
+		return carStatus;
+	}
+
+	public void setCarStatus(CarStatus carStatus) {
+		this.carStatus = carStatus;
 	}
 
 	public String getRegNumber() {
@@ -73,22 +88,6 @@ public class Car extends AbstractModel {
 		this.yearProdaction = yearProdaction;
 	}
 
-	public TransmissionType getTransmissionType() {
-		return transmissionType;
-	}
-
-	public void setTransmissionType(TransmissionType transmissionType) {
-		this.transmissionType = transmissionType;
-	}
-
-	public Integer getPower() {
-		return power;
-	}
-
-	public void setPower(Integer power) {
-		this.power = power;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -103,30 +102,6 @@ public class Car extends AbstractModel {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public CarStatus getCarStatus() {
-		return carStatus;
-	}
-
-	public void setCarStatus(CarStatus carStatus) {
-		this.carStatus = carStatus;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
 	}
 	
 }
