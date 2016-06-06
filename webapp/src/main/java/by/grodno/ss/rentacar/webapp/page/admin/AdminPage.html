@@ -1,42 +1,37 @@
 <wicket:extend>
 
-	<div class="main">
-		<div class="section">
-			<div class="sectionBody">
+<div class="main">
+	<section class="section">
+			
+		<header class="page-header sectionHead">
+			<div class="shell">
+				<h1 class="sectionTitle"><span>Admin panel</span></h1>
+				<div class="sectionHeadParagraph"><span>Replace the dummy content here with your own.</span></div>
+			</div>
+		</header>
 
-				<header class="page-header sectionHead">
-					<div class="shell">
-						<h1 class="sectionTitle"><span>Admin panel</span></h1>
-						<div class="sectionHeadParagraph"><span>Replace the dummy content here with your own.</span></div>
-					</div>
-				</header>
-
+			<div id="pjCrContainer">
 				<div class="sectionBody">
 					<div class="shell">
-						<div class="row col-md-12">
+						<div class="form formPayment">
 
 							<table class="table table-striped">
 								<tr>
-									
+
 									<wicket:container wicket:id="admin-menu"></wicket:container>
-									
-									<td>
-										
-										<wicket:child/>
-									
-									</td>
-									
+
+									<td><wicket:child /></td>
+
 
 								</tr>
 							</table>
-							
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
-
-		</div>
-	</div>
+			
+	</section>
+</div>
 
 </wicket:extend>
