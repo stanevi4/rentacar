@@ -4,29 +4,26 @@
 
 	<thead>
 		<tr>
-			<th><a>Id</a></th>
-			<th><a>Name</a></th>
-			<th><a>coord.lat</a></th>
+			<th><a wicket:id="sort-id">ID</a></th>
+			<th><a wicket:id="sort-name">NAME</a></th>
+			<th>coord.lat</th>
 			<th>coord.lng</th>
 			<th>actions</th>
 		</tr>
 	</thead>
 	
-	<!-- <tbody>
+	<tbody>
 		<tr wicket:id="rows">
-			<td><span wicket:id="id" /></td>
-			<td><span wicket:id="name" /></td>
-			<td><span wicket:id="price" /> $</td>
-			<td><span wicket:id="created" /></td>
-			<td><input wicket:id="active" type="checkbox" /></td>
-			<td><a wicket:id="delete-link">delete</a>/<a
-				wicket:id="edit-link">edit</a></td>
+			<td><span wicket:id="id"/></td>
+			<td><span wicket:id="name"/></td>
+			<td><span wicket:id="lat"/></td>
+			<td><span wicket:id="lng"/></td>
+			<td><a wicket:id="delete-link">delete</a>/<a wicket:id="edit-link">edit</a></td>
 		</tr>
-	</tbody>-->
+	</tbody>
+	
 </table>
 
-<!--<div wicket:id="paging"></div>-->
-
-</table>
+<div wicket:id="paging"></div>
 
 </wicket:panel>
