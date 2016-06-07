@@ -57,8 +57,8 @@ public class LocationListPanel extends Panel {
 				item.add(new Label("name", location.getName()));
 				item.add(new Label("lat", location.getLat()));
 				item.add(new Label("lng", location.getLng()));
-				addActionEditButton(item, location);
-				addActionDeleteButton(item, location);
+				addEditButton(LocationListPanel.this.getId(), item, location);
+				addDeleteButton(item, location);
 			}
 		};
 		add(dataView);
@@ -105,16 +105,23 @@ public class LocationListPanel extends Panel {
 
 	}
 	
-	private void addActionEditButton(Item<Location> item, Location location) {
-		AjaxLink<Void> buttonNewItem = new AjaxLink<Void>("edit-link") {
+	private void addEditButton(String id, Item<Location> item, Location location) {
+		AjaxLink<Void> buttonEdit = new AjaxLink<Void>("edit-link") {
+			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				// setResponsePage(new ProductEditPage(product));
+				Component newPanel = new LocationEditPanel(id, location);
+				LocationListPanel.this.replaceWith(newPanel);
+				if (target != null) {
+					target.add(newPanel);
+				}
 			}
-		}.add(new TooltipBehavior(descEditButton)));
+		};
+		buttonEdit.add(new TooltipBehavior(descEditButton));
+		item.add(buttonEdit);
 	}
 	
-	private void addActionDeleteButton(Item<Location> item, Location location) {
+	private void addDeleteButton(Item<Location> item, Location location) {
 		item.add(new Link<Void>("delete-link") {
 			@Override
 			public void onClick() {
@@ -132,7 +139,7 @@ public class LocationListPanel extends Panel {
 		AjaxLink<Void> buttonNewItem = new AjaxLink<Void>("add-new-item") {
 			private static final long serialVersionUID = 1L;
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new LocationEditPanel(id);
+				Component newPanel = new LocationEditPanel(id, new Location());
 				LocationListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);

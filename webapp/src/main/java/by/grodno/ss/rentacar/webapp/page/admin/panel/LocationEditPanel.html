@@ -1,5 +1,27 @@
 <wicket:panel>
 
-location edit panel
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to location list" /></div>
+
+<form wicket:id="form">
+
+	<table class="table table-responsive">
+	
+		<tr>	
+			<td width="20%">Detailed address:</td>
+			<td><input size="50" wicket:id="name" type="text" value="Location"></td>
+		</tr>
+		<tr>
+			<td>Latitude coordinate:</td>
+			<td><input wicket:id="lat" type="number"></td>	
+		</tr>
+		<tr>
+			<td>Longitude coordinate:</td>
+			<td><input wicket:id="lng" type="number"></td>		
+		</tr>
+		
+	</table>
+<div><input type="submit" wicket:id="save" value="Save" />&nbsp;</div>
+
+</form>
 
 </wicket:panel>
