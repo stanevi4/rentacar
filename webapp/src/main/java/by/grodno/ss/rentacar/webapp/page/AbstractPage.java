@@ -1,7 +1,11 @@
 package by.grodno.ss.rentacar.webapp.page;
 
+import org.apache.wicket.markup.head.CssHeaderItem;
+import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.Url;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.UrlResourceReference;
 
 import by.grodno.ss.rentacar.webapp.component.footer.FooterPanel;
 import by.grodno.ss.rentacar.webapp.component.menu.TopMenuPanel;
@@ -35,7 +39,7 @@ public abstract class AbstractPage extends WebPage{
 //		super.renderHead(response);
 		
 		//CSS
-//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/style.css"))));
+//		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/font-awesome.min.css"))));
 //		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/bootstrap.min.css"))));
 //		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/theme2.css"))));
 //		response.render(CssHeaderItem.forReference(new UrlResourceReference(Url.parse("css/template.css"))));
