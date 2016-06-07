@@ -8,6 +8,7 @@ import org.apache.wicket.model.IModel;
 
 import by.grodno.ss.rentacar.webapp.page.admin.CarsEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.LocationsEditPage;
+import by.grodno.ss.rentacar.webapp.page.admin.ReasonEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.SettingEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.UsersEditPage;
@@ -94,6 +95,19 @@ public class AdminMenu extends Panel {
 			}
 		});
 		add(liUsers);
+		
+		WebMarkupContainer liReasons = new WebMarkupContainer("link-container-reasons");
+		if (getPage().getClass().equals(ReasonEditPage.class)) {
+			liReasons.add(new AttributeModifier("class", "active"));
+		}
+		liReasons.add(new Link<Void>("reasons-link") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick() {
+				setResponsePage(new ReasonEditPage());
+			}
+		});
+		add(liReasons);
 		
 //		WebMarkupContainer liHomePage = new WebMarkupContainer("link-container-homepage");
 //		if (selectedPage.equals(HomePage.class)) {

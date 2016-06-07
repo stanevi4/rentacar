@@ -15,7 +15,7 @@ import by.grodno.ss.rentacar.service.LocationService;
 public class LocationServiceImpl implements LocationService {
 
 	@Inject
-	LocationDao locationDao;
+	private LocationDao locationDao;
 	
 	@Override
 	public Long count(LocationFilter filter) {
