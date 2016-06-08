@@ -35,10 +35,10 @@ CREATE TABLE "car" (
 	"type_id" serial NOT NULL,
 	"location_id" serial NOT NULL,
 	"car_status" int NOT NULL,
-	"status_changed" TIMESTAMP NOT NULL,
+	"status_changed" TIMESTAMP,
 	"reg_number" character varying(20),
 	"year_prodaction" int,
-	"descriptoon" character varying,
+	"description" character varying,
 	"image" character varying,
 	CONSTRAINT car_pk PRIMARY KEY ("id")
 ) WITH (
