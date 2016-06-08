@@ -60,6 +60,7 @@ public class CarListPanel extends Panel {
 			protected void populateItem(Item<Car> item) {
 
 				Car car = item.getModelObject();
+				item.add(new Label("image", car.getImage()));
 				item.add(new Label("name", car.getName()));
 				item.add(new Label("type", car.getType().getName()));
 				item.add(new Label("location", car.getLocation().getName()));
@@ -80,12 +81,14 @@ public class CarListPanel extends Panel {
 	}
 
 	private class CarsDataProvider extends SortableDataProvider<Car, Serializable> {
-
+		private static final long serialVersionUID = 1L;
 		private CarFilter carFilter;
 
 		public CarsDataProvider() {
 			super();
 			carFilter = new CarFilter();
+			carFilter.isFetchLocations();
+			carFilter.isFetchTypes();
 			setSort((Serializable) Car_.name, SortOrder.ASCENDING);
 		}
 
@@ -96,9 +99,9 @@ public class CarListPanel extends Panel {
 
 			carFilter.setSortProperty((SingularAttribute<?, ?>) property);
 			carFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
-
 			carFilter.setLimit((int) count);
 			carFilter.setOffset((int) first);
+			
 			return carService.find(carFilter).iterator();
 		}
 

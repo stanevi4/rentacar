@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import by.grodno.ss.rentacar.dataaccess.CarDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
+import by.grodno.ss.rentacar.datamodel.Car_;
 
 @Repository
 public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
@@ -44,6 +46,14 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
         if (filter.getSortProperty() != null) {
             cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
         }
+        
+        if (filter.isFetchLocations()) {
+			from.fetch(Car_.location, JoinType.LEFT);
+		}
+        
+        if (filter.isFetchTypes()) {
+			from.fetch(Car_.type, JoinType.LEFT);
+		}
 
         TypedQuery<Car> q = em.createQuery(cq);
         setPaging(filter, q);

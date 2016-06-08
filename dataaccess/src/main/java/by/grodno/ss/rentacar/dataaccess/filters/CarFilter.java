@@ -17,6 +17,8 @@ public class CarFilter extends AbstractFilter {
 	private Location location;
 	private Type type;
 	private CarStatus carStatus;
+	private boolean isFetchTypes;
+	private boolean isFetchLocations;
 
 	public CarFilter() {
 		super();
@@ -68,6 +70,22 @@ public class CarFilter extends AbstractFilter {
 
 	public void setCarStatus(CarStatus carStatus) {
 		this.carStatus = carStatus;
+	}
+
+	public boolean isFetchTypes() {
+		return isFetchTypes;
+	}
+
+	public void setFetchTypes(boolean isFetchTypes) {
+		this.isFetchTypes = isFetchTypes;
+	}
+
+	public boolean isFetchLocations() {
+		return isFetchLocations;
+	}
+
+	public void setFetchLocations(boolean isFetchLocations) {
+		this.isFetchLocations = isFetchLocations;
 	}
 	
 }
