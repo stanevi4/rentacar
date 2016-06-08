@@ -1,5 +1,47 @@
 <wicket:panel>
 
-car list panel
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to car list" /></div>
+
+<form wicket:id="form">
+
+	<table class="table table-responsive">
+	
+		<tr>	
+			<td width="20%">Car model name:</td>
+			<td><input size="50" wicket:id="name" type="text" value="Car name"></td>
+		</tr>
+		<tr>	
+			<td width="20%" height="50">Description:</td>
+			<td><input size="50" wicket:id="description" type="text" value="description"></td>
+		</tr>
+		<tr>	
+			<td>Image:</td>
+			<td><input size="50" wicket:id="image" type="text" value="path to image file"></td>
+		</tr>
+		<tr>
+			<td>Type:</td>
+			<td><select wicket:id="type" type="text" value="select type"></select></td>	
+		</tr>
+		<tr>
+			<td>Current location:</td>
+			<td><select wicket:id="location" type="text" value="select location"></select></td>		
+		</tr>
+		<tr>
+			<td>Car status:</td>
+			<td><select wicket:id="carStatus" type="text" value="change status"></select></td>		
+		</tr>
+		<tr>
+			<td>Register number:</td>
+			<td><input wicket:id="regNumber" type="text" value="register number"></input></td>		
+		</tr>
+		<tr>
+			<td>Year of prod.:</td>
+			<td><input wicket:id="yearProdaction" type="number"></td>		
+		</tr>
+		
+	</table>
+<div><input type="submit" wicket:id="save" value="Save" /></div>
+
+</form>
 
 </wicket:panel>
