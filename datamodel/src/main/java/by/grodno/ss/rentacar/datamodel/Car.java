@@ -12,7 +12,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "car")
 public class Car extends AbstractModel {
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column
 	private String name;
 	
@@ -25,7 +29,7 @@ public class Car extends AbstractModel {
 	private Type type;
 	
 	@Column
-	@Enumerated(value = EnumType.STRING)
+	@Enumerated(value = EnumType.ORDINAL)
 	private CarStatus carStatus;
 	
 	@Column

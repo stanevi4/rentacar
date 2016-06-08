@@ -35,6 +35,7 @@ CREATE TABLE "car" (
 	"type_id" serial NOT NULL,
 	"location_id" serial NOT NULL,
 	"car_status" int NOT NULL,
+	"status_changed" TIMESTAMP NOT NULL,
 	"reg_number" character varying(20),
 	"year_prodaction" int,
 	"descriptoon" character varying,
@@ -57,7 +58,6 @@ CREATE TABLE "order" (
 	"location_from" serial NOT NULL,
 	"location_to" serial NOT NULL,
 	"reason_id" serial,
-	"invoice_id" serial,
 	"damage" character varying,
 	"note" character varying,
 	"order_status" int NOT NULL,
@@ -73,6 +73,7 @@ CREATE TABLE "invoice" (
 	"created" TIMESTAMP NOT NULL,
 	"summ" DECIMAL NOT NULL,
 	"note" character varying,
+	"order_id" serial NOT NULL,
 	CONSTRAINT invoice_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -102,7 +103,7 @@ CREATE TABLE "location" (
 
 
 
-CREATE TABLE "Type" (
+CREATE TABLE "type" (
 	"id" serial NOT NULL,
 	"name" character varying(100) NOT NULL,
 	"num_passengers" integer NOT NULL,
@@ -110,7 +111,7 @@ CREATE TABLE "Type" (
 	"num_doors" integer NOT NULL,
 	"transmission_type" integer NOT NULL,
 	"price_per_hour" DECIMAL NOT NULL,
-	CONSTRAINT Type_pk PRIMARY KEY ("id")
+	CONSTRAINT type_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );
@@ -133,7 +134,7 @@ CREATE TABLE "setting" (
 ALTER TABLE "user_profile" ADD CONSTRAINT "user_profile_fk0" FOREIGN KEY ("id") REFERENCES "user_credentials"("id");
 
 
-ALTER TABLE "car" ADD CONSTRAINT "car_fk0" FOREIGN KEY ("type_id") REFERENCES "Type"("id");
+ALTER TABLE "car" ADD CONSTRAINT "car_fk0" FOREIGN KEY ("type_id") REFERENCES "type"("id");
 ALTER TABLE "car" ADD CONSTRAINT "car_fk1" FOREIGN KEY ("location_id") REFERENCES "location"("id");
 
 ALTER TABLE "order" ADD CONSTRAINT "order_fk0" FOREIGN KEY ("client_id") REFERENCES "user_profile"("id");
@@ -141,8 +142,8 @@ ALTER TABLE "order" ADD CONSTRAINT "order_fk1" FOREIGN KEY ("car_id") REFERENCES
 ALTER TABLE "order" ADD CONSTRAINT "order_fk2" FOREIGN KEY ("location_from") REFERENCES "location"("id");
 ALTER TABLE "order" ADD CONSTRAINT "order_fk3" FOREIGN KEY ("location_to") REFERENCES "location"("id");
 ALTER TABLE "order" ADD CONSTRAINT "order_fk4" FOREIGN KEY ("reason_id") REFERENCES "reason"("id");
-ALTER TABLE "order" ADD CONSTRAINT "order_fk5" FOREIGN KEY ("invoice_id") REFERENCES "invoice"("id");
 
+ALTER TABLE "invoice" ADD CONSTRAINT "invoice_fk0" FOREIGN KEY ("order_id") REFERENCES "order"("id");
 
 
 

@@ -14,8 +14,8 @@ public interface TypeService {
     List<Type> find(TypeFilter filter);
 
     @Transactional
-    void saveOrUpdate(Type location);
+    void saveOrUpdate(Type type);
 
     @Transactional
-    void delete(Type location);
+    void delete(Type type);
 }

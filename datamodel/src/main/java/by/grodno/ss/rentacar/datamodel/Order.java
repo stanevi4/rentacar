@@ -42,9 +42,6 @@ public class Order extends AbstractModel {
 	@ManyToOne(targetEntity = Reason.class, fetch = FetchType.LAZY)
 	private Reason reason;
 
-	@ManyToOne(targetEntity = Invoice.class, fetch = FetchType.LAZY)
-	private Invoice invoice;
-
 	@Column
 	private String damage;
 	
@@ -125,14 +122,6 @@ public class Order extends AbstractModel {
 
 	public void setReason(Reason reason) {
 		this.reason = reason;
-	}
-
-	public Invoice getInvoice() {
-		return invoice;
-	}
-
-	public void setInvoice(Invoice invoice) {
-		this.invoice = invoice;
 	}
 
 	public String getDamage() {

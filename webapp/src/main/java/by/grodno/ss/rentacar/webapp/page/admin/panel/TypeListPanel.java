@@ -185,7 +185,7 @@ public class TypeListPanel extends Panel {
 			i.add(new AttributeModifier("class","fa fa-eur"));
 		}
 		else if (currency.equals(Currency.GBR)){
-			i.add(new AttributeModifier("class","fa fa-gbr"));
+			i.add(new AttributeModifier("class","fa fa-gbp"));
 		}
 		else {
 			i.add(new AttributeModifier("class","fa fa-rub"));

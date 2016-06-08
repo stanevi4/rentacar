@@ -2,20 +2,32 @@ package by.grodno.ss.rentacar.dataaccess.filters;
 
 import java.util.Date;
 
+import by.grodno.ss.rentacar.datamodel.CarStatus;
 import by.grodno.ss.rentacar.datamodel.Location;
+import by.grodno.ss.rentacar.datamodel.Type;
 
 public class CarFilter extends AbstractFilter {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String name;
 	private Date dateFrom;
 	private Date dateTo;
-	private Location locationFrom;
-	private Location locationTo;
+	private Location location;
+	private Type type;
+	private CarStatus carStatus;
 
 	public CarFilter() {
 		super();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getDateFrom() {
@@ -34,21 +46,28 @@ public class CarFilter extends AbstractFilter {
 		this.dateTo = dateTo;
 	}
 
-	public Location getLocationFrom() {
-		return locationFrom;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationFrom(Location locationFrom) {
-		this.locationFrom = locationFrom;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
-	public Location getLocationTo() {
-		return locationTo;
+	public Type getType() {
+		return type;
 	}
 
-	public void setLocationTo(Location locationTo) {
-		this.locationTo = locationTo;
+	public void setType(Type type) {
+		this.type = type;
 	}
-	
+
+	public CarStatus getCarStatus() {
+		return carStatus;
+	}
+
+	public void setCarStatus(CarStatus carStatus) {
+		this.carStatus = carStatus;
+	}
 	
 }

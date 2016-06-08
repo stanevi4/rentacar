@@ -1,19 +1,21 @@
 package by.grodno.ss.rentacar.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
 
 public interface CarService {
 
-	Car get(Long id);
+	Long count(CarFilter filter);
 
-	@Transactional
-	void update(Car car);
-	
-	@Transactional
-	void register(Car car);
-	
-	@Transactional
-	void delete(Long id);
+    List<Car> find(CarFilter filter);
+
+    @Transactional
+    void saveOrUpdate(Car car);
+
+    @Transactional
+    void delete(Car car);
 }

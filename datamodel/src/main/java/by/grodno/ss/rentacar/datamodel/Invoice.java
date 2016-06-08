@@ -5,11 +5,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "invoice")
 public class Invoice extends AbstractModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private Date created;
@@ -19,6 +25,9 @@ public class Invoice extends AbstractModel {
 	
 	@Column
 	private String note;
+	
+	@ManyToOne(targetEntity = Order.class, fetch = FetchType.LAZY)
+	private Order order;
 	
 	public Date getCreated() {
 		return created;
