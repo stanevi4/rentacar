@@ -1,0 +1,39 @@
+<wicket:panel>
+
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to type list" /></div>
+
+<form wicket:id="form">
+
+	<table class="table table-responsive">
+	
+		<tr>	
+			<td width="20%">Type name::</td>
+			<td><input size="50" wicket:id="name" type="text" value="Type name"></td>
+		</tr>
+		<tr>
+			<td>Number of passengers:</td>
+			<td><input wicket:id="numPassengers" type="number"></td>	
+		</tr>
+		<tr>
+			<td>Number of bags:</td>
+			<td><input wicket:id="numBags" type="number"></td>		
+		</tr>
+		<tr>
+			<td>Number of doors:</td>
+			<td><input wicket:id="numDoors" type="number"></td>		
+		</tr>
+		<tr>
+			<td>Transmission type</td>
+			<td><select wicket:id="transmissionType" type="text" value="select transmission type"></select></td>		
+		</tr>
+		<tr>
+			<td>Price per hour</td>
+			<td><input wicket:id="pricePerHour" type="number"></td>		
+		</tr>
+		
+	</table>
+<div><input type="submit" wicket:id="save" value="Save" />&nbsp;</div>
+
+</form>
+
+</wicket:panel>

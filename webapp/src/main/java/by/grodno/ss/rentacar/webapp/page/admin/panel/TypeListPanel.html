@@ -1,0 +1,37 @@
+<wicket:panel>
+
+<div wicket:id="paging" class="form-group"></div>
+
+<table class="table table-responsive">
+
+	<thead>
+		<tr>
+			<th><a wicket:id="sort-id">ID</a></th>
+			<th><a wicket:id="sort-name">Name</a></th>
+			<th>Pass.</th>
+			<th>Bags</th>
+			<th>Doors</th>
+			<th>Trans.</th>
+			<th><a wicket:id="sort-price">Price</a></th>
+			<th>ACTIONS</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr wicket:id="rows">
+			<td><span wicket:id="id"/></td>
+			<td><span wicket:id="name"/></td>
+			<td><i wicket:id="descPass" class="fa fa-users"></i>&nbsp;<span wicket:id="pass" /></td>
+			<td><i wicket:id="descBags" class="fa fa-suitcase"></i>&nbsp;<span wicket:id="bags"/></td> 
+			<td><i wicket:id="descDoors" class="fa fa-hdd-o"></i>&nbsp;<span wicket:id="doors"/></td>
+			<td><i wicket:id="descTrans" class="fa fa-cogs"></i>&nbsp;<span wicket:id="trans"/></td>
+			<td><i wicket:id="iconPrice"></i>&nbsp;<span wicket:id="price"/></td>
+			<td><a wicket:id="edit-link"><i class="fa fa-pencil-square-o fa-2x"></i></a>&nbsp;<a wicket:id="delete-link"><i class="fa fa-trash-o fa-2x"></i></a></td>
+		</tr>
+	</tbody>
+		
+</table>
+
+<div><input wicket:id="add-new-item" type="submit" value="Add new item"></input></div>
+
+</wicket:panel>

@@ -11,6 +11,7 @@ import by.grodno.ss.rentacar.webapp.page.admin.LocationsEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.ReasonEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.SettingEditPage;
+import by.grodno.ss.rentacar.webapp.page.admin.TypeEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.UsersEditPage;
 
 public class AdminMenu extends Panel {
@@ -109,6 +110,19 @@ public class AdminMenu extends Panel {
 		});
 		add(liReasons);
 		
+		WebMarkupContainer liTypes = new WebMarkupContainer("link-container-types");
+		if (getPage().getClass().equals(TypeEditPage.class)) {
+			liTypes.add(new AttributeModifier("class", "active"));
+		}
+		liTypes.add(new Link<Void>("types-link") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick() {
+				setResponsePage(new TypeEditPage());
+			}
+		});
+		add(liTypes);
+
 //		WebMarkupContainer liHomePage = new WebMarkupContainer("link-container-homepage");
 //		if (selectedPage.equals(HomePage.class)) {
 //			liHomePage.add(new AttributeModifier("class", "active"));
