@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "order")
 public class Order extends AbstractModel {
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private Date created;
@@ -49,7 +50,7 @@ public class Order extends AbstractModel {
 	private String note;
 
 	@Column
-	@Enumerated(value = EnumType.STRING)
+	@Enumerated(value = EnumType.ORDINAL)
 	private OrderStatus orderStatus;
 
 	public Date getCreated() {
