@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import javax.persistence.metamodel.SingularAttribute;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -14,6 +15,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -21,6 +23,7 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.ContextRelativeResource;
 
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
@@ -36,7 +39,7 @@ public class CarListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private CarService carService;
-	
+	private String IMAGE_FOLDER = "/images/cars/";
 	private IModel<String> descDeleteButton = Model.of("Delete item");
 	private IModel<String> descEditButton = Model.of("View / edit item");
 
@@ -60,7 +63,7 @@ public class CarListPanel extends Panel {
 			protected void populateItem(Item<Car> item) {
 
 				Car car = item.getModelObject();
-				item.add(new Label("image", car.getImage()));
+				addImage(item, car);
 				item.add(new Label("name", car.getName()));
 				item.add(new Label("type", car.getType().getName()));
 				item.add(new Label("location", car.getLocation().getName()));
@@ -162,5 +165,13 @@ public class CarListPanel extends Panel {
 		};
 		add(buttonNewItem);
 	}
-
+	
+	private void addImage(Item<Car> item, Car car) {
+		Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
+		carImage.add(new AttributeModifier("height","100"));
+		carImage.add(new AttributeModifier("width","160"));
+		String alt = car.getName();
+		carImage.add(new AttributeModifier("alt",alt));
+		item.add(carImage);
+	}
 }

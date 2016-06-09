@@ -14,10 +14,15 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.upload.FileUpload;
+import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.util.file.File;
+import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.validation.validator.PatternValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
@@ -47,9 +52,10 @@ public class CarEditPanel extends Panel {
 	@Inject
 	private LocationService locationService;
 	private Car car;
+	private FileUploadField fileUpload;
+	private String UPLOAD_FOLDER = WebApplication.get().getServletContext().getRealPath("images/cars");
 	private IModel<String> descName = Model.of("Enter your vehicle model/name");
 	private IModel<String> descDesc = Model.of("Description");
-	private IModel<String> descImage = Model.of("Select image");
 	private IModel<String> descType = Model.of("Select type of car");
 	private IModel<String> descReg = Model.of("National register car number");
 
@@ -62,7 +68,7 @@ public class CarEditPanel extends Panel {
 		super(id, model);
 		this.car = car;
 	}
-	
+
 	@Override
 	public void onInitialize() {
 		super.onInitialize();
@@ -77,7 +83,7 @@ public class CarEditPanel extends Panel {
 		name.add(new PatternValidator("[A-Za-z0-9 /-]+"));
 		name.add(new TooltipBehavior(descName));
 		form.add(name);
-		
+
 		TextField<String> description = new TextField<String>("description");
 		description.setRequired(true);
 		description.add(StringValidator.maximumLength(200));
@@ -85,39 +91,37 @@ public class CarEditPanel extends Panel {
 		description.add(new PatternValidator("[A-Za-z0-9 /-]+"));
 		description.add(new TooltipBehavior(descDesc));
 		form.add(description);
-		
-		TextField<String> image = new TextField<String>("image");
-		image.setRequired(true);
-		image.add(StringValidator.maximumLength(200));
-		image.add(StringValidator.minimumLength(5));
-		image.add(new PatternValidator("[A-Za-z0-9 /_-]+"));
-		image.add(new TooltipBehavior(descImage));
-		form.add(image);
-		
+
+		form.setMultiPart(true);
+		form.setMaxSize(Bytes.kilobytes(500));
+		form.add(fileUpload = new FileUploadField("image"));
+
 		List<Type> allTypes = typeService.find(new TypeFilter());
-  		DropDownChoice<Type> typeDropDownType = new DropDownChoice<>("type", allTypes, TypeChoiceRenderer.INSTANCE);
-  		typeDropDownType.setRequired(true);
-  		typeDropDownType.add(new TooltipBehavior(descType));
-        form.add(typeDropDownType);
-        
+		DropDownChoice<Type> typeDropDownType = new DropDownChoice<>("type", allTypes, TypeChoiceRenderer.INSTANCE);
+		typeDropDownType.setRequired(true);
+		typeDropDownType.add(new TooltipBehavior(descType));
+		form.add(typeDropDownType);
+
 		List<Location> allLocations = locationService.find(new LocationFilter());
-  		DropDownChoice<Location> typeDropDownLoc = new DropDownChoice<>("location", allLocations, LocationChoiceRenderer.INSTANCE);
-  		typeDropDownLoc.setRequired(true);
-  		typeDropDownLoc.add(new TooltipBehavior(descType));
-        form.add(typeDropDownLoc);
-        
-        DropDownChoice<CarStatus> statusDropDown = new DropDownChoice<>("carStatus", Arrays.asList(CarStatus.values()), CarStatusChoiceRenderer.INSTANCE);
-        statusDropDown.setRequired(true);
-        form.add(statusDropDown);        
-        
-        TextField<String> regNumber = new TextField<String>("regNumber");
-        regNumber.setRequired(true);
-        regNumber.add(StringValidator.maximumLength(20));
-        regNumber.add(StringValidator.minimumLength(5));
-        regNumber.add(new PatternValidator("[A-Za-z0-9 /-]+"));
-        regNumber.add(new TooltipBehavior(descReg));
+		DropDownChoice<Location> typeDropDownLoc = new DropDownChoice<>("location", allLocations,
+				LocationChoiceRenderer.INSTANCE);
+		typeDropDownLoc.setRequired(true);
+		typeDropDownLoc.add(new TooltipBehavior(descType));
+		form.add(typeDropDownLoc);
+
+		DropDownChoice<CarStatus> statusDropDown = new DropDownChoice<>("carStatus", Arrays.asList(CarStatus.values()),
+				CarStatusChoiceRenderer.INSTANCE);
+		statusDropDown.setRequired(true);
+		form.add(statusDropDown);
+
+		TextField<String> regNumber = new TextField<String>("regNumber");
+		regNumber.setRequired(true);
+		regNumber.add(StringValidator.maximumLength(20));
+		regNumber.add(StringValidator.minimumLength(5));
+		regNumber.add(new PatternValidator("[A-Za-z0-9 /-]+"));
+		regNumber.add(new TooltipBehavior(descReg));
 		form.add(regNumber);
-		
+
 		NumberTextField<Integer> yearProdaction = new NumberTextField<Integer>("yearProdaction");
 		yearProdaction.setRequired(true);
 		yearProdaction.setMinimum(1900);
@@ -129,8 +133,31 @@ public class CarEditPanel extends Panel {
 
 			@Override
 			public void onSubmit() {
-				carService.saveOrUpdate(car);
-				info("Car was saved");
+
+				final FileUpload uploadedFile = fileUpload.getFileUpload();
+				if (uploadedFile != null && uploadedFile.getContentType().equals("image/jpeg")) {
+					
+					File newFile = new File(UPLOAD_FOLDER + File.separator + uploadedFile.getClientFileName());
+
+					if (newFile.exists()) {
+						newFile.delete();
+					}
+
+					try {
+						newFile.createNewFile();
+						uploadedFile.writeTo(newFile);
+						uploadedFile.closeStreams();
+
+						info("saved file: " + uploadedFile.getClientFileName());
+					} catch (Exception e) {
+						throw new IllegalStateException("Error");
+					}
+					car.setImage(uploadedFile.getClientFileName());
+					carService.saveOrUpdate(car);
+					info("Car was saved");
+				}else{
+					info("file is not an image");
+				}
 			}
 		});
 
