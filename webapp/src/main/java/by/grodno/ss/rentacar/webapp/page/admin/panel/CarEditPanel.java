@@ -1,9 +1,7 @@
 package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,14 +26,12 @@ import by.grodno.ss.rentacar.dataaccess.filters.TypeFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.CarStatus;
 import by.grodno.ss.rentacar.datamodel.Location;
-import by.grodno.ss.rentacar.datamodel.TransmissionType;
 import by.grodno.ss.rentacar.datamodel.Type;
 import by.grodno.ss.rentacar.service.CarService;
 import by.grodno.ss.rentacar.service.LocationService;
 import by.grodno.ss.rentacar.service.TypeService;
 import by.grodno.ss.rentacar.webapp.common.CarStatusChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.common.LocationChoiceRenderer;
-import by.grodno.ss.rentacar.webapp.common.TransmissionTypeChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.common.TypeChoiceRenderer;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 

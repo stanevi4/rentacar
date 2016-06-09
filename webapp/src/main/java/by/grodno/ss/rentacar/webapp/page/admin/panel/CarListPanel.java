@@ -87,8 +87,6 @@ public class CarListPanel extends Panel {
 		public CarsDataProvider() {
 			super();
 			carFilter = new CarFilter();
-			carFilter.isFetchLocations();
-			carFilter.isFetchTypes();
 			setSort((Serializable) Car_.name, SortOrder.ASCENDING);
 		}
 
@@ -101,6 +99,8 @@ public class CarListPanel extends Panel {
 			carFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
 			carFilter.setLimit((int) count);
 			carFilter.setOffset((int) first);
+			carFilter.setFetchLocations(true);
+			carFilter.setFetchTypes(true);
 			
 			return carService.find(carFilter).iterator();
 		}
