@@ -5,27 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "car")
 public class Car extends AbstractModel {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Column
 	private String name;
 	
 	@ManyToOne(targetEntity = Location.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "location_id", nullable = false)
+	//@JoinColumn(name = "location_id", nullable = false)
 	private Location location;
 	
 	@ManyToOne(targetEntity = Type.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "type_id", nullable = false)
+	//@JoinColumn(name = "type_id", nullable = false)
 	private Type type;
 	
 	@Column

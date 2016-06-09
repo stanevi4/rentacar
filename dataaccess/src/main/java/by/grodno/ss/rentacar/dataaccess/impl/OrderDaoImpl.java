@@ -48,17 +48,21 @@ public class OrderDaoImpl extends AbstractDaoImpl<Order, Long> implements OrderD
         }
         
         if (filter.isFetchClient()) {
-			from.fetch(Order_.client, JoinType.LEFT);
+		//	from.fetch(Order_.client, JoinType.LEFT);
 		}
         
         if (filter.isFetchCar()) {
-			from.fetch(Order_.car, JoinType.LEFT);
+		//	from.fetch(Order_.car, JoinType.LEFT);
 		}
         
         if (filter.isFetchLocations()) {
-			from.fetch(Order_.locationFrom, JoinType.LEFT);
-			from.fetch(Order_.locationTo, JoinType.LEFT);
+		//	from.fetch(Order_.locationFrom, JoinType.LEFT);
+		//	from.fetch(Order_.locationTo, JoinType.LEFT);
 		}
+        
+        if (filter.isFetchReason()) {
+		//	from.fetch(Order_.reason, JoinType.LEFT);
+		}        
 
         TypedQuery<Order> q = em.createQuery(cq);
         setPaging(filter, q);

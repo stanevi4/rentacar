@@ -1,0 +1,49 @@
+<wicket:panel>
+
+<div wicket:id="paging" class="form-group"></div>
+
+<div wicket:id="feedback" class="crError text-danger"></div>
+
+<table class="table table-responsive">
+
+	<thead>
+		<tr>
+			<th><a wicket:id="sort-id">ID</a></th>
+			<th><a wicket:id="sort-created">Created</a></th>
+			<th>Client</th>
+			<th>Car</th>
+			<th><a wicket:id="sort-dateFrom">Pick-up Date</a></th>
+			<th><a wicket:id="sort-dateTo">Return Date</a></th>
+			<th><a wicket:id="sort-locationFrom">Pick-up Location</a></th>
+			<th><a wicket:id="sort-locationTo">Return Location</a></th>
+			<th><a wicket:id="sort-summ">Total</a></th>
+			<th>Refusing</th>
+			<th>Damage</th>
+			<th><a wicket:id="sort-status">Status</a></th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr wicket:id="rows">
+			<td><span wicket:id="id"/></td>
+			<td><span wicket:id="created"/></td>
+			<td><span wicket:id="client" /></td>
+			<td><span wicket:id="car" /></td>
+			<td><span wicket:id="dateFrom" /></td>
+			<td><span wicket:id="dateTo" /></td>
+			<td><span wicket:id="locationFrom" /></td>
+			<td><span wicket:id="locationTo" /></td>
+			<td><span wicket:id="summ" /></td>	
+			<td><span wicket:id="reason" /></td>
+			<td><span wicket:id="damage" /></td>
+			<td><span wicket:id="orderStatus" /></td>		
+			<td><a wicket:id="edit-link"><i class="fa fa-pencil-square-o fa-2x"></i></a>&nbsp;<a wicket:id="delete-link"><i class="fa fa-trash-o fa-2x"></i></a></td>
+		</tr>
+	</tbody>
+		
+</table>
+
+<div><input wicket:id="add-new-item" type="submit" value="Add new item"></input></div>
+
+</wicket:panel>

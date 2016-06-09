@@ -131,6 +131,20 @@ CREATE TABLE "setting" (
 
 
 
+CREATE TABLE "booking" (
+	"id" serial NOT NULL,
+	"created" TIMESTAMP NOT NULL,
+	"client_id" serial NOT NULL,
+	"car_id" serial NOT NULL,
+	"location_from_id" serial NOT NULL,
+	"location_to_id" serial NOT NULL,
+	CONSTRAINT booking_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
 ALTER TABLE "user_profile" ADD CONSTRAINT "user_profile_fk0" FOREIGN KEY ("id") REFERENCES "user_credentials"("id");
 
 
@@ -148,4 +162,9 @@ ALTER TABLE "invoice" ADD CONSTRAINT "invoice_fk0" FOREIGN KEY ("order_id") REFE
 
 
 
+
+ALTER TABLE "booking" ADD CONSTRAINT "booking_fk0" FOREIGN KEY ("client_id") REFERENCES "user_profile"("id");
+ALTER TABLE "booking" ADD CONSTRAINT "booking_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
+ALTER TABLE "booking" ADD CONSTRAINT "booking_fk2" FOREIGN KEY ("location_from_id") REFERENCES "location"("id");
+ALTER TABLE "booking" ADD CONSTRAINT "booking_fk3" FOREIGN KEY ("location_to_id") REFERENCES "location"("id");
 

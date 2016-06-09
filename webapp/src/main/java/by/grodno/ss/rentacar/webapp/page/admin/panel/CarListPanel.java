@@ -154,7 +154,7 @@ public class CarListPanel extends Panel {
 	private void addButtonNew(String id) {
 		AjaxLink<Void> buttonNewItem = new AjaxLink<Void>("add-new-item") {
 			private static final long serialVersionUID = 1L;
-
+			@Override
 			public void onClick(AjaxRequestTarget target) {
 				Component newPanel = new CarEditPanel(id, new Car());
 				CarListPanel.this.replaceWith(newPanel);

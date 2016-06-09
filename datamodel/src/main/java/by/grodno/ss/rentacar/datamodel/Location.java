@@ -7,6 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "location")
 public class Location extends AbstractModel {
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private String name;

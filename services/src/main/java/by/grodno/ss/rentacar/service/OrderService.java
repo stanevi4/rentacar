@@ -14,8 +14,8 @@ public interface OrderService {
     List<Order> find(OrderFilter filter);
 
     @Transactional
-    void saveOrUpdate(Order car);
+    void saveOrUpdate(Order order);
 
     @Transactional
-    void delete(Order car);
+    void delete(Order order);
 }

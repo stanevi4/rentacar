@@ -23,6 +23,7 @@ public class OrderFilter extends AbstractFilter {
 	private boolean isFetchClient;
 	private boolean isFetchCar;
 	private boolean isFetchLocations;
+	private boolean isFetchReason;
 	
 	public Date getCreated() {
 		return created;
@@ -95,6 +96,12 @@ public class OrderFilter extends AbstractFilter {
 	}
 	public void setFetchLocations(boolean isFetchLocations) {
 		this.isFetchLocations = isFetchLocations;
+	}
+	public boolean isFetchReason() {
+		return isFetchReason;
+	}
+	public void setFetchReason(boolean isFetchReason) {
+		this.isFetchReason = isFetchReason;
 	}
 	
 }
