@@ -1,6 +1,7 @@
 package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -113,12 +114,6 @@ public class ReservationEditPanel extends Panel {
 		DatetimePicker dateTo = new DatetimePicker("dateTo", dateconfig);
 		form.add(dateTo);
 		
-		//DateTextField dateFrom = new DateTextField("dateFrom");
-		//form.add(dateFrom);
-
-		//TextField<String> dateTo = new TextField<String>("dateTo");
-		//form.add(dateTo);
-
 		List<Location> allLocations = locationService.find(new LocationFilter());
 		DropDownChoice<Location> typeDropDownLocFrom = new DropDownChoice<>("locationFrom", allLocations,
 				LocationChoiceRenderer.INSTANCE);
@@ -162,7 +157,14 @@ public class ReservationEditPanel extends Panel {
 
 				if (booking.getOrderStatus().equals(OrderStatus.denied) && booking.getReason()==null) {
 					info("Please select reason of refusing");
-				} else {
+				} 
+				else if(booking.getDateFrom().compareTo(new Date()) < 0){
+					info("Pickup date is lesser than current date. Please select correct dates");
+				}
+				else if(booking.getDateFrom().compareTo(booking.getDateTo()) >= 0){
+					info("Return date is lesser/equals pickup date. Please select correct dates");
+				}
+				else {
 					bookingService.saveOrUpdate(booking);
 					info("Booking was updated");
 				}
@@ -190,8 +192,6 @@ public class ReservationEditPanel extends Panel {
 		dateconfig.useSideBySide(true);
 		dateconfig.useLocale(AuthorizedSession.get().getLocale().getLanguage());
 		dateconfig.withMinuteStepping(10);
-		Calendar cal = Calendar.getInstance();
-		//dateconfig.withMinDate(cal.getTime());
 		return dateconfig;
 	}
 
