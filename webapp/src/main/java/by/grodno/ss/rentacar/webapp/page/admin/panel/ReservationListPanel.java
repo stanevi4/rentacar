@@ -109,10 +109,10 @@ public class ReservationListPanel extends Panel {
 			bookingFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
 			bookingFilter.setLimit((int) count);
 			bookingFilter.setOffset((int) first);
-			//bookingFilter.setFetchCar(true);
-			//bookingFilter.setFetchClient(true);
-			//bookingFilter.setFetchLocations(true);
-			//bookingFilter.setFetchReason(true);
+			bookingFilter.setFetchCar(true);
+			bookingFilter.setFetchClient(true);
+			bookingFilter.setFetchLocations(true);
+			bookingFilter.setFetchReason(true);
 			return bookingService.find(bookingFilter).iterator();
 		}
 
