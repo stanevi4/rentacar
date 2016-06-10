@@ -124,6 +124,7 @@ CREATE TABLE "setting" (
 	"car_while_pending" integer NOT NULL DEFAULT '0',
 	"deposit_payment" integer NOT NULL DEFAULT '10',
 	"currency" integer NOT NULL,
+	"car_between_pending" integer NOT NULL,
 	CONSTRAINT setting_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -138,6 +139,13 @@ CREATE TABLE "booking" (
 	"car_id" serial NOT NULL,
 	"location_from_id" serial NOT NULL,
 	"location_to_id" serial NOT NULL,
+	"date_from" TIMESTAMP NOT NULL,
+	"date_to" TIMESTAMP NOT NULL,
+	"summ" DECIMAL NOT NULL,
+	"reason_id" serial,
+	"damage" character varying,
+	"note" character varying,
+	"order_status" int NOT NULL,
 	CONSTRAINT booking_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -167,4 +175,5 @@ ALTER TABLE "booking" ADD CONSTRAINT "booking_fk0" FOREIGN KEY ("client_id") REF
 ALTER TABLE "booking" ADD CONSTRAINT "booking_fk1" FOREIGN KEY ("car_id") REFERENCES "car"("id");
 ALTER TABLE "booking" ADD CONSTRAINT "booking_fk2" FOREIGN KEY ("location_from_id") REFERENCES "location"("id");
 ALTER TABLE "booking" ADD CONSTRAINT "booking_fk3" FOREIGN KEY ("location_to_id") REFERENCES "location"("id");
+ALTER TABLE "booking" ADD CONSTRAINT "booking_fk4" FOREIGN KEY ("reason_id") REFERENCES "reason"("id");
 

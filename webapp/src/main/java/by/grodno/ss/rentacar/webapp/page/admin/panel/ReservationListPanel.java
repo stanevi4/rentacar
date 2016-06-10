@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import javax.persistence.metamodel.SingularAttribute;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
@@ -26,7 +28,9 @@ import org.apache.wicket.model.Model;
 import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
 import by.grodno.ss.rentacar.datamodel.Booking_;
+import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.BookingService;
+import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 
@@ -45,11 +49,10 @@ public class ReservationListPanel extends Panel {
 		super(id, model);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void onInitialize() {
 		super.onInitialize();
-		setOutputMarkupId(true);
+		ReservationListPanel.this.setOutputMarkupId(true);
 		add(new FeedbackPanel("feedback"));
 
 		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider();
@@ -61,18 +64,38 @@ public class ReservationListPanel extends Panel {
 				Booking booking = item.getModelObject();
 				item.add(new Label("id", booking.getId()));
 				item.add(new Label("created", booking.getCreated()));
-				item.add(new Label("client", booking.getClient()));
-				item.add(new Label("car", booking.getCar()));
+				item.add(new Label("client", booking.getClient().getFirstName() +" "+booking.getClient().getLastName()));
+				item.add(new Label("car", booking.getCar().getName()));
 				item.add(new Label("dateFrom", booking.getDateFrom()));
-				item.add(new Label("dateTo", booking.getDateTo()));
-				item.add(new Label("locationFrom", booking.getLocationFrom()));
-				item.add(new Label("locationTo", booking.getLocationTo()));
+				//item.add(new Label("dateTo", booking.getDateTo())); //не хватает ширины в таблице
+				item.add(new Label("locationFrom", booking.getLocationFrom().getName()));
+				//item.add(new Label("locationTo", booking.getLocationTo()));
 				item.add(new Label("summ", booking.getSumm()));
-				item.add(new Label("reason", booking.getReason()));
+				item.add(new Label("reason", booking.getReason().getName()));
 				item.add(new Label("damage", booking.getDamage()));
 				item.add(new Label("orderStatus", booking.getOrderStatus()));
 				addEditButton(ReservationListPanel.this.getId(), item, booking);
 				addDeleteButton(item, booking);
+				item.setOutputMarkupId(true);
+		//------------------------------------
+//				item.add(new AjaxEventBehavior("onmouseover") {
+//			        private static final long serialVersionUID = 6720512493017210281L;
+//			        @Override
+//			        protected void onEvent(AjaxRequestTarget target) {
+//			        	item.add(new AttributeModifier("bgcolor", "#ffcc00"));
+//			        	target.add(item);
+//			        }
+//			        });
+//				item.add(new AjaxEventBehavior("onmouseout") {
+//			        private static final long serialVersionUID = 6720512493017210281L;
+//			        @Override
+//			        protected void onEvent(AjaxRequestTarget target) {
+//			        	item.add(new AttributeModifier("bgcolor", ""));
+//			        	target.add(item);
+//			        }
+//			        });
+		//---------------------------
+				
 			}
 		};
 		add(dataView);
@@ -81,13 +104,13 @@ public class ReservationListPanel extends Panel {
 		add(new OrderByBorder("sort-id", Booking_.id, bookingsDataProvider));
 		add(new OrderByBorder("sort-created", Booking_.created, bookingsDataProvider));
 		add(new OrderByBorder("sort-dateFrom", Booking_.dateFrom, bookingsDataProvider));
-		add(new OrderByBorder("sort-dateTo", Booking_.dateTo, bookingsDataProvider));
+		//add(new OrderByBorder("sort-dateTo", Booking_.dateTo, bookingsDataProvider));
 		add(new OrderByBorder("sort-locationFrom", Booking_.locationFrom, bookingsDataProvider));
-		add(new OrderByBorder("sort-locationTo", Booking_.locationTo, bookingsDataProvider));
+		//add(new OrderByBorder("sort-locationTo", Booking_.locationTo, bookingsDataProvider));
 		add(new OrderByBorder("sort-summ", Booking_.summ, bookingsDataProvider));
 		add(new OrderByBorder("sort-status", Booking_.orderStatus, bookingsDataProvider));
 
-		addButtonNew(this.getId());
+		//addButtonNew(this.getId());
 	}
 
 	private class BookingsDataProvider extends SortableDataProvider<Booking, Serializable> {
@@ -97,7 +120,7 @@ public class ReservationListPanel extends Panel {
 		public BookingsDataProvider() {
 			super();
 			bookingFilter = new BookingFilter();
-			setSort((Serializable) Booking_.id, SortOrder.ASCENDING);
+			setSort((Serializable) Booking_.created, SortOrder.ASCENDING);
 		}
 
 		@Override
@@ -146,7 +169,7 @@ public class ReservationListPanel extends Panel {
 	}
 
 	private void addDeleteButton(Item<Booking> item, Booking booking) {
-		item.add(new Link<Void>("delete-link") {
+		Link<Void> buttonDelete = new Link<Void>("delete-link") {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick() {
@@ -157,7 +180,13 @@ public class ReservationListPanel extends Panel {
 				}
 				setResponsePage(new ReservationsEditPage());
 			}
-		}.add(new TooltipBehavior(descDeleteButton)));
+		
+	};
+	buttonDelete.setEnabled(false);
+	buttonDelete.add(new TooltipBehavior(descDeleteButton));
+	boolean a = (AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
+	buttonDelete.setEnabled(a);
+	item.add(buttonDelete);
 	}
 
 	private void addButtonNew(String id) {

@@ -1,5 +1,65 @@
 <wicket:panel>
 
-reservation edit panel
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to order list" /></div>
+
+<div wicket:id="feedback" class="crError text-danger"></div>
+
+<form wicket:id="form">
+
+	<table class="table table-responsive">
+	
+		<tr>	
+			<td width="20%">Created:</td>
+			<td><input wicket:id="created" type="text"></td>
+		</tr>
+		<tr>	
+			<td>Client:</td>
+			<td><input wicket:id="client-name" type="text"></td>
+		</tr>
+		<tr>	
+			<td>Vehicle:</td>
+			<td><input wicket:id="vehicle-name" type="text">&nbsp;<input wicket:id="change-car" type="button" value="Change car" /></td>
+		</tr>
+		<tr>
+			<td>Pick-up date:</td>
+			<td><input wicket:id="dateFrom" type="text"></td>
+		</tr>
+		<tr>	
+			<td>Return date:</td>
+			<td><input wicket:id="dateTo" type="text"></td>
+		</tr>
+		<tr>
+			<td>Pick-up location:</td>
+			<td><select wicket:id="locationFrom" type="text" value="select pick-up location"></select></td>		
+		</tr>
+		<tr>
+			<td>Return location:</td>
+			<td><select wicket:id="locationTo" type="text" value="select return location"></select></td>		
+		</tr>
+		<tr>	
+			<td>Summ total:</td>
+			<td><input wicket:id="summ" type="number"></td>
+		</tr>
+		<tr>
+			<td>Order status:</td>
+			<td><select wicket:id="orderStatus" type="text" value="change status"></select></td>		
+		</tr>
+		<tr>
+			<td>Refusing reason:</td>
+			<td><select wicket:id="reason" type="text" value="select reason"></select></td>	
+		</tr>
+		<tr>	
+			<td>Damage description:</td>
+			<td><input size="50" wicket:id="damage" type="text" value="damage description"></td>
+		</tr>
+		<tr>	
+			<td>Order note:</td>
+			<td><input size="50" wicket:id="note" type="text" value="note description"></td>
+		</tr>
+		
+	</table>
+<div><input type="submit" wicket:id="save" value="Save" /></div>
+
+</form>
 
 </wicket:panel>

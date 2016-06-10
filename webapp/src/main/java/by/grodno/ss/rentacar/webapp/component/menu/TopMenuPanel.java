@@ -180,7 +180,9 @@ public class TopMenuPanel extends Panel {
 				setResponsePage(new SettingEditPage());
 			}
 		});
-		liAdmin.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
+		boolean a = (AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
+		boolean m = (AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.MANAGER));
+		liAdmin.setVisibilityAllowed(a || m);
 		add(liAdmin);
 	}
 }
