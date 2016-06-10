@@ -14,6 +14,8 @@ public class CarFilter extends AbstractFilter {
 	private String name;
 	private Date dateFrom;
 	private Date dateTo;
+	private Location locationFrom;
+	private Location LocationTo;
 	private Location location;
 	private Type type;
 	private CarStatus carStatus;
@@ -87,5 +89,22 @@ public class CarFilter extends AbstractFilter {
 	public void setFetchLocations(boolean isFetchLocations) {
 		this.isFetchLocations = isFetchLocations;
 	}
+
+	public Location getLocationFrom() {
+		return locationFrom;
+	}
+
+	public void setLocationFrom(Location locationFrom) {
+		this.locationFrom = locationFrom;
+	}
+
+	public Location getLocationTo() {
+		return LocationTo;
+	}
+
+	public void setLocationTo(Location locationTo) {
+		LocationTo = locationTo;
+	}
+	
 	
 }

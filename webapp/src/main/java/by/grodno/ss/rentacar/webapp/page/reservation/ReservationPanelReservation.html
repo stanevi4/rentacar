@@ -4,7 +4,7 @@
 		<div class="sectionBody">
 			<div class="shell">
 				<div class="form formReservation">
-					<form wicket:id="form-search" method="post">
+					<form wicket:id="form-search">
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="form-group dateTimePick dateTimePickFrom">
@@ -50,11 +50,7 @@
 								<div class="form-group">
 									<label for=""><span class="wc-editable"
 										data-pk="ws_pickup_location" data-type="text">Pick-up
-											location</span></label> <select name="pickup_id" id="cr_pickup_id"
-										class="form-control">
-										<option value="1">Hogarth Road, London</option>
-										<option value="2">Walton Street, London</option>
-									</select>
+											location</span></label> <select wicket:id="locationFrom" name="pickup_id" id="cr_pickup_id" class="form-control"></select>
 
 									<p>
 										<span class="glyphicon glyphicon-map-marker"
@@ -70,22 +66,12 @@
 								<div class="form-group" id="returnLocation">
 									<label for=""><span class="wc-editable"
 										data-pk="ws_return_location" data-type="text">Return
-											location</span></label> <select name="return_id" id="cr_return_id"
-										class="form-control" disabled="disabled">
-										<option value="1">Hogarth Road, London</option>
-										<option value="2">Walton Street, London</option>
-									</select>
+											location</span></label> <select wicket:id="locationTo" class="form-control"></select>
 
-									<div class="checkbox customCheckbox customInputChecked">
-										<input type="checkbox" name="same_location"
-											id="cr_same_location" value="1" checked="checked"> <label
-											for="cr_same_location"> <span
-											class="customCheckboxFake"> <span
-												class="glyphicon glyphicon-ok"></span>
-										</span> <span class="wc-editable"
-											data-pk="ws_same_as_pickup_location" data-type="text">Same
-												as the pick-up location</span></label>
+									<div class="checkbox ">
+										<label class="checkbox-inline"><input wicket:id="sameAs" type="checkbox" value="">Same as the pick-up location</label>
 									</div>
+									
 									<!-- /.checkbox customCheckbox -->
 								</div>
 								<!-- /#returnLocation.form-group -->
