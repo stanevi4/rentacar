@@ -23,17 +23,17 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import by.grodno.ss.rentacar.dataaccess.filters.OrderFilter;
-import by.grodno.ss.rentacar.datamodel.Order;
-import by.grodno.ss.rentacar.datamodel.Order_;
-import by.grodno.ss.rentacar.service.OrderService;
+import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
+import by.grodno.ss.rentacar.datamodel.Booking;
+import by.grodno.ss.rentacar.datamodel.Booking_;
+import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 
 public class ReservationListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 	@Inject
-	private OrderService orderService;
+	private BookingService bookingService;
 	private IModel<String> descDeleteButton = Model.of("Delete item");
 	private IModel<String> descEditButton = Model.of("View / edit item");
 
@@ -52,89 +52,89 @@ public class ReservationListPanel extends Panel {
 		setOutputMarkupId(true);
 		add(new FeedbackPanel("feedback"));
 
-		OrdersDataProvider ordersDataProvider = new OrdersDataProvider();
-		DataView<Order> dataView = new DataView<Order>("rows", ordersDataProvider, 10) {
+		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider();
+		DataView<Booking> dataView = new DataView<Booking>("rows", bookingsDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
 			@Override
-			protected void populateItem(Item<Order> item) {
+			protected void populateItem(Item<Booking> item) {
 
-				Order order = item.getModelObject();
-				item.add(new Label("id", order.getId()));
-				item.add(new Label("created", order.getCreated()));
-				item.add(new Label("client", order.getClient()));
-				item.add(new Label("car", order.getCar()));
-				item.add(new Label("dateFrom", order.getDateFrom()));
-				item.add(new Label("dateTo", order.getDateTo()));
-				item.add(new Label("locationFrom", order.getLocationFrom()));
-				item.add(new Label("locationTo", order.getLocationTo()));
-				item.add(new Label("summ", order.getSumm()));
-				item.add(new Label("reason", order.getReason()));
-				item.add(new Label("damage", order.getDamage()));
-				item.add(new Label("orderStatus", order.getOrderStatus()));
-				addEditButton(ReservationListPanel.this.getId(), item, order);
-				addDeleteButton(item, order);
+				Booking booking = item.getModelObject();
+				item.add(new Label("id", booking.getId()));
+				item.add(new Label("created", booking.getCreated()));
+				item.add(new Label("client", booking.getClient()));
+				item.add(new Label("car", booking.getCar()));
+				item.add(new Label("dateFrom", booking.getDateFrom()));
+				item.add(new Label("dateTo", booking.getDateTo()));
+				item.add(new Label("locationFrom", booking.getLocationFrom()));
+				item.add(new Label("locationTo", booking.getLocationTo()));
+				item.add(new Label("summ", booking.getSumm()));
+				item.add(new Label("reason", booking.getReason()));
+				item.add(new Label("damage", booking.getDamage()));
+				item.add(new Label("orderStatus", booking.getOrderStatus()));
+				addEditButton(ReservationListPanel.this.getId(), item, booking);
+				addDeleteButton(item, booking);
 			}
 		};
 		add(dataView);
 		add(new PagingNavigator("paging", dataView));
 
-		add(new OrderByBorder("sort-id", Order_.id, ordersDataProvider));
-//		add(new OrderByBorder("sort-created", Order_.created, ordersDataProvider));
-//		add(new OrderByBorder("sort-dateFrom", Order_.dateFrom, ordersDataProvider));
-//		add(new OrderByBorder("sort-dateTo", Order_.dateTo, ordersDataProvider));
-//		add(new OrderByBorder("sort-locationFrom", Order_.locationFrom, ordersDataProvider));
-//		add(new OrderByBorder("sort-locationTo", Order_.locationTo, ordersDataProvider));
-//		add(new OrderByBorder("sort-summ", Order_.summ, ordersDataProvider));
-//		add(new OrderByBorder("sort-status", Order_.orderStatus, ordersDataProvider));
+		add(new OrderByBorder("sort-id", Booking_.id, bookingsDataProvider));
+		add(new OrderByBorder("sort-created", Booking_.created, bookingsDataProvider));
+		add(new OrderByBorder("sort-dateFrom", Booking_.dateFrom, bookingsDataProvider));
+		add(new OrderByBorder("sort-dateTo", Booking_.dateTo, bookingsDataProvider));
+		add(new OrderByBorder("sort-locationFrom", Booking_.locationFrom, bookingsDataProvider));
+		add(new OrderByBorder("sort-locationTo", Booking_.locationTo, bookingsDataProvider));
+		add(new OrderByBorder("sort-summ", Booking_.summ, bookingsDataProvider));
+		add(new OrderByBorder("sort-status", Booking_.orderStatus, bookingsDataProvider));
 
 		addButtonNew(this.getId());
 	}
 
-	private class OrdersDataProvider extends SortableDataProvider<Order, Serializable> {
+	private class BookingsDataProvider extends SortableDataProvider<Booking, Serializable> {
 		private static final long serialVersionUID = 1L;
-		private OrderFilter orderFilter;
+		private BookingFilter bookingFilter;
 
-		public OrdersDataProvider() {
+		public BookingsDataProvider() {
 			super();
-			orderFilter = new OrderFilter();
-			setSort((Serializable) Order_.id, SortOrder.ASCENDING);
+			bookingFilter = new BookingFilter();
+			setSort((Serializable) Booking_.id, SortOrder.ASCENDING);
 		}
 
 		@Override
-		public Iterator<Order> iterator(long first, long count) {
+		public Iterator<Booking> iterator(long first, long count) {
 			Serializable property = getSort().getProperty();
 			SortOrder propertySortOrder = getSortState().getPropertySortOrder(property);
 
-			orderFilter.setSortProperty((SingularAttribute<?, ?>) property);
-			orderFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
-			orderFilter.setLimit((int) count);
-			orderFilter.setOffset((int) first);
-//			orderFilter.setFetchCar(true);
-//			orderFilter.setFetchClient(true);
-//			orderFilter.setFetchLocations(true);
-//			orderFilter.setFetchReason(true);
-			return orderService.find(orderFilter).iterator();
+			bookingFilter.setSortProperty((SingularAttribute<?, ?>) property);
+			bookingFilter.setSortOrder(propertySortOrder.equals(SortOrder.ASCENDING) ? true : false);
+			bookingFilter.setLimit((int) count);
+			bookingFilter.setOffset((int) first);
+			//bookingFilter.setFetchCar(true);
+			//bookingFilter.setFetchClient(true);
+			//bookingFilter.setFetchLocations(true);
+			//bookingFilter.setFetchReason(true);
+			return bookingService.find(bookingFilter).iterator();
 		}
 
 		@Override
 		public long size() {
-			return orderService.count(orderFilter);
+			return bookingService.count(bookingFilter);
 		}
 
 		@Override
-		public IModel<Order> model(Order object) {
+		public IModel<Booking> model(Booking object) {
 			return new Model(object);
 		}
 
 	}
 
-	private void addEditButton(String id, Item<Order> item, Order order) {
+	private void addEditButton(String id, Item<Booking> item, Booking booking) {
 		AjaxLink<Void> buttonEdit = new AjaxLink<Void>("edit-link") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new ReservationEditPanel(id, order);
+				Component newPanel = new ReservationEditPanel(id, booking);
 				ReservationListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
@@ -145,13 +145,13 @@ public class ReservationListPanel extends Panel {
 		item.add(buttonEdit);
 	}
 
-	private void addDeleteButton(Item<Order> item, Order order) {
+	private void addDeleteButton(Item<Booking> item, Booking booking) {
 		item.add(new Link<Void>("delete-link") {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick() {
 				try {
-					orderService.delete(order);
+					bookingService.delete(booking);
 				} catch (PersistenceException e) {
 					System.out.println("caughth persistance exception");
 				}
@@ -165,7 +165,7 @@ public class ReservationListPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new ReservationEditPanel(id, new Order());
+				Component newPanel = new ReservationEditPanel(id, new Booking());
 				ReservationListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);

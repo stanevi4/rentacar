@@ -9,12 +9,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "setting")
 public class Setting extends AbstractModel {
+	private static final long serialVersionUID = 1L;
 
 	@Column
 	private Integer minBookingLength;
 
 	@Column
 	private Integer carWhilePending;
+	
+	@Column
+	private Integer carBetweenPending;
 
 	@Column
 	private Integer depositPayment;
@@ -55,4 +59,11 @@ public class Setting extends AbstractModel {
 		this.currency = currency;
 	}
 
+	public Integer getCarBetweenPending() {
+		return carBetweenPending;
+	}
+
+	public void setCarBetweenPending(Integer carBetweenPending) {
+		this.carBetweenPending = carBetweenPending;
+	}
 }

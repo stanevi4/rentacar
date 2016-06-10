@@ -33,6 +33,7 @@ public class SettingPanel extends Panel {
 	private IModel<String> descSaveButton 		= Model.of("Сохранить опции");
 	private IModel<String> descCurrency 		= Model.of("Выбор валюты");
 	private IModel<String> descCarWhilePending 	= Model.of("Промежуток времени");
+	private IModel<String> descCarBetweenPending= Model.of("Промежуток времени между новым и старым заказом");
 	private IModel<String> descDepositPayment 	= Model.of("Процент предоплаты");
 	
 	public SettingPanel(String id) {
@@ -62,6 +63,12 @@ public class SettingPanel extends Panel {
 		carWhilePending.setMinimum(0).setMaximum(1000);
 		carWhilePending.add(new TooltipBehavior(descCarWhilePending));
 		form.add(carWhilePending);
+		
+		NumberTextField<Integer> carBetweenPending = new NumberTextField<Integer>("carBetweenPending");
+		carBetweenPending.setRequired(true);
+		carBetweenPending.setMinimum(0).setMaximum(1000);
+		carBetweenPending.add(new TooltipBehavior(descCarBetweenPending));
+		form.add(carBetweenPending);
 		
 		NumberTextField<Integer> depositPayment = new NumberTextField<Integer>("depositPayment");
 		depositPayment.setRequired(true);

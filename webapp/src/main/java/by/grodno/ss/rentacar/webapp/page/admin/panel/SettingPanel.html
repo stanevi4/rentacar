@@ -15,6 +15,10 @@
 			<td> Car 'On hold' while pending. A specific car is assigned to each new reservation. If reservation is not confirmed within X hours then this car will be available for booking again for the same date and time.</td>
 		</tr>
 		<tr>
+			<td><input wicket:id="carBetweenPending" type="number"></td>
+			<td> Car 'Between' while pending. A specific car is assigned to each new reservation. If new reservation begin within X hours then this car will be unavailable for booking.</td>
+		</tr>
+		<tr>
 			<td><input wicket:id="depositPayment" type="number"></td>
 			<td>Deposit payment. Set flat amount or % of total price.</td>
 		</tr>
