@@ -1,11 +1,7 @@
 package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -13,25 +9,16 @@ import javax.inject.Inject;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.form.upload.FileUpload;
-import org.apache.wicket.markup.html.form.upload.FileUploadField;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.util.file.File;
-import org.apache.wicket.util.lang.Bytes;
-import org.apache.wicket.validation.validator.PatternValidator;
-import org.apache.wicket.validation.validator.StringValidator;
 
 import by.grodno.ss.rentacar.dataaccess.filters.LocationFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.ReasonFilter;
@@ -39,7 +26,6 @@ import by.grodno.ss.rentacar.datamodel.Booking;
 import by.grodno.ss.rentacar.datamodel.Location;
 import by.grodno.ss.rentacar.datamodel.OrderStatus;
 import by.grodno.ss.rentacar.datamodel.Reason;
-import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.service.LocationService;
 import by.grodno.ss.rentacar.service.ReasonService;
@@ -47,8 +33,8 @@ import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.common.LocationChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.common.OrderStatusChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.common.ReasonChoiceRenderer;
+import by.grodno.ss.rentacar.webapp.page.admin.listform.CarListFormPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
-import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePicker;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 
@@ -102,7 +88,11 @@ public class ReservationEditPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				
+				Component newPanel = new CarListFormPanel(ReservationEditPanel.this.getId(), booking);
+				ReservationEditPanel.this.replaceWith(newPanel);
+				if (target != null) {
+					target.add(newPanel);
+				}
 			}
 		};
 		form.add(changeCar);
@@ -158,9 +148,9 @@ public class ReservationEditPanel extends Panel {
 				if (booking.getOrderStatus().equals(OrderStatus.denied) && booking.getReason()==null) {
 					info("Please select reason of refusing");
 				} 
-				else if(booking.getDateFrom().compareTo(new Date()) < 0){
-					info("Pickup date is lesser than current date. Please select correct dates");
-				}
+				//else if(booking.getDateFrom().compareTo(new Date()) < 0){
+				//	info("Pickup date is lesser than current date. Please select correct dates");
+				//}
 				else if(booking.getDateFrom().compareTo(booking.getDateTo()) >= 0){
 					info("Return date is lesser/equals pickup date. Please select correct dates");
 				}

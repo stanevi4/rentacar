@@ -1,0 +1,33 @@
+<wicket:panel>
+
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to order" /></div>
+
+<div wicket:id="paging" class="form-group"></div>
+
+<table class="table table-responsive">
+
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th><a wicket:id="sort-name">Name</a></th>
+			<th><a wicket:id="sort-type">Type</a></th>
+			<th><a wicket:id="sort-location">Location</a></th>
+			<th><a wicket:id="sort-status">Status</a></th>
+			<th>ACTION</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr wicket:id="rows">
+			<td><span><img wicket:id="image"/></span></td>
+			<td><span wicket:id="name"/></td>
+			<td><span wicket:id="type" /></td>
+			<td><span wicket:id="location" /></td>
+			<td><span wicket:id="status" /></td>			
+			<td><a wicket:id="select-link">SELECT</a></td>
+		</tr>
+	</tbody>
+		
+</table>
+
+</wicket:panel>

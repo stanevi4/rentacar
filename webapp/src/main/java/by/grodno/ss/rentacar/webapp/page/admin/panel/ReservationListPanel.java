@@ -7,9 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.PersistenceException;
 import javax.persistence.metamodel.SingularAttribute;
 
-import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
-import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
@@ -71,7 +69,7 @@ public class ReservationListPanel extends Panel {
 				item.add(new Label("locationFrom", booking.getLocationFrom().getName()));
 				//item.add(new Label("locationTo", booking.getLocationTo()));
 				item.add(new Label("summ", booking.getSumm()));
-				item.add(new Label("reason", booking.getReason().getName()));
+				//item.add(new Label("reason", booking.getReason().getName()));
 				item.add(new Label("damage", booking.getDamage()));
 				item.add(new Label("orderStatus", booking.getOrderStatus()));
 				addEditButton(ReservationListPanel.this.getId(), item, booking);
