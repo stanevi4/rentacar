@@ -1,5 +1,6 @@
 package by.grodno.ss.rentacar.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -18,5 +19,6 @@ public interface BookingService {
 
     @Transactional
     void delete(Booking booking);
-
+    
+    String convertDurationToString(Date dateFrom, Date dateTo);
 }

@@ -1,5 +1,6 @@
 package by.grodno.ss.rentacar.webapp.component.panel;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -67,9 +68,11 @@ public class ReservationPanel extends Panel {
 		//form.add(dateTo);
 		
 		DatetimePicker dateFrom = new DatetimePicker("dateFrom", dateconfig);
+		dateFrom.setRequired(true);
 		form.add(dateFrom);
 		
 		DatetimePicker dateTo = new DatetimePicker("dateTo", dateconfig);
+		dateTo.setRequired(true);
 		form.add(dateTo);
 		
 		List<Location> allLocations = locationService.find(new LocationFilter());
@@ -123,7 +126,13 @@ public class ReservationPanel extends Panel {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
-				setResponsePage(new ChooseCarPage());
+				if(filter.getDateFrom().compareTo(filter.getDateTo()) >= 0){
+					error("Return date is lesser/equals pickup date. Please select correct dates");
+				}else if(filter.getDateFrom().compareTo(new Date()) < 0){
+					error("Pick-up date is lesser than current date. Please select correct dates");
+				}else{
+					setResponsePage(new ChooseCarPage(filter));
+				}
 			}
 		});
 

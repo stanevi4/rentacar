@@ -50,41 +50,30 @@
 										<div id="collapseOne">
 											<div class="panel-body">
 												<p class="clearfix">
-													<strong>Time and place</strong> <a href="#"
-														class="btn btn-link pull-right text-capitalize"
-														id="crBtnWhen">change</a>
+													<strong>Time and place</strong> <a wicket:id="link-change" class="btn btn-link pull-right text-capitalize">change</a>
 												</p>
 
 												<div class="row">
 													<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Pick-up:</div>
-													<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
-
 													<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-														29-05-2016, 09:00<br>Hogarth Road, London
-													</div>
-													<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
+													<span wicket:id="dateFrom"></span><br>
+													<span wicket:id="locationFrom"></span></div>
 												</div>
 												<!-- /.row -->
 
 												<div class="row">
 													<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Return:</div>
-													<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
-
 													<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-														30-05-2016, 09:00<br>Hogarth Road, London
-													</div>
-													<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
+													<span wicket:id="dateTo"></span><br>
+													<span wicket:id="locationTo"></span></div>
 												</div>
 												<!-- /.row -->
 
 												<div class="row">
-													<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Rental
-														Duration:</div>
-													<!-- /.col-lg-5 col-md-5 col-sm-5 col-xs-12 -->
+												
+													<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">Rental Duration:</div>
+													<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12"><span wicket:id="duration"></span></div>
 
-													<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">1
-														day</div>
-													<!-- /.col-lg-7 col-md-7 col-sm-7 col-xs-12 -->
 												</div>
 												<!-- /.row -->
 											</div>
@@ -143,13 +132,13 @@
 								<!-- /.row form formFilter -->
 
 								<div class="row products">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
+<!-- репитер тут ------------------------------------------------------------------------------------------- -->
+									<div wicket:id="rows" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
 										<div class="thumbnail">
 											<div class="row">
 												<div class="col-lg-9 col-md-8 col-sm-7 col-xs-8">
 													<div class="productImage">
-														<img src="images/3_77a8f9fa14a4f7357a2bc0e14e255cdd.jpg"
-															alt="" class="img-responsive">
+														<img wicket:id="image" class="img-responsive">
 													</div>
 													<!-- /.productImage -->
 												</div>
@@ -159,322 +148,55 @@
 													<div class="well well-sm text-center productPrice">
 														<p>Total price:</p>
 														<p>
-															<strong>$ 80.00</strong>
+															<strong><i wicket:id="iconPrice"></i>&nbsp;<span wicket:id="total-price"></span></strong>
 														</p>
 													</div>
 													<!-- /.well well-sm text-center productPrice -->
 
 													<div class="productActions">
-														<form wicket:id="form-submit-continue" action="" id="crFormSearch" method="post">
-															<button wicket:id="submit-continue" type="button" value="3" class="btn btn-block btn-info crBtnContinue">book now</button>
+														<form wicket:id="form-submit-continue">
+															<button wicket:id="submit-continue" type="submit" class="btn btn-block btn-info">book now</button>
 														</form>
 													</div>
 													<!-- /.productActions -->
 												</div>
 												<!-- /.col-lg-3 col-md-4 col-sm-5 col-xs-4 -->
 											</div>
-											<!-- /.row -->
 
-											<div class="caption">
-												<p class="productTitle">Small: Mini</p>
-												<!-- /.productTitle -->
+											<div class="caption"><p class="productTitle"><span wicket:id="type"></span></p>
 
-												<p class="productDescription">Example of this range:
-													Ford Ka</p>
+												<p class="productDescription"><span wicket:id="name"></span></p>
 												<!-- /.productDescription -->
 
 												<ul class="list-inline productMeta">
-													<li><span class="glyphicon glyphicon-user"
-														aria-hidden="true"></span> <span class="text-uppercase">2</span>
+													<li><span wicket:id="descPass" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+														<span wicket:id="pass" class="text-uppercase"></span>
 													</li>
 
-													<li><span class="glyphicon glyphicon-briefcase"
-														aria-hidden="true"></span> <span class="text-uppercase">3</span>
+													<li><span wicket:id="descBags" class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+														<span wicket:id="bags" class="text-uppercase"></span>
 													</li>
 
-													<li><span class="glyphicon glyphicon-modal-window"
-														aria-hidden="true"></span> <span class="text-uppercase">4</span>
+													<li><span wicket:id="descDoors" class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+														<span wicket:id="doors" class="text-uppercase"></span>
 													</li>
 
-													<li><span class="glyphicon glyphicon-cog"
-														aria-hidden="true"></span> <span class="text-uppercase">M</span>
+													<li><span wicket:id="descTrans" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+														<span wicket:id="trans" class="text-uppercase"></span>
 													</li>
 												</ul>
 												<!-- /.list-inline productMeta -->
 
-												<p>(Example of this range: Ford Ka)</p>
+												<p><span wicket:id="description"></span></p>
 											</div>
 											<!-- /.caption -->
 										</div>
 										<!-- /.thumbnail -->
 									</div>
-									<!-- /.col-lg-12 col-md-12 col-sm-12 col-xs-12 product -->
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
-										<div class="thumbnail">
-											<div class="row">
-												<div class="col-lg-9 col-md-8 col-sm-7 col-xs-8">
-													<div class="productImage">
-														<img src="images/2_e220d12f87abbbe47bd9c70fe6cb6d6a.jpg"
-															alt="" class="img-responsive">
-													</div>
-													<!-- /.productImage -->
-												</div>
-												<!-- /.col-lg-9 col-md-8 col-sm-7 col-xs-8 -->
-
-												<div class="col-lg-3 col-md-4 col-sm-5 col-xs-4">
-													<div class="well well-sm text-center productPrice">
-														<p>Total price:</p>
-														<p>
-															<strong>$ 90.00</strong>
-														</p>
-													</div>
-													<!-- /.well well-sm text-center productPrice -->
-
-													<div class="productActions">
-														<button type="button" value="2"
-															class="btn btn-block btn-info crBtnContinue">book
-															now</button>
-													</div>
-													<!-- /.productActions -->
-												</div>
-												<!-- /.col-lg-3 col-md-4 col-sm-5 col-xs-4 -->
-											</div>
-											<!-- /.row -->
-
-											<div class="caption">
-												<p class="productTitle">Medium: Low emission</p>
-												<!-- /.productTitle -->
-
-												<p class="productDescription">Example of this range:
-													Ford Mondeo</p>
-												<!-- /.productDescription -->
-
-												<ul class="list-inline productMeta">
-													<li><span class="glyphicon glyphicon-user"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-briefcase"
-														aria-hidden="true"></span> <span class="text-uppercase">3</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-modal-window"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-cog"
-														aria-hidden="true"></span> <span class="text-uppercase">M</span>
-													</li>
-												</ul>
-												<!-- /.list-inline productMeta -->
-
-												<p>(Example of this range: Ford Mondeo)</p>
-											</div>
-											<!-- /.caption -->
-										</div>
-										<!-- /.thumbnail -->
-									</div>
-									<!-- /.col-lg-12 col-md-12 col-sm-12 col-xs-12 product -->
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
-										<div class="thumbnail">
-											<div class="row">
-												<div class="col-lg-9 col-md-8 col-sm-7 col-xs-8">
-													<div class="productImage">
-														<img src="images/1_11598959d2ee897d4714a8181e59ccc2.jpg"
-															alt="" class="img-responsive">
-													</div>
-													<!-- /.productImage -->
-												</div>
-												<!-- /.col-lg-9 col-md-8 col-sm-7 col-xs-8 -->
-
-												<div class="col-lg-3 col-md-4 col-sm-5 col-xs-4">
-													<div class="well well-sm text-center productPrice">
-														<p>Total price:</p>
-														<p>
-															<strong>$ 100.00</strong>
-														</p>
-													</div>
-													<!-- /.well well-sm text-center productPrice -->
-
-													<div class="productActions">
-														<button type="button" value="1"
-															class="btn btn-block btn-info crBtnContinue">book
-															now</button>
-													</div>
-													<!-- /.productActions -->
-												</div>
-												<!-- /.col-lg-3 col-md-4 col-sm-5 col-xs-4 -->
-											</div>
-											<!-- /.row -->
-
-											<div class="caption">
-												<p class="productTitle">Small: Economy</p>
-												<!-- /.productTitle -->
-
-												<p class="productDescription">Example of this range:
-													Ford Fiesta</p>
-												<!-- /.productDescription -->
-
-												<ul class="list-inline productMeta">
-													<li><span class="glyphicon glyphicon-user"
-														aria-hidden="true"></span> <span class="text-uppercase">4</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-briefcase"
-														aria-hidden="true"></span> <span class="text-uppercase">3</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-modal-window"
-														aria-hidden="true"></span> <span class="text-uppercase">4</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-cog"
-														aria-hidden="true"></span> <span class="text-uppercase">A</span>
-													</li>
-												</ul>
-												<!-- /.list-inline productMeta -->
-
-												<p>(Example of this range: Ford Fiesta)</p>
-											</div>
-											<!-- /.caption -->
-										</div>
-										<!-- /.thumbnail -->
-									</div>
-									<!-- /.col-lg-12 col-md-12 col-sm-12 col-xs-12 product -->
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
-										<div class="thumbnail">
-											<div class="row">
-												<div class="col-lg-9 col-md-8 col-sm-7 col-xs-8">
-													<div class="productImage">
-														<img src="images/5_dbfc91bcd908de59f5f8136a944a0e68.jpg"
-															alt="" class="img-responsive">
-													</div>
-													<!-- /.productImage -->
-												</div>
-												<!-- /.col-lg-9 col-md-8 col-sm-7 col-xs-8 -->
-
-												<div class="col-lg-3 col-md-4 col-sm-5 col-xs-4">
-													<div class="well well-sm text-center productPrice">
-														<p>Total price:</p>
-														<p>
-															<strong>$ 120.00</strong>
-														</p>
-													</div>
-													<!-- /.well well-sm text-center productPrice -->
-
-													<div class="productActions">
-														<button type="button" value="5"
-															class="btn btn-block btn-info crBtnContinue">book
-															now</button>
-													</div>
-													<!-- /.productActions -->
-												</div>
-												<!-- /.col-lg-3 col-md-4 col-sm-5 col-xs-4 -->
-											</div>
-											<!-- /.row -->
-
-											<div class="caption">
-												<p class="productTitle">Large: Station Wagon</p>
-												<!-- /.productTitle -->
-
-												<p class="productDescription">Example of this range:
-													Mazda 6</p>
-												<!-- /.productDescription -->
-
-												<ul class="list-inline productMeta">
-													<li><span class="glyphicon glyphicon-user"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-briefcase"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-modal-window"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-cog"
-														aria-hidden="true"></span> <span class="text-uppercase">M</span>
-													</li>
-												</ul>
-												<!-- /.list-inline productMeta -->
-
-												<p>(Example of this range: Mazda 6)</p>
-											</div>
-											<!-- /.caption -->
-										</div>
-										<!-- /.thumbnail -->
-									</div>
-									<!-- /.col-lg-12 col-md-12 col-sm-12 col-xs-12 product -->
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product">
-										<div class="thumbnail">
-											<div class="row">
-												<div class="col-lg-9 col-md-8 col-sm-7 col-xs-8">
-													<div class="productImage">
-														<img src="images/4_64746dd6e60c5caac6aee50bc810dda4.jpg"
-															alt="" class="img-responsive">
-													</div>
-													<!-- /.productImage -->
-												</div>
-												<!-- /.col-lg-9 col-md-8 col-sm-7 col-xs-8 -->
-
-												<div class="col-lg-3 col-md-4 col-sm-5 col-xs-4">
-													<div class="well well-sm text-center productPrice">
-														<p>Total price:</p>
-														<p>
-															<strong>$ 140.00</strong>
-														</p>
-													</div>
-													<!-- /.well well-sm text-center productPrice -->
-
-													<div class="productActions">
-														<button type="button" value="4"
-															class="btn btn-block btn-info crBtnContinue">book
-															now</button>
-													</div>
-													<!-- /.productActions -->
-												</div>
-												<!-- /.col-lg-3 col-md-4 col-sm-5 col-xs-4 -->
-											</div>
-											<!-- /.row -->
-
-											<div class="caption">
-												<p class="productTitle">Large: Premium</p>
-												<!-- /.productTitle -->
-
-												<p class="productDescription">Example of this range: BMW
-													7</p>
-												<!-- /.productDescription -->
-
-												<ul class="list-inline productMeta">
-													<li><span class="glyphicon glyphicon-user"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-briefcase"
-														aria-hidden="true"></span> <span class="text-uppercase">5</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-modal-window"
-														aria-hidden="true"></span> <span class="text-uppercase">4</span>
-													</li>
-
-													<li><span class="glyphicon glyphicon-cog"
-														aria-hidden="true"></span> <span class="text-uppercase">A</span>
-													</li>
-												</ul>
-												<!-- /.list-inline productMeta -->
-
-												<p>(Example of this range: BMW 7 series)</p>
-											</div>
-											<!-- /.caption -->
-										</div>
-										<!-- /.thumbnail -->
-									</div>
-									<!-- /.col-lg-12 col-md-12 col-sm-12 col-xs-12 product -->
+<!-- репитер конец------------------------------------------------------------------------------------------ -->
 								</div>
 								<!-- /.row products -->
+								<div class="pagination"><ul wicket:id="pager" ></ul></div>
 							</div>
 							<!-- /.col-lg-8 col-md-7 col-sm-6 col-xs-12 -->
 						</div>
