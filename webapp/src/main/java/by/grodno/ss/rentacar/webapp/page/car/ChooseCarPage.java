@@ -2,6 +2,7 @@ package by.grodno.ss.rentacar.webapp.page.car;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,13 +29,13 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.ContextRelativeResource;
 
-import by.grodno.ss.rentacar.dataaccess.TypeDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.TypeFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
 import by.grodno.ss.rentacar.datamodel.Currency;
 import by.grodno.ss.rentacar.datamodel.Type;
+import by.grodno.ss.rentacar.datamodel.Type_;
 import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.service.CarService;
 import by.grodno.ss.rentacar.service.SettingService;
@@ -57,8 +58,6 @@ public class ChooseCarPage extends AbstractPage {
 	private BookingService bookingService;
 	@Inject
 	private TypeService typeService;
-	@Inject
-	private TypeDao typeDao;
 	private String IMAGE_FOLDER = "/images/cars/";
 	private IModel<String> descPass = Model.of("Number of passengers");
 	private IModel<String> descBags = Model.of("Number of bags");
@@ -78,21 +77,22 @@ public class ChooseCarPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		
+
 		SimpleDateFormat dt = new SimpleDateFormat("dd.MM.yyy HH:mm");
 		add(new Label("duration", bookingService.convertDurationToString(filter.getDateFrom(), filter.getDateTo())));
 		add(new Label("dateFrom", dt.format(filter.getDateFrom())));
 		add(new Label("locationFrom", filter.getLocationFrom().getName()));
 		add(new Label("dateTo", dt.format(filter.getDateTo())));
 		add(new Label("locationTo", filter.getLocationTo().getName()));
-		add(new Link<Void>("link-change"){
+		add(new Link<Void>("link-change") {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onClick() {
 				setResponsePage(new ReservationPage(filter));
 			}
 		});
-		
+
 		CarsDataProvider carsDataProvider = new CarsDataProvider(filter);
 		DataView<Car> dataView = new DataView<Car>("rows", carsDataProvider, 5) {
 			private static final long serialVersionUID = 1L;
@@ -130,25 +130,58 @@ public class ChooseCarPage extends AbstractPage {
 				item.add(new WebMarkupContainer("descTrans").add(new TooltipBehavior(descTrans)));
 			}
 		};
-		dataView.setOutputMarkupId(true);
 		add(dataView);
 		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("pager", dataView);
-		pager.setOutputMarkupId(true);
 		add(pager);
-		
+
 		List<Type> allTypes = typeService.find(new TypeFilter());
-		PropertyModel<Type> typeModel = new PropertyModel<Type>(filter, "type" );
-		DropDownChoice<Type> typeDropDownType = new DropDownChoice<>("type",  typeModel, allTypes, TypeChoiceRenderer.INSTANCE);
-		typeDropDownType.setRequired(true);
+		PropertyModel<Type> typeModel = new PropertyModel<Type>(filter, "type");
+		DropDownChoice<Type> typeDropDownType = new DropDownChoice<Type>("type", typeModel, allTypes,
+				TypeChoiceRenderer.INSTANCE);
+		typeDropDownType.setRequired(false); // allow choise null value ("All")
 		typeDropDownType.add(new AjaxFormComponentUpdatingBehavior("onchange") {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
 				ChooseCarPage.this.filter.setType(typeDropDownType.getModelObject());
 				setResponsePage(new ChooseCarPage(ChooseCarPage.this.filter));
 			}
 		});
+		typeDropDownType.setNullValid(true);
+		typeDropDownType.setMarkupId("type");
 		add(typeDropDownType);
+
+		final List<String> s = new ArrayList<String>();
+		s.add("Price (Low to High)");
+		s.add("Price (High to Low)");
+		Model<String> sortModel = new Model<String>("Price (Low to High)");
+		DropDownChoice<String> typeDropDownSort = (new DropDownChoice<String>("sort", sortModel, s) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected CharSequence getDefaultChoice(String selectedValue) {
+				return " ";
+			}
+		});
+		typeDropDownSort.setRequired(true);
+		typeDropDownSort.setNullValid(true);
+		typeDropDownSort.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				ChooseCarPage.this.filter.setSortProperty(Type_.pricePerHour);
+				//if (typeDropDownSort.getInput().equals("Price (Low to High)")){
+					ChooseCarPage.this.filter.setSortOrder(false);
+				//}else if(typeDropDownSort.getInput().equals("Price (High to Low)")){
+				//	 ChooseCarPage.this.filter.setSortOrder(true);
+				//}
+				setResponsePage(new ChooseCarPage(ChooseCarPage.this.filter));
+			}
+		});
+		add(typeDropDownSort);
+
 	}
 
 	private class CarsDataProvider extends SortableDataProvider<Car, Serializable> {
@@ -158,7 +191,12 @@ public class ChooseCarPage extends AbstractPage {
 		public CarsDataProvider(CarFilter filter) {
 			super();
 			this.carFilter = filter;
-			setSort((Serializable) Car_.name, SortOrder.ASCENDING);
+			if (filter.getSortProperty() == null) {
+				setSort((Serializable) Type_.pricePerHour, SortOrder.ASCENDING);
+			} else {
+				setSort((Serializable) carFilter.getSortProperty(),
+						carFilter.isSortOrder() == true ? SortOrder.ASCENDING : SortOrder.DESCENDING);
+			}
 		}
 
 		@Override
@@ -172,7 +210,6 @@ public class ChooseCarPage extends AbstractPage {
 			carFilter.setOffset((int) first);
 			carFilter.setFetchLocations(true);
 			carFilter.setFetchTypes(true);
-			//carFilter.setType(typeDao.get((long) 1));
 
 			return carService.find(carFilter).iterator();
 		}
