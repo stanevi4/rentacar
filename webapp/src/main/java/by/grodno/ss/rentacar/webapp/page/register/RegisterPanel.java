@@ -15,6 +15,7 @@ import org.apache.wicket.validation.validator.StringValidator;
 
 import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
+import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.login.LoginPage;
@@ -129,6 +130,7 @@ public class RegisterPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onSubmit() {
+				userCredentials.setRole(UserRole.CLIENT);
 				if (userProfile.getId() == null) {
 					userService.register(userProfile, userCredentials);
 				} else {

@@ -21,6 +21,7 @@ public class CarFilter extends AbstractFilter {
 	private CarStatus carStatus;
 	private boolean isFetchTypes;
 	private boolean isFetchLocations;
+	private SelectOption selectOption;
 
 	public CarFilter() {
 		super();
@@ -105,6 +106,12 @@ public class CarFilter extends AbstractFilter {
 	public void setLocationTo(Location locationTo) {
 		LocationTo = locationTo;
 	}
-	
-	
+
+	public SelectOption getSelectOption() {
+		return selectOption;
+	}
+
+	public void setSelectOption(SelectOption selectOption) {
+		this.selectOption = selectOption;
+	}
 }

@@ -12,6 +12,7 @@ import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
+import by.grodno.ss.rentacar.webapp.page.MyBooking.MyBookingPage;
 import by.grodno.ss.rentacar.webapp.page.admin.AdminPage;
 import by.grodno.ss.rentacar.webapp.page.admin.SettingEditPage;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
@@ -158,13 +159,13 @@ public class TopMenuPanel extends Panel {
 		add(liLogOut);
 		
 		WebMarkupContainer liBookings = new WebMarkupContainer("link-container-bookings");
-//		if (selectedPage.equals(ContactUsPage.class)) {
-//			liContactUs.add(new AttributeModifier("class", "active"));
-//		}
+		if (selectedPage.equals(MyBookingPage.class)) {
+			liBookings.add(new AttributeModifier("class", "active"));
+		}
 		liBookings.add(new Link("link-bookings") {
 			@Override
 			public void onClick() {
-				//setResponsePage(new HomePage());
+				setResponsePage(new MyBookingPage());
 			}
 		});
 		liBookings.setVisible(AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.CLIENT));

@@ -2,7 +2,7 @@ package by.grodno.ss.rentacar.webapp.page.car;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,6 +16,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
@@ -30,9 +31,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.ContextRelativeResource;
 
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
+import by.grodno.ss.rentacar.dataaccess.filters.SelectOption;
 import by.grodno.ss.rentacar.dataaccess.filters.TypeFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
-import by.grodno.ss.rentacar.datamodel.Car_;
 import by.grodno.ss.rentacar.datamodel.Currency;
 import by.grodno.ss.rentacar.datamodel.Type;
 import by.grodno.ss.rentacar.datamodel.Type_;
@@ -58,6 +59,7 @@ public class ChooseCarPage extends AbstractPage {
 	private BookingService bookingService;
 	@Inject
 	private TypeService typeService;
+
 	private String IMAGE_FOLDER = "/images/cars/";
 	private IModel<String> descPass = Model.of("Number of passengers");
 	private IModel<String> descBags = Model.of("Number of bags");
@@ -77,7 +79,7 @@ public class ChooseCarPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
+		
 		SimpleDateFormat dt = new SimpleDateFormat("dd.MM.yyy HH:mm");
 		add(new Label("duration", bookingService.convertDurationToString(filter.getDateFrom(), filter.getDateTo())));
 		add(new Label("dateFrom", dt.format(filter.getDateFrom())));
@@ -119,7 +121,7 @@ public class ChooseCarPage extends AbstractPage {
 					@Override
 					public void onSubmit() {
 						super.onSubmit();
-						setResponsePage(new CheckoutPage());
+						setResponsePage(new CheckoutPage(car, filter));
 					}
 				});
 				item.add(form);
@@ -152,36 +154,31 @@ public class ChooseCarPage extends AbstractPage {
 		typeDropDownType.setMarkupId("type");
 		add(typeDropDownType);
 
-		final List<String> s = new ArrayList<String>();
-		s.add("Price (Low to High)");
-		s.add("Price (High to Low)");
-		Model<String> sortModel = new Model<String>("Price (Low to High)");
-		DropDownChoice<String> typeDropDownSort = (new DropDownChoice<String>("sort", sortModel, s) {
-			private static final long serialVersionUID = 1L;
-
+		SelectOption priceAsc = new SelectOption("priceAsc", "Price (Low to High)");
+		SelectOption priceDesc = new SelectOption("priceDesc", "Price (High to Low)");
+		SelectOption[] options = new SelectOption[] { priceAsc, priceDesc };
+		ChoiceRenderer choiceRenderer = new ChoiceRenderer("value", "key");
+		DropDownChoice<SelectOption> typeDropDownSort = (new DropDownChoice("sort",
+			new PropertyModel<>(this.filter, "selectOption"), Arrays.asList(options), choiceRenderer) {
 			@Override
 			protected CharSequence getDefaultChoice(String selectedValue) {
 				return " ";
 			}
 		});
-		typeDropDownSort.setRequired(true);
-		typeDropDownSort.setNullValid(true);
-		typeDropDownSort.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+		typeDropDownSort.add(new AjaxFormComponentUpdatingBehavior("change") {
 			private static final long serialVersionUID = 1L;
-
 			@Override
 			protected void onUpdate(AjaxRequestTarget target) {
 				ChooseCarPage.this.filter.setSortProperty(Type_.pricePerHour);
-				//if (typeDropDownSort.getInput().equals("Price (Low to High)")){
+				if (typeDropDownSort.getModelObject().getKey().equals("priceAsc")) {
+					ChooseCarPage.this.filter.setSortOrder(true);
+				} else if (typeDropDownSort.getModelObject().getKey().equals("priceDesc")) {
 					ChooseCarPage.this.filter.setSortOrder(false);
-				//}else if(typeDropDownSort.getInput().equals("Price (High to Low)")){
-				//	 ChooseCarPage.this.filter.setSortOrder(true);
-				//}
+				}
 				setResponsePage(new ChooseCarPage(ChooseCarPage.this.filter));
 			}
 		});
 		add(typeDropDownSort);
-
 	}
 
 	private class CarsDataProvider extends SortableDataProvider<Car, Serializable> {
@@ -227,11 +224,10 @@ public class ChooseCarPage extends AbstractPage {
 
 	private void addImage(Item<Car> item, Car car) {
 		Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
-		carImage.add(new AttributeModifier("height", "220"));
-		carImage.add(new AttributeModifier("width", "140"));
-		String alt = car.getName();
-		carImage.add(new AttributeModifier("alt", alt));
-		item.add(carImage);
+		//carImage.add(new AttributeModifier("height", "220"));
+		//carImage.add(new AttributeModifier("width", "140"));
+		//String alt = car.getName();
+		item.add(carImage);		
 	}
 
 	private void addPriceIcon(Item<Car> item) {

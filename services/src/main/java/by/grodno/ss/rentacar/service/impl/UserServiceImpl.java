@@ -14,7 +14,6 @@ import by.grodno.ss.rentacar.dataaccess.UserProfileDao;
 import by.grodno.ss.rentacar.dataaccess.filters.UserFilter;
 import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
-import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 
 @Service
@@ -30,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void register(UserProfile profile, UserCredentials userCredentials) {
 
-		userCredentials.setRole(UserRole.CLIENT);
+		//userCredentials.setRole(UserRole.CLIENT);
 		userCredentialsDao.insert(userCredentials);
 		profile.setUserCredentials(userCredentials);
 		profile.setCreated(new Date());
@@ -51,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void update(UserProfile profile) {
-		String flName = String.format("id=%1$d %2$d %3$d", profile.getId(), profile.getFirstName(),
+		String flName = String.format("id=%1$d %2$s %3$s", profile.getId(), profile.getFirstName(),
 				profile.getLastName());
 		LOGGER.info("User profile updated: {}", flName);
 		userProfileDao.update(profile);

@@ -1,11 +1,14 @@
 package by.grodno.ss.rentacar.service.impl;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import by.grodno.ss.rentacar.dataaccess.BookingDao;
@@ -15,7 +18,7 @@ import by.grodno.ss.rentacar.service.BookingService;
 
 @Service
 public class BookingServiceImpl implements BookingService {
-
+	private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 	@Inject
 	private BookingDao bookingDao;
 	
@@ -32,7 +35,9 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public void saveOrUpdate(Booking booking) {
 		if (booking.getId() == null) {
+			booking.setCreated(new Date());
 			bookingDao.insert(booking);
+			LOGGER.info("Order regirstred: {}", booking.getId());
         } else {
         	bookingDao.update(booking);
         }	
@@ -40,8 +45,11 @@ public class BookingServiceImpl implements BookingService {
 	}
 	@Override
 	public void delete(Booking booking) {
+		LOGGER.info("Order deleted: {}", booking.getId());
 		bookingDao.delete(booking.getId());
 	}
+	
+	
 	
 	@Override
 	public String convertDurationToString(Date dateFrom, Date dateTo) {
@@ -79,6 +87,35 @@ public class BookingServiceImpl implements BookingService {
 		stringTime = String.format("%1$s %2$s %3$s", sDays, sHours, sMins);
 		
 		return stringTime;
+	}
+
+	@Override
+	public BigDecimal getTotalPrice(Date dateFrom, Date dateTo, BigDecimal pricePerHour) {
+		
+		long time = dateTo.getTime() - dateFrom.getTime();
+		long timeToMinutes = TimeUnit.MILLISECONDS.toMinutes(time); 
+		BigDecimal pricePerMinut = pricePerHour.divide(new BigDecimal("60"), 20, BigDecimal.ROUND_HALF_UP);
+		BigDecimal total = pricePerMinut.multiply(new BigDecimal(timeToMinutes));
+		total = total.setScale(2, BigDecimal.ROUND_HALF_UP );
+		
+		return total;
+	}
+
+	@Override
+	public BigDecimal getPricePerDay(BigDecimal pricePerHour) {
+		BigDecimal pricePerDay = pricePerHour.multiply(new BigDecimal("24"));
+		pricePerDay = pricePerDay.setScale(2, BigDecimal.ROUND_HALF_UP );
+		return pricePerDay;
+	}
+
+	@Override
+	public BigDecimal getRequiredDeposit(BigDecimal total, int percent) {
+		
+		BigDecimal percentTobd = new BigDecimal(percent);
+		BigDecimal multiplicator = percentTobd.divide(new BigDecimal("100"), 20, BigDecimal.ROUND_HALF_UP);
+		BigDecimal deposit = total.multiply(multiplicator);
+		deposit = deposit.setScale(2, BigDecimal.ROUND_HALF_UP );
+		return deposit;
 	}
 
 }

@@ -1,8 +1,6 @@
 package by.grodno.ss.rentacar.service.impl;
 
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
