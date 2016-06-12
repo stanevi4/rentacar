@@ -3,15 +3,19 @@ package by.grodno.ss.rentacar.webapp.page.car;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.image.Image;
@@ -20,16 +24,22 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.ContextRelativeResource;
 
+import by.grodno.ss.rentacar.dataaccess.TypeDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
+import by.grodno.ss.rentacar.dataaccess.filters.TypeFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
 import by.grodno.ss.rentacar.datamodel.Currency;
+import by.grodno.ss.rentacar.datamodel.Type;
 import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.service.CarService;
 import by.grodno.ss.rentacar.service.SettingService;
+import by.grodno.ss.rentacar.service.TypeService;
+import by.grodno.ss.rentacar.webapp.common.TypeChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
 import by.grodno.ss.rentacar.webapp.page.order.CheckoutPage;
 import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
@@ -45,6 +55,10 @@ public class ChooseCarPage extends AbstractPage {
 	private SettingService settingService;
 	@Inject
 	private BookingService bookingService;
+	@Inject
+	private TypeService typeService;
+	@Inject
+	private TypeDao typeDao;
 	private String IMAGE_FOLDER = "/images/cars/";
 	private IModel<String> descPass = Model.of("Number of passengers");
 	private IModel<String> descBags = Model.of("Number of bags");
@@ -79,7 +93,7 @@ public class ChooseCarPage extends AbstractPage {
 			}
 		});
 		
-		CarsDataProvider carsDataProvider = new CarsDataProvider();
+		CarsDataProvider carsDataProvider = new CarsDataProvider(filter);
 		DataView<Car> dataView = new DataView<Car>("rows", carsDataProvider, 5) {
 			private static final long serialVersionUID = 1L;
 
@@ -116,19 +130,34 @@ public class ChooseCarPage extends AbstractPage {
 				item.add(new WebMarkupContainer("descTrans").add(new TooltipBehavior(descTrans)));
 			}
 		};
+		dataView.setOutputMarkupId(true);
 		add(dataView);
 		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("pager", dataView);
+		pager.setOutputMarkupId(true);
 		add(pager);
-
+		
+		List<Type> allTypes = typeService.find(new TypeFilter());
+		PropertyModel<Type> typeModel = new PropertyModel<Type>(filter, "type" );
+		DropDownChoice<Type> typeDropDownType = new DropDownChoice<>("type",  typeModel, allTypes, TypeChoiceRenderer.INSTANCE);
+		typeDropDownType.setRequired(true);
+		typeDropDownType.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				ChooseCarPage.this.filter.setType(typeDropDownType.getModelObject());
+				setResponsePage(new ChooseCarPage(ChooseCarPage.this.filter));
+			}
+		});
+		add(typeDropDownType);
 	}
 
 	private class CarsDataProvider extends SortableDataProvider<Car, Serializable> {
 		private static final long serialVersionUID = 1L;
 		private CarFilter carFilter;
 
-		public CarsDataProvider() {
+		public CarsDataProvider(CarFilter filter) {
 			super();
-			carFilter = new CarFilter();
+			this.carFilter = filter;
 			setSort((Serializable) Car_.name, SortOrder.ASCENDING);
 		}
 
@@ -143,6 +172,7 @@ public class ChooseCarPage extends AbstractPage {
 			carFilter.setOffset((int) first);
 			carFilter.setFetchLocations(true);
 			carFilter.setFetchTypes(true);
+			//carFilter.setType(typeDao.get((long) 1));
 
 			return carService.find(carFilter).iterator();
 		}
