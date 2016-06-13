@@ -14,12 +14,13 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -41,8 +42,9 @@ public class ReservationListPanel extends Panel {
 	private IModel<String> descDeleteButton = Model.of("Delete item");
 	private IModel<String> descEditButton = Model.of("View / edit item");
 
-	public ReservationListPanel(String id) {
+	public ReservationListPanel(String id, BookingFilter filter) {
 		super(id);
+		this.filter = filter;
 	}
 
 	public ReservationListPanel(String id, IModel<?> model) {
@@ -55,6 +57,10 @@ public class ReservationListPanel extends Panel {
 		ReservationListPanel.this.setOutputMarkupId(true);
 		add(new FeedbackPanel("feedback"));
 
+		Form<BookingFilter> form = new Form<BookingFilter>("selections", new CompoundPropertyModel<BookingFilter>(filter));
+		
+		add(form);
+		
 		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider();
 		DataView<Booking> dataView = new DataView<Booking>("rows", bookingsDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
@@ -121,7 +127,7 @@ public class ReservationListPanel extends Panel {
 		
 		public BookingsDataProvider() {
 			super();
-			bookingFilter = new BookingFilter();
+			bookingFilter = ReservationListPanel.this.filter;
 			setSort((Serializable) Booking_.created, SortOrder.ASCENDING);
 		}
 

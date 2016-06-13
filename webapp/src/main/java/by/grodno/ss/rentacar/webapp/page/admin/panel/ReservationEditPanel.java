@@ -20,6 +20,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
+import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.LocationFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.ReasonFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
@@ -167,7 +168,7 @@ public class ReservationEditPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new ReservationListPanel(ReservationEditPanel.this.getId());
+				Component newPanel = new ReservationListPanel(ReservationEditPanel.this.getId(), new BookingFilter());
 				ReservationEditPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
