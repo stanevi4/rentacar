@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import by.grodno.ss.rentacar.webapp.page.admin.panel.UserListPanel;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 
 public class UsersEditPage extends AdminPage {
 	/**
@@ -23,7 +24,8 @@ public class UsersEditPage extends AdminPage {
 	protected void onInitialize() {
 		super.onInitialize();
 
-		add(new FeedbackPanel("feedback"));
+		final NotificationPanel feedback = new NotificationPanel("feedbackpanel");
+		add(feedback);
 		add(new UserListPanel("user-panel"));
 	}
 

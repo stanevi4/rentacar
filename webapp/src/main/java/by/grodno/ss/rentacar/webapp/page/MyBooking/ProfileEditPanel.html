@@ -1,23 +1,13 @@
 <wicket:panel>
 
-<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to user list" /></div>
+<div class="form-group"><input type="submit" wicket:id="back" value="<< Back to booking list" /></div>
+
+<p wicket:id="feedbackpanel" class="crError text-danger" style="display: block;"></p>
 
 <form wicket:id="form">
 
 	<table class="table table-responsive">
 	
-		<tr>	
-			<td width="20%">Created:</td>
-			<td><input wicket:id="created" type="text"></td>
-		</tr>
-		<tr>	
-			<td>Email:</td>
-			<td><input wicket:id="email" type="text"></td>
-		</tr>
-		<tr>
-			<td>Role</td>
-			<td><select wicket:id="role" type="text"></select></td>		
-		</tr>
 		<tr>	
 			<td>First name:</td>
 			<td><input wicket:id="firstName" type="text"></td>
@@ -53,6 +43,10 @@
 		<tr>	
 			<td>Zip-code:</td>
 			<td><input wicket:id="zipCode" type="text"></td>
+		</tr>
+		<tr>	
+			<td>Login:</td>
+			<td><span wicket:id="email" type="text"></span></td>
 		</tr>
 		<tr>
 			<td><input wicket:id="change-password" type="button" value="Change password" /></td>

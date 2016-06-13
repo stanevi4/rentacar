@@ -15,7 +15,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -23,13 +22,15 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import by.grodno.ss.rentacar.dataaccess.filters.UserFilter;
-import by.grodno.ss.rentacar.datamodel.Car;
-import by.grodno.ss.rentacar.datamodel.Car_;
+import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserCredentials_;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
 import by.grodno.ss.rentacar.datamodel.UserProfile_;
+import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
-import by.grodno.ss.rentacar.webapp.page.admin.CarsEditPage;
+import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
+import by.grodno.ss.rentacar.webapp.page.admin.UsersEditPage;
+import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
@@ -125,7 +126,7 @@ public class UserListPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new UserEditPanel(id);
+				Component newPanel = new UserEditPanel(id, user, user.getUserCredentials());
 				UserListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
@@ -136,19 +137,20 @@ public class UserListPanel extends Panel {
 		item.add(buttonEdit);
 	}
 
+	boolean a = (AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
 	private void addDeleteButton(Item<UserProfile> item, UserProfile user) {
 		item.add(new Link<Void>("delete-link") {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick() {
 				try {
-					//userService.delete(user);
+					userService.delete(user.getId());
 				} catch (PersistenceException e) {
-					System.out.println("caughth persistance exception");
+					error("can't delete user!");
 				}
-				setResponsePage(new CarsEditPage());
+				setResponsePage(new UsersEditPage());
 			}
-		}.add(new TooltipBehavior(descDeleteButton)));
+		}.add(new TooltipBehavior(descDeleteButton)).setVisible(a));
 	}
 
 	private void addButtonNew(String id) {
@@ -157,13 +159,14 @@ public class UserListPanel extends Panel {
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new CarEditPanel(id, new Car());
+				Component newPanel = new UserEditPanel(id, new UserProfile(), new UserCredentials());
 				UserListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
 				}
 			}
 		};
+		buttonNewItem.setVisible(a);
 		add(buttonNewItem);
 	}
 }

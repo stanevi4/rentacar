@@ -138,11 +138,11 @@ public class MyBookingListPanel extends Panel {
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new ReservationEditPanel(id, booking);
-				MyBookingListPanel.this.replaceWith(newPanel);
-				if (target != null) {
-					target.add(newPanel);
-				}
+				//Component newPanel = new ReservationEditPanel(id, booking);
+				//MyBookingListPanel.this.replaceWith(newPanel);
+				//if (target != null) {
+				//	target.add(newPanel);
+				//}
 			}
 		};
 		buttonEdit.add(new TooltipBehavior(descEditButton));

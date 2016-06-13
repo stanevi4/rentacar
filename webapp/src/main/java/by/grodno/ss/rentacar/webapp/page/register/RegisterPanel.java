@@ -3,6 +3,7 @@ package by.grodno.ss.rentacar.webapp.page.register;
 import javax.inject.Inject;
 
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -61,7 +62,7 @@ public class RegisterPanel extends Panel {
 		email.add(EmailAddressValidator.getInstance());
 		form.add(email);
 
-		TextField<String> password = new TextField<String>("password");
+		PasswordTextField password = new PasswordTextField("password");
 		password.setRequired(true);
 		password.add(StringValidator.maximumLength(100));
 		password.add(StringValidator.minimumLength(6));
