@@ -31,6 +31,7 @@ import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
 public class ReservationListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
@@ -97,7 +98,8 @@ public class ReservationListPanel extends Panel {
 			}
 		};
 		add(dataView);
-		add(new PagingNavigator("paging", dataView));
+		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
+		add(pager);
 
 		add(new OrderByBorder("sort-id", Booking_.id, bookingsDataProvider));
 		add(new OrderByBorder("sort-created", Booking_.created, bookingsDataProvider));

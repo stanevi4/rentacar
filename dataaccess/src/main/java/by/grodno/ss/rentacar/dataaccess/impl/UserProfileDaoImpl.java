@@ -55,7 +55,9 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 			Path<Object> expression;
 			if (UserCredentials_.email.equals(filter.getSortProperty())) {
 				expression = from.get(UserProfile_.userCredentials).get(filter.getSortProperty());
-			} else {
+			}else if (UserCredentials_.role.equals(filter.getSortProperty())) {
+				expression = from.get(UserProfile_.userCredentials).get(filter.getSortProperty());
+			}else {
 				expression = from.get(filter.getSortProperty());
 			}
 			cq.orderBy(new OrderImpl(expression, filter.isSortOrder()));

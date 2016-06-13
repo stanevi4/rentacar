@@ -1,0 +1,35 @@
+<wicket:panel>
+
+<div><ul wicket:id="paging" class="form-group"></ul></div>
+
+<table class="table table-responsive">
+
+	<thead>
+		<tr>
+			<th><a wicket:id="sort-email">Email</a></th>
+			<th><a wicket:id="sort-created">User created</a></th>
+			<th><a wicket:id="sort-first-name">First Name</a></th>
+			<th><a wicket:id="sort-last-name">Last Name</a></th>
+			<th>Phone</th>
+			<th><a wicket:id="sort-role">User role</a></th>
+			<th>ACTIONS</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr wicket:id="rows">
+			<td><span wicket:id="email"/></td>
+			<td><span wicket:id="created"/></td>
+			<td><span wicket:id="firstName"/></td>
+			<td><span wicket:id="lastName" /></td>
+			<td><span wicket:id="phone" /></td>
+			<td><span wicket:id="role" /></td>			
+			<td><a wicket:id="edit-link"><i class="fa fa-pencil-square-o fa-2x"></i></a>&nbsp;<a wicket:id="delete-link"><i class="fa fa-trash-o fa-2x"></i></a></td>
+		</tr>
+	</tbody>
+		
+</table>
+
+<div><input wicket:id="add-new-item" type="submit" value="Add new item"></input></div>
+
+</wicket:panel>

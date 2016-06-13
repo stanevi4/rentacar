@@ -32,6 +32,7 @@ import by.grodno.ss.rentacar.service.SettingService;
 import by.grodno.ss.rentacar.service.TypeService;
 import by.grodno.ss.rentacar.webapp.page.admin.TypeEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
 public class TypeListPanel extends Panel {
 	/**
@@ -85,7 +86,8 @@ public class TypeListPanel extends Panel {
 			}
 		};
 		add(dataView);
-		add(new PagingNavigator("paging", dataView));
+		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
+		add(pager);
 
 		add(new OrderByBorder("sort-id", Type_.id, typeDataProvider));
 		add(new OrderByBorder("sort-name", Type_.name, typeDataProvider));

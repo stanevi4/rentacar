@@ -26,6 +26,7 @@ import by.grodno.ss.rentacar.datamodel.Reason_;
 import by.grodno.ss.rentacar.service.ReasonService;
 import by.grodno.ss.rentacar.webapp.page.admin.ReasonEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
 public class ReasonListPanel extends Panel {
 	/**
@@ -64,7 +65,8 @@ public class ReasonListPanel extends Panel {
 			}
 		};
 		add(dataView);
-		add(new PagingNavigator("paging", dataView));
+		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
+		add(pager);
 
 		add(new OrderByBorder("sort-id", Reason_.id, reasonsDataProvider));
 		add(new OrderByBorder("sort-name", Reason_.name, reasonsDataProvider));

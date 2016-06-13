@@ -28,6 +28,7 @@ import by.grodno.ss.rentacar.datamodel.Location_;
 import by.grodno.ss.rentacar.service.LocationService;
 import by.grodno.ss.rentacar.webapp.page.admin.LocationsEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
+import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
 public class LocationListPanel extends Panel {
 
@@ -62,7 +63,8 @@ public class LocationListPanel extends Panel {
 			}
 		};
 		add(dataView);
-		add(new PagingNavigator("paging", dataView));
+		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
+		add(pager);
 
 		add(new OrderByBorder("sort-id", Location_.id, locationsDataProvider));
 		add(new OrderByBorder("sort-name", Location_.name, locationsDataProvider));
