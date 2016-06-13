@@ -23,6 +23,7 @@ import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.PatternValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
+import by.grodno.ss.rentacar.dataaccess.filters.UserFilter;
 import by.grodno.ss.rentacar.datamodel.UserCredentials;
 import by.grodno.ss.rentacar.datamodel.UserProfile;
 import by.grodno.ss.rentacar.datamodel.UserRole;
@@ -37,19 +38,22 @@ public class UserEditPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 	private UserProfile userProfile;
 	private UserCredentials userCredentials;
+	private UserFilter filter;
 	@Inject
 	private UserService userService;
 
-	public UserEditPanel(String id, UserProfile userProfile, UserCredentials userCredentials) {
+	public UserEditPanel(String id, UserProfile userProfile, UserCredentials userCredentials, UserFilter filter) {
 		super(id);
 		this.userProfile = userProfile;
 		this.userCredentials = userCredentials;
+		this.filter = filter;
 	}
 
-	public UserEditPanel(String id, IModel<?> model, UserProfile userProfile, UserCredentials userCredentials) {
+	public UserEditPanel(String id, IModel<?> model, UserProfile userProfile, UserCredentials userCredentials, UserFilter filter) {
 		super(id, model);
 		this.userProfile = userProfile;
 		this.userCredentials = userCredentials;
+		this.filter = filter;
 	}
 
 	@Override
@@ -205,7 +209,7 @@ public class UserEditPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new UserListPanel(UserEditPanel.this.getId());
+				Component newPanel = new UserListPanel(UserEditPanel.this.getId(), filter);
 				UserEditPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);

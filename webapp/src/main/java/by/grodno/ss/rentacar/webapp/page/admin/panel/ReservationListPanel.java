@@ -2,7 +2,6 @@ package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Iterator;
 
 import javax.inject.Inject;
@@ -72,13 +71,6 @@ public class ReservationListPanel extends Panel {
 		
 		DatetimePickerConfig dateconfig = configureDateTimepicker();
 		DatetimePicker dateFrom = new DatetimePicker("createdFrom", dateconfig);
-//		dateFrom.add(new AjaxFormComponentUpdatingBehavior("onchange") {
-//			private static final long serialVersionUID = 1L;
-//			@Override
-//			protected void onUpdate(AjaxRequestTarget target) {
-//				target.add(wmc);
-//			}
-//		});
 		form.add(dateFrom);
 		
 		DatetimePicker dateTo = new DatetimePicker("createdTo", dateconfig);

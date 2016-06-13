@@ -105,8 +105,8 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 		boolean firstName = (filter.getFirstName() != null);
 		boolean lastName = (filter.getLastName() != null);
 		boolean email = (filter.getEmail() != null);
-		boolean startDateCreated = (filter.getStartDateCreated() != null);
-		boolean endDateCreated = (filter.getEndDateCreated() != null);
+		boolean startDateCreated = (filter.getCreatedFrom() != null);
+		boolean endDateCreated = (filter.getCreatedTo() != null);
 		boolean filt = (firstName || lastName || email || startDateCreated || endDateCreated);
 
 		if (filt) {
@@ -115,9 +115,9 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 			Predicate fNameEqualCondition = cb.equal(from.get(UserProfile_.firstName), filter.getFirstName());
 			Predicate lNameEqualCondition = cb.equal(from.get(UserProfile_.lastName), filter.getLastName());
 			Predicate startCreatedEqualCondition = cb.greaterThanOrEqualTo(from.get(UserProfile_.created),
-					filter.getStartDateCreated());
+					filter.getCreatedFrom());
 			Predicate endCreatedEqualCondition = cb.lessThanOrEqualTo(from.get(UserProfile_.created),
-					filter.getEndDateCreated());
+					filter.getCreatedTo());
 			
 			cq.where(cb.or(fNameEqualCondition, lNameEqualCondition, emailEqualCondition, startCreatedEqualCondition,
 					endCreatedEqualCondition));

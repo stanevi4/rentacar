@@ -2,6 +2,8 @@ package by.grodno.ss.rentacar.dataaccess.filters;
 
 import java.util.Date;
 
+import by.grodno.ss.rentacar.datamodel.UserRole;
+
 public class UserFilter extends AbstractFilter{
 	/**
 	 * 
@@ -10,10 +12,11 @@ public class UserFilter extends AbstractFilter{
 	
 	private String firstName;
 	private String lastName;
-	private Date startDateCreated;
-	private Date endDateCreated;
+	private Date createdFrom;
+	private Date createdTo;
 	private String email;
 	private boolean isFetchCredentials;
+	private UserRole role;
 	
 	public String getFirstName() {
 		return firstName;
@@ -27,17 +30,17 @@ public class UserFilter extends AbstractFilter{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Date getStartDateCreated() {
-		return startDateCreated;
+	public Date getCreatedFrom() {
+		return createdFrom;
 	}
-	public void setStartDateCreated(Date startDateCreated) {
-		this.startDateCreated = startDateCreated;
+	public void setCreatedFrom(Date createdFrom) {
+		this.createdFrom = createdFrom;
 	}
-	public Date getEndDateCreated() {
-		return endDateCreated;
+	public Date getCreatedTo() {
+		return createdTo;
 	}
-	public void setEndDateCreated(Date endDateCreated) {
-		this.endDateCreated = endDateCreated;
+	public void setCreatedTo(Date createdTo) {
+		this.createdTo = createdTo;
 	}
 	public String getEmail() {
 		return email;
@@ -50,6 +53,12 @@ public class UserFilter extends AbstractFilter{
 	}
 	public void setFetchCredentials(boolean isFetchCredentials) {
 		this.isFetchCredentials = isFetchCredentials;
+	}
+	public UserRole getRole() {
+		return role;
+	}
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 	
 }

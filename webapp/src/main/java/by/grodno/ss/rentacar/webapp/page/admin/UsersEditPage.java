@@ -1,8 +1,8 @@
 package by.grodno.ss.rentacar.webapp.page.admin;
 
-import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import by.grodno.ss.rentacar.dataaccess.filters.UserFilter;
 import by.grodno.ss.rentacar.webapp.page.admin.panel.UserListPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 
@@ -26,7 +26,7 @@ public class UsersEditPage extends AdminPage {
 
 		final NotificationPanel feedback = new NotificationPanel("feedbackpanel");
 		add(feedback);
-		add(new UserListPanel("user-panel"));
+		add(new UserListPanel("user-panel", new UserFilter()));
 	}
 
 }

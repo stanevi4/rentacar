@@ -1,6 +1,7 @@
 package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.inject.Inject;
@@ -9,15 +10,20 @@ import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
@@ -29,21 +35,25 @@ import by.grodno.ss.rentacar.datamodel.UserProfile_;
 import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.UserService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
+import by.grodno.ss.rentacar.webapp.common.UserRoleChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.page.admin.UsersEditPage;
-import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePicker;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 
 public class UserListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private UserService userService;
+	private UserFilter filter;
 	private IModel<String> descDeleteButton = Model.of("Delete item");
 	private IModel<String> descEditButton = Model.of("View / edit item");
 
-	public UserListPanel(String id) {
+	public UserListPanel(String id, UserFilter filter) {
 		super(id);
+		this.filter = filter;
 	}
 
 	public UserListPanel(String id, IModel<?> model) {
@@ -53,8 +63,48 @@ public class UserListPanel extends Panel {
 	public void onInitialize() {
 		super.onInitialize();
 		setOutputMarkupId(true);
+			
+		WebMarkupContainer wmc = new WebMarkupContainer("table");
+		wmc.setOutputMarkupId(true);
 		
-		UsersDataProvider usersDataProvider = new UsersDataProvider();
+		Form<UserFilter> form = new Form<UserFilter>("selections", new CompoundPropertyModel<UserFilter>(filter));
+		
+		DatetimePickerConfig dateconfig = configureDateTimepicker();
+		DatetimePicker dateFrom = new DatetimePicker("createdFrom", dateconfig);
+		form.add(dateFrom);
+		
+		DatetimePicker dateTo = new DatetimePicker("createdTo", dateconfig);
+		form.add(dateTo);
+		
+		DropDownChoice<UserRole> roleDropDown = new DropDownChoice<UserRole>("role", Arrays.asList(UserRole.values()),
+				UserRoleChoiceRenderer.INSTANCE);
+		roleDropDown.setRequired(false);
+		roleDropDown.setNullValid(true);
+		
+		roleDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				if (target != null) {
+					target.add(wmc);
+				}
+			}
+		});
+		form.add(roleDropDown);		
+		
+		form.add(new AjaxLink<Void>("apply-filter") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				if (target != null) {
+					target.add(wmc);
+				}
+			}
+		});
+		
+		add(form);
+		
+		UsersDataProvider usersDataProvider = new UsersDataProvider(filter);
 		DataView<UserProfile> dataView = new DataView<UserProfile>("rows", usersDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
 
@@ -72,26 +122,28 @@ public class UserListPanel extends Panel {
 				addDeleteButton(item, user);
 			}
 		};
-		add(dataView);
+		wmc.add(dataView);
 		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
 		add(pager);
 		
-		add(new OrderByBorder("sort-email", UserCredentials_.email, usersDataProvider));
-		add(new OrderByBorder("sort-created", UserProfile_.created, usersDataProvider));
-		add(new OrderByBorder("sort-first-name", UserProfile_.firstName, usersDataProvider));
-		add(new OrderByBorder("sort-last-name", UserProfile_.lastName, usersDataProvider));
-		add(new OrderByBorder("sort-role", UserCredentials_.role, usersDataProvider));
+		wmc.add(new OrderByBorder("sort-email", UserCredentials_.email, usersDataProvider));
+		wmc.add(new OrderByBorder("sort-created", UserProfile_.created, usersDataProvider));
+		wmc.add(new OrderByBorder("sort-first-name", UserProfile_.firstName, usersDataProvider));
+		wmc.add(new OrderByBorder("sort-last-name", UserProfile_.lastName, usersDataProvider));
+		wmc.add(new OrderByBorder("sort-role", UserCredentials_.role, usersDataProvider));
 
 		addButtonNew(this.getId());
+		
+		add(wmc);
 	}
 
 	private class UsersDataProvider extends SortableDataProvider<UserProfile, Serializable> {
 		private static final long serialVersionUID = 1L;
 		private UserFilter userFilter;
 
-		public UsersDataProvider() {
+		public UsersDataProvider(UserFilter filter) {
 			super();
-			userFilter = new UserFilter();
+			this.userFilter = filter;
 			setSort((Serializable) UserProfile_.created, SortOrder.DESCENDING);
 		}
 
@@ -126,7 +178,7 @@ public class UserListPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new UserEditPanel(id, user, user.getUserCredentials());
+				Component newPanel = new UserEditPanel(id, user, user.getUserCredentials(), filter);
 				UserListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
@@ -159,7 +211,7 @@ public class UserListPanel extends Panel {
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new UserEditPanel(id, new UserProfile(), new UserCredentials());
+				Component newPanel = new UserEditPanel(id, new UserProfile(), new UserCredentials(), filter);
 				UserListPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);
@@ -168,5 +220,14 @@ public class UserListPanel extends Panel {
 		};
 		buttonNewItem.setVisible(a);
 		add(buttonNewItem);
+	}
+	
+	private DatetimePickerConfig configureDateTimepicker() {
+		DatetimePickerConfig dateconfig = new DatetimePickerConfig();
+		dateconfig.withFormat("dd.MM.yyyy HH:mm");
+		dateconfig.useSideBySide(true);
+		dateconfig.useLocale(AuthorizedSession.get().getLocale().getLanguage());
+		dateconfig.withMinuteStepping(10);
+		return dateconfig;
 	}
 }
