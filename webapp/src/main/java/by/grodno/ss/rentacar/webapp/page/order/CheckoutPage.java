@@ -11,13 +11,12 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.apache.wicket.request.resource.ContextRelativeResource;
 import org.apache.wicket.validation.validator.PatternValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
@@ -240,7 +239,8 @@ public class CheckoutPage extends AbstractPage {
 	}
 
 	private void addImage(Car car) {
-		Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
+		ContextImage carImage = new ContextImage("image", (IMAGE_FOLDER + car.getImage()));
+		//Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
 		// carImage.add(new AttributeModifier("height", "220"));
 		// carImage.add(new AttributeModifier("width", "200"));
 		add(carImage);

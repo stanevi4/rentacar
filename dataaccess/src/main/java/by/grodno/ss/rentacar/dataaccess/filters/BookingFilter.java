@@ -11,6 +11,8 @@ import by.grodno.ss.rentacar.datamodel.UserProfile;
 public class BookingFilter extends AbstractFilter {
 	private static final long serialVersionUID = 1L;
 	private Date created;
+	private Date createdFrom;
+	private Date createdTo;
 	private UserProfile client;
 	private Car car;
 	private Date dateFrom;
@@ -126,6 +128,22 @@ public class BookingFilter extends AbstractFilter {
 
 	public void setFetchReason(boolean isFetchReason) {
 		this.isFetchReason = isFetchReason;
+	}
+
+	public Date getCreatedFrom() {
+		return createdFrom;
+	}
+
+	public void setCreatedFrom(Date createdFrom) {
+		this.createdFrom = createdFrom;
+	}
+
+	public Date getCreatedTo() {
+		return createdTo;
+	}
+
+	public void setCreatedTo(Date createdTo) {
+		this.createdTo = createdTo;
 	}
 
 }

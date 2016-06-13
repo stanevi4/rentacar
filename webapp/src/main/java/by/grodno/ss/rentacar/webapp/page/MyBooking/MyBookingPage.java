@@ -3,7 +3,6 @@ package by.grodno.ss.rentacar.webapp.page.MyBooking;
 import org.apache.wicket.markup.html.link.Link;
 
 import by.grodno.ss.rentacar.webapp.page.AbstractPage;
-import by.grodno.ss.rentacar.webapp.page.admin.SettingEditPage;
 
 public class MyBookingPage extends AbstractPage {
 	private static final long serialVersionUID = 1L;

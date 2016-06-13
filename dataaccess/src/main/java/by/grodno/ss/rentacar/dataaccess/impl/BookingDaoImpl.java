@@ -1,5 +1,7 @@
 package by.grodno.ss.rentacar.dataaccess.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +9,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.jpa.criteria.OrderImpl;
@@ -42,6 +45,8 @@ public class BookingDaoImpl extends AbstractDaoImpl<Booking, Long> implements Bo
 		CriteriaQuery<Booking> cq = cb.createQuery(Booking.class);
 		Root<Booking> from = cq.from(Booking.class);
 		cq.select(from);
+		
+		handleFilterParameters(filter, cb, cq, from);
 
 		if (filter.getSortProperty() != null) {
 			cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
@@ -67,6 +72,46 @@ public class BookingDaoImpl extends AbstractDaoImpl<Booking, Long> implements Bo
 		TypedQuery<Booking> q = em.createQuery(cq);
 		setPaging(filter, q);
 		return q.getResultList();
+	}
+	
+	private void handleFilterParameters(BookingFilter filter, CriteriaBuilder cb, CriteriaQuery<?> cq, Root<Booking> from) {
+
+		Predicate locationFromEqualCondition=null;
+		Predicate locationToEqualCondition=null;
+		Predicate clientEqualCondition=null;
+		Predicate statusEqualCondition=null;
+		
+		Predicate cFromEqualCondition=null;
+		Predicate cToEqualCondition=null;
+		
+		List<Predicate> predicates = new ArrayList<>();
+		
+		if (filter.getLocationFrom() != null){
+			locationFromEqualCondition = cb.equal(from.get(Booking_.locationFrom), filter.getLocationFrom());
+			predicates.add(locationFromEqualCondition);
+		}
+		if (filter.getLocationTo() != null){
+			locationToEqualCondition = cb.equal(from.get(Booking_.locationTo), filter.getLocationTo());
+			predicates.add(locationToEqualCondition);
+		}
+		if (filter.getClient() != null){
+			clientEqualCondition = cb.equal(from.get(Booking_.client), filter.getClient());
+			predicates.add(clientEqualCondition);
+		}
+		if (filter.getOrderStatus() != null){
+			statusEqualCondition = cb.equal(from.get(Booking_.orderStatus), filter.getOrderStatus());
+			predicates.add(statusEqualCondition);
+		}
+		if (filter.getCreatedFrom() != null){
+			cFromEqualCondition = cb.greaterThanOrEqualTo(from.get(Booking_.created), filter.getCreatedFrom());
+			predicates.add(cFromEqualCondition);
+		}
+		if (filter.getCreatedTo() != null){
+			cToEqualCondition = cb.lessThanOrEqualTo(from.get(Booking_.created), filter.getCreatedTo());
+			predicates.add(cToEqualCondition);
+		}
+		Predicate[] p = predicates.toArray(new Predicate[predicates.size()]);
+		cq.where(cb.and(p));
 	}
 
 }

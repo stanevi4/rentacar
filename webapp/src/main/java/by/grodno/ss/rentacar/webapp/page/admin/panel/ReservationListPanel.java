@@ -1,6 +1,8 @@
 package by.grodno.ss.rentacar.webapp.page.admin.panel;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.inject.Inject;
@@ -9,11 +11,14 @@ import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
@@ -27,12 +32,16 @@ import org.apache.wicket.model.Model;
 import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
 import by.grodno.ss.rentacar.datamodel.Booking_;
+import by.grodno.ss.rentacar.datamodel.OrderStatus;
 import by.grodno.ss.rentacar.datamodel.UserRole;
 import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
+import by.grodno.ss.rentacar.webapp.common.OrderStatusChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePicker;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 
 public class ReservationListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
@@ -56,12 +65,55 @@ public class ReservationListPanel extends Panel {
 		super.onInitialize();
 		ReservationListPanel.this.setOutputMarkupId(true);
 		add(new FeedbackPanel("feedback"));
-
+		WebMarkupContainer wmc = new WebMarkupContainer("table");
+		wmc.setOutputMarkupId(true);
+		
 		Form<BookingFilter> form = new Form<BookingFilter>("selections", new CompoundPropertyModel<BookingFilter>(filter));
+		
+		DatetimePickerConfig dateconfig = configureDateTimepicker();
+		DatetimePicker dateFrom = new DatetimePicker("createdFrom", dateconfig);
+//		dateFrom.add(new AjaxFormComponentUpdatingBehavior("onchange") {
+//			private static final long serialVersionUID = 1L;
+//			@Override
+//			protected void onUpdate(AjaxRequestTarget target) {
+//				target.add(wmc);
+//			}
+//		});
+		form.add(dateFrom);
+		
+		DatetimePicker dateTo = new DatetimePicker("createdTo", dateconfig);
+		form.add(dateTo);
+		
+		DropDownChoice<OrderStatus> statusDropDown = new DropDownChoice<>("orderStatus", Arrays.asList(OrderStatus.values()),
+				OrderStatusChoiceRenderer.INSTANCE);
+		statusDropDown.setRequired(false);
+		statusDropDown.setNullValid(true);
+		statusDropDown.setMarkupId("type");
+		
+		statusDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				if (target != null) {
+					target.add(wmc);
+				}
+			}
+		});
+		form.add(statusDropDown);		
+		
+		form.add(new AjaxLink<Void>("apply-filter") {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				if (target != null) {
+					target.add(wmc);
+				}
+			}
+		});
 		
 		add(form);
 		
-		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider();
+		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider(filter);
 		DataView<Booking> dataView = new DataView<Booking>("rows", bookingsDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -83,51 +135,33 @@ public class ReservationListPanel extends Panel {
 				addEditButton(ReservationListPanel.this.getId(), item, booking);
 				addDeleteButton(item, booking);
 				item.setOutputMarkupId(true);
-		//------------------------------------
-//				item.add(new AjaxEventBehavior("onmouseover") {
-//			        private static final long serialVersionUID = 6720512493017210281L;
-//			        @Override
-//			        protected void onEvent(AjaxRequestTarget target) {
-//			        	item.add(new AttributeModifier("bgcolor", "#ffcc00"));
-//			        	target.add(item);
-//			        }
-//			        });
-//				item.add(new AjaxEventBehavior("onmouseout") {
-//			        private static final long serialVersionUID = 6720512493017210281L;
-//			        @Override
-//			        protected void onEvent(AjaxRequestTarget target) {
-//			        	item.add(new AttributeModifier("bgcolor", ""));
-//			        	target.add(item);
-//			        }
-//			        });
-		//---------------------------
-				
 			}
 		};
-		add(dataView);
+		wmc.add(dataView);
 		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("paging", dataView);
 		add(pager);
 
-		add(new OrderByBorder("sort-id", Booking_.id, bookingsDataProvider));
-		add(new OrderByBorder("sort-created", Booking_.created, bookingsDataProvider));
-		add(new OrderByBorder("sort-dateFrom", Booking_.dateFrom, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-id", Booking_.id, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-created", Booking_.created, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-dateFrom", Booking_.dateFrom, bookingsDataProvider));
 		//add(new OrderByBorder("sort-dateTo", Booking_.dateTo, bookingsDataProvider));
-		add(new OrderByBorder("sort-locationFrom", Booking_.locationFrom, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-locationFrom", Booking_.locationFrom, bookingsDataProvider));
 		//add(new OrderByBorder("sort-locationTo", Booking_.locationTo, bookingsDataProvider));
-		add(new OrderByBorder("sort-summ", Booking_.summ, bookingsDataProvider));
-		add(new OrderByBorder("sort-status", Booking_.orderStatus, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-summ", Booking_.summ, bookingsDataProvider));
+		wmc.add(new OrderByBorder("sort-status", Booking_.orderStatus, bookingsDataProvider));
 
 		//addButtonNew(this.getId());
+		add(wmc);
 	}
 
 	private class BookingsDataProvider extends SortableDataProvider<Booking, Serializable> {
 		private static final long serialVersionUID = 1L;
-		
+
 		private BookingFilter bookingFilter;
-		
-		public BookingsDataProvider() {
+
+		public BookingsDataProvider(BookingFilter filter) {
 			super();
-			bookingFilter = ReservationListPanel.this.filter;
+			this.bookingFilter = filter;
 			setSort((Serializable) Booking_.created, SortOrder.ASCENDING);
 		}
 
@@ -179,6 +213,7 @@ public class ReservationListPanel extends Panel {
 	private void addDeleteButton(Item<Booking> item, Booking booking) {
 		Link<Void> buttonDelete = new Link<Void>("delete-link") {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onClick() {
 				try {
@@ -188,18 +223,20 @@ public class ReservationListPanel extends Panel {
 				}
 				setResponsePage(new ReservationsEditPage());
 			}
-		
-	};
-	buttonDelete.setEnabled(false);
-	buttonDelete.add(new TooltipBehavior(descDeleteButton));
-	boolean a = (AuthorizedSession.get().isSignedIn() && AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
-	buttonDelete.setEnabled(a);
-	item.add(buttonDelete);
+
+		};
+		buttonDelete.setEnabled(false);
+		buttonDelete.add(new TooltipBehavior(descDeleteButton));
+		boolean a = (AuthorizedSession.get().isSignedIn()
+				&& AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.ADMIN));
+		buttonDelete.setEnabled(a);
+		item.add(buttonDelete);
 	}
 
 	private void addButtonNew(String id) {
 		AjaxLink<Void> buttonNewItem = new AjaxLink<Void>("add-new-item") {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onClick(AjaxRequestTarget target) {
 				Component newPanel = new ReservationEditPanel(id, new Booking());
@@ -210,5 +247,14 @@ public class ReservationListPanel extends Panel {
 			}
 		};
 		add(buttonNewItem);
+	}
+
+	private DatetimePickerConfig configureDateTimepicker() {
+		DatetimePickerConfig dateconfig = new DatetimePickerConfig();
+		dateconfig.withFormat("dd.MM.yyyy HH:mm");
+		dateconfig.useSideBySide(true);
+		dateconfig.useLocale(AuthorizedSession.get().getLocale().getLanguage());
+		dateconfig.withMinuteStepping(10);
+		return dateconfig;
 	}
 }

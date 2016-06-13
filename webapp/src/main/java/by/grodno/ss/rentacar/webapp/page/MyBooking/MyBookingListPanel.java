@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Iterator;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import javax.persistence.metamodel.SingularAttribute;
 
 import org.apache.wicket.Component;
@@ -14,8 +13,6 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
@@ -26,12 +23,11 @@ import org.apache.wicket.model.Model;
 import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
 import by.grodno.ss.rentacar.datamodel.Booking_;
-import by.grodno.ss.rentacar.datamodel.UserRole;
+import by.grodno.ss.rentacar.datamodel.UserCredentials;
+import by.grodno.ss.rentacar.datamodel.UserProfile;
 import by.grodno.ss.rentacar.service.BookingService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
-import by.grodno.ss.rentacar.webapp.page.admin.ReservationsEditPage;
 import by.grodno.ss.rentacar.webapp.page.admin.panel.ReservationEditPanel;
-import by.grodno.ss.rentacar.webapp.page.admin.panel.ReservationListPanel;
 import de.agilecoders.wicket.core.markup.html.bootstrap.components.TooltipBehavior;
 import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagingNavigator;
 
@@ -39,11 +35,20 @@ public class MyBookingListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private BookingService bookingService;
-	private IModel<String> descDeleteButton = Model.of("Delete item");
 	private IModel<String> descEditButton = Model.of("View / edit item");
+	private BookingFilter filter;
+	private UserProfile userProfile;
+	private UserCredentials userCredentials;
 	
 	public MyBookingListPanel(String id) {
 		super(id);
+		boolean a = (AuthorizedSession.get().isSignedIn());
+		if (a){
+			userCredentials = AuthorizedSession.get().getLoggedUser();
+			userProfile = userCredentials.getUserProfile();
+			this.filter = new BookingFilter();
+			this.filter.setClient(userProfile);
+		}
 	}
 
 	public MyBookingListPanel(String id, IModel<?> model) {
@@ -55,8 +60,8 @@ public class MyBookingListPanel extends Panel {
 		super.onInitialize();
 		MyBookingListPanel.this.setOutputMarkupId(true);
 		add(new FeedbackPanel("feedback"));
-
-		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider();
+		
+		BookingsDataProvider bookingsDataProvider = new BookingsDataProvider(filter);
 		DataView<Booking> dataView = new DataView<Booking>("rows", bookingsDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
 			@Override
@@ -98,9 +103,9 @@ public class MyBookingListPanel extends Panel {
 		private static final long serialVersionUID = 1L;
 		private BookingFilter bookingFilter;
 
-		public BookingsDataProvider() {
+		public BookingsDataProvider(BookingFilter filter) {
 			super();
-			bookingFilter = new BookingFilter();
+			this.bookingFilter = filter;
 			setSort((Serializable) Booking_.created, SortOrder.ASCENDING);
 		}
 

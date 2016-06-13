@@ -6,13 +6,14 @@
 
 <form wicket:id="selections">
 	<div class="form-group">
-		<span>By status:&nbsp;<input >&nbsp;</span>
-		<span>By pickup location:&nbsp;<input >&nbsp;</span>
-		<span>By return location:&nbsp;<input ></span>
+		<span>By status:&nbsp;<select wicket:id="orderStatus" type="text"></select>&nbsp;</span>
+		<span>Date from:&nbsp;<input wicket:id="createdFrom" type="text">&nbsp;</span>
+		<span>Date to:&nbsp;<input wicket:id="createdTo" type="text"></span>
+		<span><input type="submit" wicket:id="apply-filter" value="apply" /></span>
 	</div>
 </form>
 
-<table class="table table-responsive">
+<table wicket:id="table" class="table table-responsive">
 
 	<thead>
 		<tr>
@@ -46,7 +47,7 @@
 			<!--<td><span wicket:id="reason" /></td>-->
 			<td><span wicket:id="damage" /></td>
 			<td><span wicket:id="orderStatus" /></td>		
-			<td><a wicket:id="edit-link"><i class="fa fa-pencil-square-o fa-2x"></i></a>&nbsp;<a wicket:id="delete-link"><i class="fa fa-trash-o fa-2x"></i></a></td>
+			<td width="8%"><a wicket:id="edit-link"><i class="fa fa-pencil-square-o fa-2x"></i></a>&nbsp;<a wicket:id="delete-link"><i class="fa fa-trash-o fa-2x"></i></a></td>
 		</tr>
 	</tbody>
 		

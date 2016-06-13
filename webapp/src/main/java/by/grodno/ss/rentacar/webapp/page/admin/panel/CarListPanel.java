@@ -15,15 +15,13 @@ import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.request.resource.ContextRelativeResource;
 
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
@@ -166,7 +164,8 @@ public class CarListPanel extends Panel {
 	}
 	
 	private void addImage(Item<Car> item, Car car) {
-		Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
+		ContextImage carImage = new ContextImage("image", (IMAGE_FOLDER + car.getImage()));
+		//Image carImage = new Image("image", new ContextRelativeResource(IMAGE_FOLDER + car.getImage()));
 		carImage.add(new AttributeModifier("height","100"));
 		carImage.add(new AttributeModifier("width","160"));
 		String alt = car.getName();
