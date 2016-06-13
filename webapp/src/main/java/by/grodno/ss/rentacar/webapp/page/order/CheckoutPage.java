@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.ContextRelativeResource;
@@ -39,6 +40,7 @@ import by.grodno.ss.rentacar.webapp.page.reservation.ReservationPage;
 import de.agilecoders.wicket.core.markup.html.bootstrap.common.NotificationPanel;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPicker;
 
 public class CheckoutPage extends AbstractPage {
 	private static final long serialVersionUID = 1L;
@@ -204,24 +206,31 @@ public class CheckoutPage extends AbstractPage {
 		zip.add(new PatternValidator("[0-9]+"));
 		form.add(zip);
 
+		BootstrapCheckBoxPicker chk0 = new BootstrapCheckBoxPicker("check-confirm", Model.of(Boolean.FALSE));
+		form.add(chk0);
+
 		form.add(new SubmitLink("button-confirm") {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void onSubmit() {
-				if (userProfile.getId() == null) {
-					userCredential.setEmail("unregistered user");
-					userCredential.setPassword("pswd");
-					userCredential.setRole(UserRole.UNREGISTERED);
-					userService.register(userProfile, userCredential);
+				if (chk0.getModelObject().equals(false)) {
+					info("You must to agree rental terms");
 				} else {
-					userService.update(userProfile);
+					if (userProfile.getId() == null) {
+						userCredential.setEmail("unregistered user");
+						userCredential.setPassword("pswd");
+						userCredential.setRole(UserRole.UNREGISTERED);
+						userService.register(userProfile, userCredential);
+					} else {
+						userService.update(userProfile);
+					}
+					booking.setSumm(totalPrice);
+					booking.setClient(userProfile);
+					booking.setOrderStatus(OrderStatus.pending);
+					bookingService.saveOrUpdate(booking);
+					setResponsePage(new ConfirmPage());
 				}
-				booking.setSumm(totalPrice);
-				booking.setClient(userProfile);
-				booking.setOrderStatus(OrderStatus.pending);
-				bookingService.saveOrUpdate(booking);
-				setResponsePage(new ConfirmPage());
 			}
 		});
 

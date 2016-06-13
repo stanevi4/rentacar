@@ -35,6 +35,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navigation.BootstrapPagi
 
 public class ReservationListPanel extends Panel {
 	private static final long serialVersionUID = 1L;
+	private BookingFilter filter;
 	@Inject
 	private BookingService bookingService;
 	private IModel<String> descDeleteButton = Model.of("Delete item");
@@ -115,8 +116,9 @@ public class ReservationListPanel extends Panel {
 
 	private class BookingsDataProvider extends SortableDataProvider<Booking, Serializable> {
 		private static final long serialVersionUID = 1L;
+		
 		private BookingFilter bookingFilter;
-
+		
 		public BookingsDataProvider() {
 			super();
 			bookingFilter = new BookingFilter();

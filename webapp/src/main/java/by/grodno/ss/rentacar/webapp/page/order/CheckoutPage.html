@@ -380,88 +380,9 @@
 									</div>
 									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 								</div>
-								<!-- /.row formInner -->
-								<div id="crBankData" style="display: none">
-									<div class="crLeft100">
-										<p>
-											<strong>Bank Account </strong>
-										</p>
-										<p>
-											Bank Name<br> IBAN: 123456789
-										</p>
-									</div>
-								</div>
-								<div id="crCCData" style="display: none" class="row">
-									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="" class="control-label">CC type <span
-												class="text-danger">*</span></label> <select name="cc_type"
-												class="form-control required"
-												data-msg-required="Credit Card type is required"
-												aria-required="true">
-												<option value="">---</option>
-												<option value="AmericanExpress">AmericanExpress</option>
-												<option value="Maestro">Maestro</option>
-												<option value="MasterCard">MasterCard</option>
-												<option value="Visa">Visa</option>
-											</select>
-											<div class="help-block with-errors">
-												<ul class="list-unstyled"></ul>
-											</div>
-										</div>
-										<!-- /.form-group -->
-									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
 
-									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="" class="control-label">CC number <span
-												class="text-danger">*</span></label> <input type="text"
-												name="cc_num" class="form-control required"
-												data-msg-required="Credit Card number is required"
-												aria-required="true">
-											<div class="help-block with-errors">
-												<ul class="list-unstyled"></ul>
-											</div>
-										</div>
-										<!-- /.form-group -->
-									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-										<div class="form-group pjCrDatePicker">
-											<label for="" class="control-label">CC expiration
-												date <span class="text-danger">*</span>
-											</label> <input type="text" name="cc_exp"
-												class="form-control required"
-												data-msg-required="Credit Card expiration date is required"
-												aria-required="true">
-											<div class="help-block with-errors">
-												<ul class="list-unstyled"></ul>
-											</div>
-										</div>
-										<!-- /.form-group pjCrDatePicker -->
-									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-
-									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-										<div class="form-group">
-											<label for="" class="control-label">CC security code
-												<span class="text-danger">*</span>
-											</label> <input type="text" name="cc_code"
-												class="form-control required"
-												data-msg-required="Credit Card security code is required"
-												aria-required="true">
-											<div class="help-block with-errors">
-												<ul class="list-unstyled"></ul>
-											</div>
-										</div>
-										<!-- /.form-group -->
-									</div>
-									<!-- /.col-lg-3 col-md-3 col-sm-6 col-xs-12 -->
-								</div>
-								<!-- /.row -->
 <div wicket:id="feedbackpanel" class="crError text-danger"></div>
+
 								<div class="row formInner">
 									<p class="formInnerTitle">Rental terms</p>
 									<!-- /.formInnerTitle -->
@@ -471,17 +392,10 @@
 								<div class="row formInner">
 									<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
 										<div class="form-group">
-											<div class="checkbox customCheckbox">
-												<input type="checkbox" id="c_agree" name="c_agree" value="1"
-													class="required"
-													data-msg-required="You have to agree to the Booking Conditions"
-													aria-required="true"> <label for="c_agree">
-													<span class="customCheckboxFake"> <span
-														class="glyphicon glyphicon-ok"></span>
-												</span> I have read and agree to the <a href="terms.html"
-													target="_blank">rentals terms</a>
-												</label>
-											</div>
+											<div class="checkbox ">
+										<label class="checkbox-inline"><input wicket:id="check-confirm" type="checkbox" value="">I have read and agree to the <a href="terms.html"
+													target="_blank">rentals terms</a></label>
+									</div>
 											<!-- /.checkbox customCheckbox -->
 											<div class="help-block with-errors">
 												<ul class="list-unstyled"></ul>

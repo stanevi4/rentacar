@@ -2,6 +2,7 @@ package by.grodno.ss.rentacar.webapp.component.panel;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -19,6 +20,7 @@ import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.LocationFilter;
 import by.grodno.ss.rentacar.datamodel.Location;
 import by.grodno.ss.rentacar.service.LocationService;
+import by.grodno.ss.rentacar.service.SettingService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.common.LocationChoiceRenderer;
 import by.grodno.ss.rentacar.webapp.page.car.ChooseCarPage;
@@ -28,13 +30,13 @@ import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.Date
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.datetime.DatetimePickerConfig;
 
 public class ReservationPanel extends Panel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private CarFilter filter;
 	@Inject
 	private LocationService locationService;
+	@Inject
+	private SettingService settingService;
+	
 	private boolean sameAs;
 
 	public ReservationPanel(String id, CarFilter filter) {
@@ -56,16 +58,9 @@ public class ReservationPanel extends Panel {
 		feedback.setOutputMarkupId(true);
 		
 		Form<CarFilter> form = new Form<CarFilter>("form-search", new CompoundPropertyModel<CarFilter>(filter));
-		
-		//form.add(new FeedbackPanel("feedbackpanel"));
+
 		form.add(feedback);
 		DatetimePickerConfig dateconfig = configureDateTimepicker();
-
-		//DatetimePicker dateFrom = new DatetimePicker("dateFrom", new PropertyModel<>(filter, "dateFrom"), dateconfig);
-		//form.add(dateFrom);
-
-		//DatetimePicker dateTo = new DatetimePicker("dateTo", new PropertyModel<>(filter, "dateTo"), dateconfig);
-		//form.add(dateTo);
 		
 		DatetimePicker dateFrom = new DatetimePicker("dateFrom", dateconfig);
 		dateFrom.setRequired(true);
@@ -126,10 +121,20 @@ public class ReservationPanel extends Panel {
 			@Override
 			public void onSubmit() {
 				super.onSubmit();
+				
+				//мин время заказа
+				int minLength = settingService.get().getMinBookingLength();
+				long minBookingLength = TimeUnit.HOURS.toMillis(minLength);
+				long from = filter.getDateFrom().getTime();
+				long to   = filter.getDateTo().getTime();
+				long dur  = to - from;
+				
 				if(filter.getDateFrom().compareTo(filter.getDateTo()) >= 0){
 					error("Return date is lesser/equals pickup date. Please select correct dates");
 				}else if(filter.getDateFrom().compareTo(new Date()) < 0){
 					error("Pick-up date is lesser than current date. Please select correct dates");
+				}else if(dur < minBookingLength){
+					error("Minimum booking length is "+minLength+" hours");					
 				}else{
 					setResponsePage(new ChooseCarPage(filter));
 				}
