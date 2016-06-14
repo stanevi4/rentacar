@@ -1,5 +1,6 @@
 package by.grodno.ss.rentacar.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,9 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import by.grodno.ss.rentacar.dataaccess.BookingDao;
 import by.grodno.ss.rentacar.dataaccess.CarDao;
+import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
+import by.grodno.ss.rentacar.datamodel.Booking;
+import by.grodno.ss.rentacar.datamodel.Booking_;
 import by.grodno.ss.rentacar.datamodel.Car;
+import by.grodno.ss.rentacar.datamodel.CarStatus;
+import by.grodno.ss.rentacar.datamodel.OrderStatus;
 import by.grodno.ss.rentacar.service.CarService;
 
 @Service
@@ -20,6 +27,9 @@ public class CarServiceImpl implements CarService {
 	
 	@Inject
 	private CarDao carDao;
+	@Inject
+	private BookingDao bookingDao;
+	
 
 	@Override
 	public Long count(CarFilter filter) {
@@ -46,5 +56,24 @@ public class CarServiceImpl implements CarService {
 	public void delete(Car car) {
 		LOGGER.info("Car deleted: {}", car.getName());
 		carDao.delete(car.getId());
+	}
+
+	@Override
+	public List<Car> choose(CarFilter filter) {
+		
+		filter.setCarStatus(CarStatus.availible);
+		List<Car> carList = carDao.find(filter);
+		
+		//BookingFilter bookingFilter= new BookingFilter();
+		//bookingFilter.setDateFrom(filter.getDateFrom());
+		//bookingFilter.setDateTo(filter.getDateTo());
+		//bookingFilter.setOrderStatus(OrderStatus.confirmed);
+		
+		BookingFilter bookFilter= new BookingFilter();
+		//bookFilter.setFetchCar(true);
+		
+		List<Car> reservedCars = bookingDao.choose(bookFilter);
+		
+		return reservedCars;
 	}
 }

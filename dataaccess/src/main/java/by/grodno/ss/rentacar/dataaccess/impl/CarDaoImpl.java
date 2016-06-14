@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import by.grodno.ss.rentacar.dataaccess.CarDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
+import by.grodno.ss.rentacar.datamodel.Booking_;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
 import by.grodno.ss.rentacar.datamodel.Type_;
@@ -81,6 +82,8 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 		Predicate locationFromEqualCondition=null;
 		Predicate typeEqualCondition=null;
 		Predicate locationEqualCondition=null;
+		Predicate statusEqualCondition=null;
+		
 		List<Predicate> predicates = new ArrayList<>();
 		
 		if (filter.getLocation() != null){
@@ -94,6 +97,10 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 		if (filter.getType() != null){
 			typeEqualCondition = cb.equal(from.get(Car_.type), filter.getType());
 			predicates.add(typeEqualCondition);
+		}
+		if (filter.getCarStatus() != null){
+			statusEqualCondition = cb.equal(from.get(Car_.carStatus), filter.getCarStatus());
+			predicates.add(statusEqualCondition);
 		}
 		
 		Predicate[] p = predicates.toArray(new Predicate[predicates.size()]);

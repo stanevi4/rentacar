@@ -207,7 +207,8 @@ public class ChooseCarPage extends AbstractPage {
 			carFilter.setFetchLocations(true);
 			carFilter.setFetchTypes(true);
 
-			return carService.find(carFilter).iterator();
+			//return carService.find(carFilter).iterator();
+			return carService.choose(carFilter).iterator();
 		}
 
 		@Override

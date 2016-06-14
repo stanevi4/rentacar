@@ -18,4 +18,6 @@ public interface CarService {
 
     @Transactional
     void delete(Car car);
+    
+    List<Car> choose(CarFilter filter);
 }
