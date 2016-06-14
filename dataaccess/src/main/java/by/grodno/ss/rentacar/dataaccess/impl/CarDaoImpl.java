@@ -20,6 +20,7 @@ import by.grodno.ss.rentacar.dataaccess.CarDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
+import by.grodno.ss.rentacar.datamodel.OrderStatus;
 import by.grodno.ss.rentacar.datamodel.Type_;
 
 @Repository
@@ -115,12 +116,15 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 		
 		EntityManager em = getEntityManager();
 		List<Car> list = em
-				.createQuery( "SELECT DISTINCT c FROM Booking b LEFT JOIN b.car c " +
-							  "WHERE (b.dateFrom >= :startDate AND b.dateTo <= :endDate)")
+				.createQuery( "SELECT DISTINCT c FROM Booking b LEFT JOIN b.car c "+
+							  "WHERE (b.dateFrom >= :endDate AND b.dateTo >= :startDate) "+
+							  "AND (b.orderStatus = :confirmed OR b.orderStatus = :pending)")
 				//.setParameter("startDate", filter.getDateFrom())
 				//.setParameter("endDate", filter.getDateTo()).getResultList();
 				.setParameter("startDate", dateFrom)
-				.setParameter("endDate", dateTo).getResultList();
+				.setParameter("endDate", dateTo)
+				.setParameter("confirmed", OrderStatus.confirmed)
+				.setParameter("pending", OrderStatus.pending).getResultList();
 
 		return list;
 	}
