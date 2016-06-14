@@ -11,6 +11,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
+import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.OrderByBorder;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
@@ -19,6 +20,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
@@ -69,6 +71,19 @@ public class UserListPanel extends Panel {
 		
 		Form<UserFilter> form = new Form<UserFilter>("selections", new CompoundPropertyModel<UserFilter>(filter));
 		
+		TextField<String> email = new TextField<String>("email");
+		email.add(new OnChangeAjaxBehavior() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			protected void onUpdate(AjaxRequestTarget target) {
+				
+				if (target != null) {
+					target.add(wmc);
+				}
+			}
+		});
+		form.add(email);
+		
 		DatetimePickerConfig dateconfig = configureDateTimepicker();
 		DatetimePicker dateFrom = new DatetimePicker("createdFrom", dateconfig);
 		form.add(dateFrom);
@@ -80,7 +95,6 @@ public class UserListPanel extends Panel {
 				UserRoleChoiceRenderer.INSTANCE);
 		roleDropDown.setRequired(false);
 		roleDropDown.setNullValid(true);
-		
 		roleDropDown.add(new AjaxFormComponentUpdatingBehavior("change") {
 			private static final long serialVersionUID = 1L;
 			@Override
