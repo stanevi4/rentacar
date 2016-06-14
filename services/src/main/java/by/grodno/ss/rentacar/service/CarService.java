@@ -19,5 +19,5 @@ public interface CarService {
     @Transactional
     void delete(Car car);
     
-    List<Car> choose(CarFilter filter);
+    List<Car> reserved(CarFilter filter, int timeBetweenBookings);
 }

@@ -10,4 +10,6 @@ public interface CarDao extends AbstractDao<Car, Long> {
 	Long count(CarFilter filter);
 
     List<Car> find(CarFilter filter);
+
+	List<Car> reserved(CarFilter filter, int timeBetweenBookings);
 }

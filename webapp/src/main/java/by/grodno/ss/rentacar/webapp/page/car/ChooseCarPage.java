@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.image.ContextImage;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.IModel;
@@ -95,7 +96,7 @@ public class ChooseCarPage extends AbstractPage {
 		});
 
 		CarsDataProvider carsDataProvider = new CarsDataProvider(filter);
-		DataView<Car> dataView = new DataView<Car>("rows", carsDataProvider, 5) {
+		DataView<Car> dataView = new DataView<Car>("rows", carsDataProvider, 10) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -132,6 +133,7 @@ public class ChooseCarPage extends AbstractPage {
 			}
 		};
 		add(dataView);
+		//add(new PagingNavigator("pager", dataView));
 		BootstrapPagingNavigator pager = new BootstrapPagingNavigator("pager", dataView);
 		add(pager);
 
@@ -207,8 +209,18 @@ public class ChooseCarPage extends AbstractPage {
 			carFilter.setFetchLocations(true);
 			carFilter.setFetchTypes(true);
 
-			//return carService.find(carFilter).iterator();
-			return carService.choose(carFilter).iterator();
+			int timeBetweenBookings = settingService.get().getCarBetweenPending();
+			List<Car> reserved = carService.reserved(carFilter, timeBetweenBookings);
+			List<Car> active   = carService.find(carFilter);
+			for(int a = active.size()-1; a >= 0 ; a--){  //сам знаю
+				for(Car r : reserved){
+					if (active.get(a).getId()==r.getId() && r.getId()!=null){
+						active.remove(a);
+						break;
+					}
+				}
+			}
+			return active.iterator();
 		}
 
 		@Override

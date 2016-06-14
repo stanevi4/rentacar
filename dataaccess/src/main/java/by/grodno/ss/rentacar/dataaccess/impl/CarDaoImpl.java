@@ -1,7 +1,9 @@
 package by.grodno.ss.rentacar.dataaccess.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -11,13 +13,11 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
 import org.hibernate.jpa.criteria.OrderImpl;
 import org.springframework.stereotype.Repository;
 
 import by.grodno.ss.rentacar.dataaccess.CarDao;
 import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
-import by.grodno.ss.rentacar.datamodel.Booking_;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
 import by.grodno.ss.rentacar.datamodel.Type_;
@@ -75,35 +75,53 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 
 	private void handleFilterParameters(CarFilter filter, CriteriaBuilder cb, CriteriaQuery<?> cq, Root<Car> from) {
 
-//		boolean location = (filter.getLocation() != null);
-//		boolean locationFrom = (filter.getLocationFrom() != null);
-//		boolean type = (filter.getType() != null);
-//		boolean carStatus = (filter.getCarStatus() != null);
-		Predicate locationFromEqualCondition=null;
-		Predicate typeEqualCondition=null;
-		Predicate locationEqualCondition=null;
-		Predicate statusEqualCondition=null;
-		
+		Predicate locationFromEqualCondition = null;
+		Predicate typeEqualCondition = null;
+		Predicate locationEqualCondition = null;
+		Predicate statusEqualCondition = null;
+
 		List<Predicate> predicates = new ArrayList<>();
-		
-		if (filter.getLocation() != null){
+
+		if (filter.getLocation() != null) {
 			locationEqualCondition = cb.equal(from.get(Car_.location), filter.getLocation());
 			predicates.add(locationEqualCondition);
-		}		
-		if (filter.getLocationFrom() != null){
+		}
+		if (filter.getLocationFrom() != null) {
 			locationFromEqualCondition = cb.equal(from.get(Car_.location), filter.getLocationFrom());
 			predicates.add(locationFromEqualCondition);
 		}
-		if (filter.getType() != null){
+		if (filter.getType() != null) {
 			typeEqualCondition = cb.equal(from.get(Car_.type), filter.getType());
 			predicates.add(typeEqualCondition);
 		}
-		if (filter.getCarStatus() != null){
+		if (filter.getCarStatus() != null) {
 			statusEqualCondition = cb.equal(from.get(Car_.carStatus), filter.getCarStatus());
 			predicates.add(statusEqualCondition);
 		}
-		
+
 		Predicate[] p = predicates.toArray(new Predicate[predicates.size()]);
 		cq.where(cb.and(p));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Car> reserved(CarFilter filter, int timeBetweenBookings) {
+		
+		long timeBetweenBookingsMills = TimeUnit.HOURS.toMillis(timeBetweenBookings);
+		Long timeFrom = filter.getDateFrom().getTime();
+		Long timeTo   = filter.getDateTo().getTime();
+		Date dateFrom = new Date(timeFrom - timeBetweenBookings);
+		Date dateTo   = new Date(timeTo + timeBetweenBookingsMills);
+		
+		EntityManager em = getEntityManager();
+		List<Car> list = em
+				.createQuery( "SELECT DISTINCT c FROM Booking b LEFT JOIN b.car c " +
+							  "WHERE (b.dateFrom >= :startDate AND b.dateTo <= :endDate)")
+				//.setParameter("startDate", filter.getDateFrom())
+				//.setParameter("endDate", filter.getDateTo()).getResultList();
+				.setParameter("startDate", dateFrom)
+				.setParameter("endDate", dateTo).getResultList();
+
+		return list;
 	}
 }

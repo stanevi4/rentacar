@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -17,12 +17,10 @@ import org.springframework.stereotype.Repository;
 
 import by.grodno.ss.rentacar.dataaccess.BookingDao;
 import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
-import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
 import by.grodno.ss.rentacar.datamodel.Booking_;
 import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Car_;
-import by.grodno.ss.rentacar.datamodel.Type_;
 
 @Repository
 public class BookingDaoImpl extends AbstractDaoImpl<Booking, Long> implements BookingDao {
@@ -119,13 +117,31 @@ public class BookingDaoImpl extends AbstractDaoImpl<Booking, Long> implements Bo
 		cq.where(cb.and(p));
 	}
 
+	//List<Car> l = em.createQuery("SELECT DISTINCT c FROM Booking b JOIN b.car c JOIN FETCH c.type JOIN FETCH c.location").getResultList();
 	@Override
 	public List<Car> choose(BookingFilter filter) {
+		
 		EntityManager em = getEntityManager();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		List<Car> l = em.createQuery("SELECT c FROM Booking b JOIN b.car c JOIN FETCH c.type JOIN FETCH c.location").getResultList();
-		return l;
-		//return q.getResultList();
-	}
+		CriteriaQuery<Car> cq = cb.createQuery(Car.class);
+		Root<Booking> from = cq.from(Booking.class);
+		Join<Booking, Car> car = from.join(Booking_.car);
+		cq.select(car);
 
+		handleFilterParameters(filter, cb, cq, from);
+
+		if (filter.getSortProperty() != null) {
+			//cq.orderBy(new OrderImpl(from.get(filter.getSortProperty()), filter.isSortOrder()));
+			//cq.orderBy(new OrderImpl(car.get(), filter.isSortOrder()));
+		}
+		car.fetch(Car_.location, JoinType.LEFT);
+		car.fetch(Car_.type, JoinType.LEFT);
+		
+		
+		TypedQuery<Car> q = em.createQuery(cq);
+		setPaging(filter, q);
+		List<Car> list = q.getResultList();
+
+		return list;
+	}
 }
