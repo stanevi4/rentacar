@@ -1,12 +1,14 @@
 package by.grodno.ss.rentacar.datamodel;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +27,9 @@ public class Car extends AbstractModel {
 	@ManyToOne(targetEntity = Type.class, fetch = FetchType.LAZY)
 	//@JoinColumn(name = "type_id", nullable = false)
 	private Type type;
+	
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
 	
 	@Column
 	@Enumerated(value = EnumType.ORDINAL)

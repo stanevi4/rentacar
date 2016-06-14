@@ -64,15 +64,15 @@ public class CarServiceImpl implements CarService {
 		filter.setCarStatus(CarStatus.availible);
 		List<Car> carList = carDao.find(filter);
 		
-		//BookingFilter bookingFilter= new BookingFilter();
+		BookingFilter bookingFilter= new BookingFilter();
 		//bookingFilter.setDateFrom(filter.getDateFrom());
 		//bookingFilter.setDateTo(filter.getDateTo());
 		//bookingFilter.setOrderStatus(OrderStatus.confirmed);
 		
-		BookingFilter bookFilter= new BookingFilter();
-		//bookFilter.setFetchCar(true);
+		//BookingFilter bookFilter= new BookingFilter();
+		bookingFilter.setFetchCar(true);
 		
-		List<Car> reservedCars = bookingDao.choose(bookFilter);
+		List<Car> reservedCars = bookingDao.choose(bookingFilter);
 		
 		return reservedCars;
 	}
