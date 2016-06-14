@@ -101,30 +101,6 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 	private void handleFilterParameters(UserFilter filter, CriteriaBuilder cb, CriteriaQuery<?> cq,
 			Root<UserProfile> from) {
 
-//		boolean firstName = (filter.getFirstName() != null);
-//		boolean lastName = (filter.getLastName() != null);
-//		boolean email = (filter.getEmail() != null);
-//		boolean startDateCreated = (filter.getCreatedFrom() != null);
-//		boolean endDateCreated = (filter.getCreatedTo() != null);
-//		boolean filt = (firstName || lastName || email || startDateCreated || endDateCreated);
-//
-//		if (filt) {
-//			Predicate emailEqualCondition = cb.equal(from.get(UserProfile_.userCredentials).get(UserCredentials_.email),
-//					filter.getEmail());
-//			Predicate fNameEqualCondition = cb.equal(from.get(UserProfile_.firstName), filter.getFirstName());
-//			Predicate lNameEqualCondition = cb.equal(from.get(UserProfile_.lastName), filter.getLastName());
-//			Predicate startCreatedEqualCondition = cb.greaterThanOrEqualTo(from.get(UserProfile_.created),
-//					filter.getCreatedFrom());
-//			Predicate endCreatedEqualCondition = cb.lessThanOrEqualTo(from.get(UserProfile_.created),
-//					filter.getCreatedTo());
-//			
-//			cq.where(cb.or(fNameEqualCondition, lNameEqualCondition, emailEqualCondition, startCreatedEqualCondition,
-//					endCreatedEqualCondition));
-//		}
-		
-		Predicate locationFromEqualCondition=null;
-		Predicate locationToEqualCondition=null;
-		
 		Predicate emailEqualCondition=null;
 		Predicate roleEqualCondition=null;
 		Predicate cFromEqualCondition=null;
@@ -132,14 +108,6 @@ public class UserProfileDaoImpl extends AbstractDaoImpl<UserProfile, Long> imple
 		
 		List<Predicate> predicates = new ArrayList<>();
 		
-//		if (filter.getLocationFrom() != null){
-//			locationFromEqualCondition = cb.equal(from.get(Booking_.locationFrom).get(UserCredentials_.role), filter);
-//			predicates.add(locationFromEqualCondition);
-//		}
-//		if (filter.getLocationTo() != null){
-//			locationToEqualCondition = cb.equal(from.get(Booking_.locationTo), filter.getLocationTo());
-//			predicates.add(locationToEqualCondition);
-//		}
 		if (filter.getEmail() != null){
 			emailEqualCondition = cb.like(from.get(UserProfile_.userCredentials).get(UserCredentials_.email), "%"+filter.getEmail()+"%");
 			predicates.add(emailEqualCondition);

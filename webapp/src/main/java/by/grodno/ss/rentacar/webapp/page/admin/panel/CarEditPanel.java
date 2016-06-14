@@ -26,6 +26,7 @@ import org.apache.wicket.util.lang.Bytes;
 import org.apache.wicket.validation.validator.PatternValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.LocationFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.TypeFilter;
 import by.grodno.ss.rentacar.datamodel.Car;
@@ -52,6 +53,7 @@ public class CarEditPanel extends Panel {
 	@Inject
 	private LocationService locationService;
 	private Car car;
+	private CarFilter filter;
 	private FileUploadField fileUpload;
 	private String UPLOAD_FOLDER = WebApplication.get().getServletContext().getRealPath("images/cars");
 	private IModel<String> descName = Model.of("Enter your vehicle model/name");
@@ -59,14 +61,16 @@ public class CarEditPanel extends Panel {
 	private IModel<String> descType = Model.of("Select type of car");
 	private IModel<String> descReg = Model.of("National register car number");
 
-	public CarEditPanel(String id, Car car) {
+	public CarEditPanel(String id, Car car, CarFilter filter) {
 		super(id);
 		this.car = car;
+		this.filter = filter;
 	}
 
-	public CarEditPanel(String id, IModel<?> model, Car car) {
+	public CarEditPanel(String id, IModel<?> model, Car car, CarFilter filter) {
 		super(id, model);
 		this.car = car;
+		this.filter = filter;
 	}
 
 	@Override
@@ -167,7 +171,7 @@ public class CarEditPanel extends Panel {
 			private static final long serialVersionUID = 1L;
 
 			public void onClick(AjaxRequestTarget target) {
-				Component newPanel = new CarListPanel(CarEditPanel.this.getId());
+				Component newPanel = new CarListPanel(CarEditPanel.this.getId(), filter);
 				CarEditPanel.this.replaceWith(newPanel);
 				if (target != null) {
 					target.add(newPanel);

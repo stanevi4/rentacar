@@ -2,7 +2,14 @@
 
 <div><ul wicket:id="paging" class="form-group"></ul></div>
 
-<table class="table table-responsive">
+<form wicket:id="selections">
+	<div class="form-group">
+		<span>By type:&nbsp;<select wicket:id="type" type="text"></select>&nbsp;</span>
+		<span>By location:&nbsp;<select wicket:id="location" type="text"></select></span>
+	</div>
+</form>
+
+<table wicket:id="table" class="table table-responsive">
 
 	<thead>
 		<tr>

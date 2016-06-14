@@ -3,6 +3,7 @@ package by.grodno.ss.rentacar.webapp.page.admin;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import by.grodno.ss.rentacar.dataaccess.filters.CarFilter;
 import by.grodno.ss.rentacar.webapp.page.admin.panel.CarListPanel;
 
 public class CarsEditPage extends AdminPage {
@@ -24,7 +25,7 @@ public class CarsEditPage extends AdminPage {
 		super.onInitialize();
 
 		add(new FeedbackPanel("feedback"));
-		add(new CarListPanel("car-panel"));
+		add(new CarListPanel("car-panel", new CarFilter()));
 	}
 
 }

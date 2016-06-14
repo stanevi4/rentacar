@@ -74,14 +74,19 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 
 	private void handleFilterParameters(CarFilter filter, CriteriaBuilder cb, CriteriaQuery<?> cq, Root<Car> from) {
 
-		boolean location = (filter.getLocation() != null);
-		boolean locationFrom = (filter.getLocationFrom() != null);
-		boolean type = (filter.getType() != null);
-		boolean carStatus = (filter.getCarStatus() != null);
+//		boolean location = (filter.getLocation() != null);
+//		boolean locationFrom = (filter.getLocationFrom() != null);
+//		boolean type = (filter.getType() != null);
+//		boolean carStatus = (filter.getCarStatus() != null);
 		Predicate locationFromEqualCondition=null;
 		Predicate typeEqualCondition=null;
+		Predicate locationEqualCondition=null;
 		List<Predicate> predicates = new ArrayList<>();
 		
+		if (filter.getLocation() != null){
+			locationEqualCondition = cb.equal(from.get(Car_.location), filter.getLocation());
+			predicates.add(locationEqualCondition);
+		}		
 		if (filter.getLocationFrom() != null){
 			locationFromEqualCondition = cb.equal(from.get(Car_.location), filter.getLocationFrom());
 			predicates.add(locationFromEqualCondition);
