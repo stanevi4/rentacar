@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
 import org.apache.wicket.validation.validator.PatternValidator;
@@ -22,19 +23,18 @@ import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
 import by.grodno.ss.rentacar.webapp.page.login.LoginPage;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
+import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.checkbox.bootstrapcheckbox.BootstrapCheckBoxPicker;
 
 public class RegisterPanel extends Panel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private UserService userService;
 	private UserProfile userProfile;
 	private UserCredentials userCredentials;
-	
-	
 
 	public RegisterPanel(String id, UserCredentials userCredentials) {
 		super(id);
@@ -126,19 +126,27 @@ public class RegisterPanel extends Panel {
 		zip.add(StringValidator.minimumLength(2));
 		zip.add(new PatternValidator("[0-9]+"));
 		form.add(zip);
-		
+
+		BootstrapCheckBoxPicker chk0 = new BootstrapCheckBoxPicker("check-confirm", Model.of(Boolean.FALSE));
+		form.add(chk0);
+
 		form.add(new SubmitLink("button-register") {
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onSubmit() {
-				userCredentials.setRole(UserRole.CLIENT);
-				if (userProfile.getId() == null) {
-					userService.register(userProfile, userCredentials);
+				if (chk0.getModelObject().equals(false)) {
+					info("You must to agree rental terms");
 				} else {
-					userService.update(userProfile);
-					userService.update(userCredentials);
+					userCredentials.setRole(UserRole.CLIENT);
+					if (userProfile.getId() == null) {
+						userService.register(userProfile, userCredentials);
+					} else {
+						userService.update(userProfile);
+						userService.update(userCredentials);
+					}
+					setResponsePage(new LoginPage());
 				}
-				setResponsePage(new LoginPage());
 			}
 		});
 		add(form);

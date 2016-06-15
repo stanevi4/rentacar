@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -24,10 +25,12 @@ import by.grodno.ss.rentacar.dataaccess.filters.BookingFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.LocationFilter;
 import by.grodno.ss.rentacar.dataaccess.filters.ReasonFilter;
 import by.grodno.ss.rentacar.datamodel.Booking;
+import by.grodno.ss.rentacar.datamodel.Car;
 import by.grodno.ss.rentacar.datamodel.Location;
 import by.grodno.ss.rentacar.datamodel.OrderStatus;
 import by.grodno.ss.rentacar.datamodel.Reason;
 import by.grodno.ss.rentacar.service.BookingService;
+import by.grodno.ss.rentacar.service.CarService;
 import by.grodno.ss.rentacar.service.LocationService;
 import by.grodno.ss.rentacar.service.ReasonService;
 import by.grodno.ss.rentacar.webapp.app.AuthorizedSession;
@@ -47,6 +50,8 @@ public class ReservationEditPanel extends Panel {
 	private LocationService locationService;
 	@Inject
 	private ReasonService reasonService;
+	@Inject
+	private CarService carService;
 	private Booking booking;
 	private IModel<String> noteDesc = Model.of("Комментарий к заказу");
 	private IModel<String> damageDesc = Model.of("Опишите повреждения если автомобиль был поврежден в процессе эксплуатации клиентом");
@@ -145,17 +150,22 @@ public class ReservationEditPanel extends Panel {
 
 			@Override
 			public void onSubmit() {
-
 				if (booking.getOrderStatus().equals(OrderStatus.denied) && booking.getReason()==null) {
 					info("Please select reason of refusing");
-				} 
-				//else if(booking.getDateFrom().compareTo(new Date()) < 0){
-				//	info("Pickup date is lesser than current date. Please select correct dates");
-				//}
-				else if(booking.getDateFrom().compareTo(booking.getDateTo()) >= 0){
+				}else if(booking.getOrderStatus().equals(OrderStatus.completed)){
+					try{
+						Car car = booking.getCar();
+						car.setLocation(booking.getLocationTo());
+						carService.saveOrUpdate(car);
+						bookingService.saveOrUpdate(booking);
+						info("Booking was closed");						
+					}catch (PersistenceException e){
+						error("Can't close order");	
+					}
+					
+				}else if(booking.getDateFrom().compareTo(booking.getDateTo()) >= 0){
 					info("Return date is lesser/equals pickup date. Please select correct dates");
-				}
-				else {
+				}else {
 					bookingService.saveOrUpdate(booking);
 					info("Booking was updated");
 				}

@@ -117,10 +117,8 @@ public class CarDaoImpl extends AbstractDaoImpl<Car, Long> implements CarDao {
 		EntityManager em = getEntityManager();
 		List<Car> list = em
 				.createQuery( "SELECT DISTINCT c FROM Booking b LEFT JOIN b.car c "+
-							  "WHERE (b.dateFrom >= :endDate AND b.dateTo >= :startDate) "+
+							  "WHERE (b.dateFrom <= :endDate AND b.dateTo >= :startDate) "+
 							  "AND (b.orderStatus = :confirmed OR b.orderStatus = :pending)")
-				//.setParameter("startDate", filter.getDateFrom())
-				//.setParameter("endDate", filter.getDateTo()).getResultList();
 				.setParameter("startDate", dateFrom)
 				.setParameter("endDate", dateTo)
 				.setParameter("confirmed", OrderStatus.confirmed)

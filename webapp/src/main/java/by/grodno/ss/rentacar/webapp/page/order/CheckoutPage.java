@@ -74,8 +74,6 @@ public class CheckoutPage extends AbstractPage {
 		booking.setDateTo(filter.getDateTo());
 		booking.setLocationFrom(filter.getLocationFrom());
 		booking.setLocationTo(filter.getLocationTo());
-		// liBookings.setVisible(AuthorizedSession.get().isSignedIn() &&
-		// AuthorizedSession.get().getLoggedUser().getRole().equals(UserRole.CLIENT));
 	}
 
 	public CheckoutPage(PageParameters parameters, Car car, CarFilter filter) {
